@@ -1,0 +1,151 @@
+﻿@model AdminSideEcoFridge.Models.User
+
+
+<form id="editOrgUserForm" method="post" asp-controller="Account" asp-action="EditFoodResto">
+    <div class="edit-food-user-container">
+        <div class="user-column-container">
+            <div class="user-details-flex">
+                <div class="profile">
+                    <img src="@Model.ProfilePicturePath" alt="" class="user-img">
+                </div>
+                <div class="column-user-info">
+                    <div class="details-info">Food Business</div>
+
+                    <div class="details-info">Barangay</div>
+                    <div class="details-info">City</div>
+                    <div class="details-info">Province</div>
+                </div>
+                <div class="column-user-info">
+                    <input type="hidden" id="editUserId" asp-for="UserId" />
+                    <input type="hidden" id="editUserEmail" asp-for="Email" />
+                    <input type="hidden" id="editUserEmailConfirmed" asp-for="EmailConfirmed" />
+                    <input type="hidden" id="editUserEmailConfirmed" asp-for="Password" />
+          
+                    <input type="hidden" id="editFirstName" asp-for="FirstName">
+                    <div class="user-details">
+                        <input type="text" id="editFoodName" asp-for="FoodBusinessName" readonly>
+                    </div>
+              
+                    <div class="user-details">
+                        <input type="text" id="editBaranggay" asp-for="Barangay">
+                    </div>
+                    <div class="user-details">
+                        <input type="text" id="editCity" asp-for="City">
+                    </div>
+                    <div class="user-details">
+                        <input type="text" id="editProvince" asp-for="Province">
+                    </div>
+                </div>
+
+            </div>
+            <div class="org-flex">
+                <p>Documents</p>
+                <div class="food-org-docs-container">
+                    <img src="@Model.ProofPicturePath" alt="" class="org-docx">
+                </div>
+            </div>
+        </div>
+        <div class="action-dropdown">
+            <button type="button" class="action-drop">
+                Action
+            </button>
+            <div class="dropdown">
+                <button class="actions" type="button" id="food-approveBtn">Approve</button>
+                <button class="actions" type="button" id="food-declineBtn">Decline</button> 
+            </div>
+        </div>
+        <div id="food-modal-approval" class="modal-approval-overlay">
+            <div class="modal-approval">
+                <img src="/images/Create-icons/ApprovedImg.svg" alt="Alternate Text" />
+                <p>
+                    Organization or Beneficiary has been approved
+                </p>
+                <button type="button" id="food-closeApprovalModalBtn">OK</button>
+            </div>
+        </div>
+
+        <div id="food-modal-rejected" class="modal-approval-overlay">
+            <div class="modal-approval">
+                <img src="/images/Create-icons/trashcan.svg" alt="Alternate Text" />
+                <p>
+                    Organization or Beneficiary has been declined
+                </p>
+                <button type="button" id="food-closeDeclineModalBtn">OK</button>
+            </div>
+        </div>
+        <div class="save-edit-org">
+            @* <a onclick="saveBtn()" id="SaveBtn" class="save-edit-btn">Save</a> *@
+            <button type="submit" id="SaveBtn" class="save-edit-btn">Save</button>
+        </div>
+    </div>
+</form>
+<script>
+    document.addEventListener('click', function (event) {
+
+        if (event.target && event.target.id === 'food-approveBtn') {
+            updateAccountApproval(true); 
+            document.getElementById('food-modal-approval').style.display = 'block';
+            setTimeout(function () {
+                document.getElementById('food-modal-approval').style.opacity = '1';
+            }, 10);
+        }
+
+        if (event.target && event.target.id === 'food-declineBtn') {
+            updateAccountApproval(false); 
+            document.getElementById('food-modal-rejected').style.display = 'block';
+            setTimeout(function () {
+                document.getElementById('food-modal-rejected').style.opacity = '1';
+            }, 10);
+        }
+
+        if (event.target && event.target.id === 'food-closeApprovalModalBtn') {
+            document.getElementById('food-modal-approval').style.opacity = '0';
+            setTimeout(function () {
+                document.getElementById('food-modal-approval').style.display = 'none';
+            }, 300);
+        }
+
+        if (event.target && event.target.id === 'food-closeDeclineModalBtn') {
+            document.getElementById('food-modal-rejected').style.opacity = '0';
+            setTimeout(function () {
+                document.getElementById('food-modal-rejected').style.display = 'none';
+            }, 300);
+        }
+    });
+
+    function updateAccountApproval(isApproved) {
+        const userId = document.getElementById('editUserId').value;
+
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("UpdateAccountApproval", "Account")',
+            data: {
+                userId: userId,
+                isApproved: isApproved
+            },
+            success: function (response) {
+                if (response.success) {
+                    const row = document.querySelector(`tr[data-user-id='${userId}']`);
+                    if (row) {
+                        const statusCell = row.querySelector('td:first-child'); 
+                        if (statusCell) {
+            
+                            if (isApproved) {
+                                statusCell.innerHTML = '<button class="approved-btn">Approved</button>';
+                            } else {
+                                statusCell.innerHTML = '<button class="reject-btn">Rejected</button>';
+                            }
+                        }
+                    }
+                } else {
+                    console.log('Error updating status:', response.message);
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    }
+</script>
+
+

@@ -1,0 +1,188 @@
+﻿@model AdminSideEcoFridge.Models.User
+@using System.Security.Claims
+@{
+    Layout = "_Layout";
+}
+<link href="~/css/food-business.css" rel="stylesheet" />
+<link href="~/css/welcome-admin.css" rel="stylesheet" />
+<link href="~/css/admincreate.css" rel="stylesheet" />
+<link href="~/css/errorvalidation.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<div class="container">
+    <div class="dashboard">Dashboard</div>
+    <div class="flex-container">
+        <div class="welcome-container">
+            <div class="admin-welcome">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    var userName = User.FindFirst(ClaimTypes.GivenName)?.Value;
+
+                    if (User.IsInRole("super admin"))
+                    {
+                        <div class="admin-name">
+                            Welcome Back, @userName
+                        </div>
+                    }
+                    if (User.IsInRole("admin"))
+                    {
+                        <div class="admin-name">
+                            Welcome Back, Admin @*@User.Identity.Name*@
+                        </div>
+                    }
+                }
+                <div class="check-updates">Check out new updates</div>
+                <div class="user-profile-btn-container">
+                    <form method="get" asp-controller="Home" asp-action="Dashboard">
+                        <button class="user-profile-btn">
+                            User Profiles
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="welcome-pic">
+                <img src="/images/dashboardImg/AdminImg.svg" alt="" class="welcome-img">
+            </div>
+        </div>
+    </div>
+    <!--DASHBOARD USERLIST NAVIGATION SCREENNSS-->
+    <div class="user-container">
+        </div>
+        <div class="admin-create"><button>Food Business</button></div>
+        <form asp-action="FoodBusinessCreate" method="post" enctype="multipart/form-data">
+            <div class="dashboard-home-container">
+                <div class="food-dashboard-home-container">
+                    <div class="food-business-cont">
+
+                        <div class="margin-gap">
+                            <div style="position: relative;">
+                                <input asp-for="Email" type="text" class="email" placeholder="Email" required>
+                                <div class="error-invalid-email">
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="margin-gap">
+                            <div class="pass-input">
+                                <input asp-for="Password" type="password" class="password" id="password" placeholder="Password" required>
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                <span class="toggle-password" onclick="togglePasswordVisibility()">
+                                    <img class="img-eye" src="/images/LoginImg/eye-close-up-svgrepo-com.svg" alt="Show/Hide" id="eye-icon">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="margin-gap">
+                            <div class="pass-input">
+                                <div style="position: relative;">
+                                    <input asp-for="ConfirmPassword" type="password" class="password" id="confirm-password" placeholder="Confirm Password" required>
+                                    <div class="error-invalid-password">
+                                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <span class="toggle-password" onclick="toggleConfirmPasswordVisibility()">
+                                    <img class="img-eye" src="/images/LoginImg/eye-close-up-svgrepo-com.svg" alt="Show/Hide" id="eyeconfirm-icon">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="food-business-cont">
+                        <div class="margin-gap">
+                            <div style="position: relative;">
+                                <input asp-for="FoodBusinessName" class="foodBusinessName" type="text" placeholder="Food Business Name" required>
+                                <div class="error-invalid-foodName">
+                                    @Html.ValidationMessageFor(model => model.FoodBusinessName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="margin-gap">
+                            <input asp-for="Province" type="text" placeholder="Province" required>
+                        </div>
+                        <div class="margin-gap">
+                            <input asp-for="City" type="text" placeholder="City" required>
+                        </div>
+                        <div class="margin-gap">
+                            <input asp-for="Barangay" type="text" placeholder="Barangay" required>
+                        </div>
+                    </div>
+                    <div class="food-business-cont">
+
+                        <div class="margin-gap">
+                            <div class="food-upload-container">
+                                <div style="position: relative;">
+                                    <label for="myFile" class="food-custom-file-upload">
+                                        Upload Profile Picture
+                                    </label>
+                                    <input type="file" id="myFile" name="ProfilePicturePath" asp-for="ProfilePicturePath" onchange="displayFileName()">
+                                    <span id="file-name">No file chosen</span>
+                                    <div class="error-invalid-img-regular">
+                                        @Html.ValidationMessageFor(model => model.ProfilePicturePath, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="margin-gap">
+                            <div class="food-upload-container">
+                                <div style="position: relative;">
+                                    <label for="myPermitFile" class="food-custom-file-upload">
+                                        Upload Business Permit
+                                    </label>
+                                    <input type="file" id="myPermitFile" name="ProofPicturePath" asp-for="ProofPicturePath" onchange="displayPermitFileName()">
+                                    <span id="Permitfile-name">No file chosen</span>
+                                    <div class="error-invalid-img-proof">
+                                        @Html.ValidationMessageFor(model => model.ProofPicturePath, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input class="confirm" type="submit">
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        const errorMappings = [
+
+            { input: ".email", error: ".error-invalid-email" },
+            { input: ".password", error: ".error-invalid-password" },
+            { input: "#myFile", error: ".error-invalid-img-regular" },
+            { input: "#myPermitFile", error: ".error-invalid-img-proof" },
+            { input: ".foodBusinessName", error: ".error-invalid-foodName" },
+        ];
+
+        errorMappings.forEach(mapping => {
+            if ($(mapping.error + " .text-danger").text().trim().length > 0) {
+                $(mapping.error).css("opacity", "1");
+            } else {
+                $(mapping.error).css("opacity", "0");
+            }
+        });
+
+        errorMappings.forEach(mapping => {
+            if (mapping.input === "#myFile") {
+
+                $(mapping.input).on("change", function () {
+                    $(mapping.error).css("opacity", "0");
+                });
+            } else {
+                $(mapping.input).on("input", function () {
+                    $(mapping.error).css("opacity", "0");
+                });
+            }
+        });
+
+        $(document).on("click", function () {
+            errorMappings.forEach(mapping => {
+                if ($(mapping.input).val().trim().length === 0) {
+                    if ($(mapping.error + " .text-danger").text().trim().length > 0) {
+                        $(mapping.error).css("opacity", "1");
+                    }
+                }
+            });
+        });
+    });
+</script>
+<script src="~/js/login.js"></script>
+<script src="~/js/admin-create.js"></script>

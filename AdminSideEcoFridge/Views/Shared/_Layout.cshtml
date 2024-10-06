@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AdminSideEcoFridge</title>
+    <link href="~/css/header.css" rel="stylesheet" />
+    <link href="~/css/sidebar.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="header">
+        <div class="search-bar">           
+           <h2>EcoFridge Admin Panel</h2>
+        </div>
+        <div class="box">
+        </div>
+        <!--NOTIFICATION-->
+        <div class="notification-container">
+            <img src="/images/header-icons/notification-icon.svg" alt="" class="notification-icon" id="notificationIcon">
+            <div class="notification-count">3</div>
+            <!-- Notification Dropdown -->
+            <div class="notification-dropdown" id="notificationDropdown">
+                <p>No new notifications</p>
+            </div>
+        </div>
+        <!--USER PROFILE ICON-->
+        <div class="profile-container">
+            @if (User.Identity.IsAuthenticated != null)
+            {
+                var profilePictureUrl = User.FindFirst("ProfilePicture")?.Value ?? "/images/default-profile.png";
+
+                <img src="@profilePictureUrl" alt="Profile Picture" class="profile-img" id="profileImg">
+            }
+            <!-- Profile Dropdown -->
+            
+            <div class="profile-dropdown" id="profileDropdown">
+                <form method="post" asp-controller="Account" asp-action="Logout">
+                    <button class="logout-btn"><img src="/images/header-icons/logout-icon.svg" alt="" class="logout-img">Logout</button>
+                    @Html.AntiForgeryToken()
+                </form>
+            </div>
+           
+        </div>
+    </header>
+    <nav class="sidebar">
+        <div class="logo-container">
+            <img src="/images/sidbar-icons/Eco-logo.svg" alt="" class="logo-icon">
+        </div>   
+        <div class="icon-container">
+            <a href="@Url.Action("Dashboard", "Home")" style="text-decoration: none;">
+                <img src="/images/sidbar-icons/home.svg" alt="" class="home-icon">
+            </a>    
+        </div>        
+        <div class="icon-container">
+            <a href="@Url.Action("StoragePlan", "Home")" style="text-decoration: none;">
+                <img src="/images/sidbar-icons/subscription.svg" alt="" class="subscription-icon">
+            </a>
+        </div>
+   
+        <div class="icon-container">
+            <a href="#" style="text-decoration: none;">
+                <img src="/images/sidbar-icons/reports.svg" alt="" class="report-icon">
+            </a>
+        </div>
+        <div class="margin"></div>
+    </nav>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    <script src="~/js/header.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

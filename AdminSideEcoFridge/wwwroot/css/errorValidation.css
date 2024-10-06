@@ -1,0 +1,128 @@
+﻿.error-invalid-username {
+    position: absolute;
+    bottom: -27px;
+    left: 45px;
+    z-index: 1;
+    background-color: white;
+    color: red;
+    padding: 10px;
+    box-shadow: 0px 1px 5px gray;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out; 
+    pointer-events: none; 
+}
+
+.error-invalid-email {
+    position: absolute;
+    bottom: -27px;
+    left: 45px;
+    z-index: 1;
+    color: red;
+    padding: 10px;
+    box-shadow: 0px 1px 5px gray;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out; 
+    pointer-events: none; 
+}
+
+.error-invalid-password {
+    position: absolute;
+    bottom: -28px;
+    left: 45px;
+    z-index: 2;
+    width: 100%;
+    color: red;
+    padding: 10px;
+    box-shadow: 0px 1px 5px gray;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out; 
+    pointer-events: none; 
+}
+
+.error-invalid-img {
+    position: absolute;  
+    left: -150px;
+    bottom: -24px;
+    width: 300px;
+    color: red;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out; 
+    pointer-events: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    z-index: 1;
+    box-shadow: 0px 1px 5px gray;
+}
+
+.error-invalid-img-regular {
+    position: absolute;
+    top: -2px;
+    right: -100px;
+    width: 260px;
+    color: red;
+    padding: 10px 0px 10px 0px;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    z-index: 1;
+}
+
+.error-invalid-foodName {
+    position: absolute;
+    bottom: -27px;
+    left: 45px;
+    z-index: 1;
+    color: red;
+    padding: 10px;
+    box-shadow: 0px 1px 5px gray;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+}
+
+.error-invalid-img-proof {
+    position: absolute;
+    top: -2px;
+    right: -100px;
+    width: 260px;
+    color: red;
+    padding: 10px 0px 10px 0px;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 0; 
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    z-index: 1;
+}
+
+
+

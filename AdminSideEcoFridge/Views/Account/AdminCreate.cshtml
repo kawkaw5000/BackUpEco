@@ -1,0 +1,145 @@
+﻿@model AdminSideEcoFridge.Models.User
+@using System.Security.Claims
+@{
+    Layout = "_Layout";
+}
+<link href="~/css/admincreate.css" rel="stylesheet" />
+<link href="~/css/errorvalidation.css" rel="stylesheet" />
+<link href="~/css/welcome-admin.css" rel="stylesheet" />
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<div class="container">
+    <div class="dashboard">Dashboard</div>
+    <div class="flex-container">
+        <div class="welcome-container"> 
+            <div class="admin-welcome">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    var userName = User.FindFirst(ClaimTypes.GivenName)?.Value;
+
+                    if (User.IsInRole("super admin"))
+                    {
+                        <div class="admin-name">
+                            Welcome Back, @userName
+                        </div>
+                    }
+                    if (User.IsInRole("admin"))
+                    {
+                        <div class="admin-name">
+                            Welcome Back, Admin @*@User.Identity.Name*@
+                        </div>
+                    }
+                }
+                <div class="check-updates">Check out new updates</div>
+                <div class="user-profile-btn-container">
+                    <form method="get" asp-controller="Home" asp-action="Dashboard">
+                        <button class="user-profile-btn">
+                            User Profiles
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="welcome-pic">
+                <img src="/images/dashboardImg/AdminImg.svg" alt="" class="welcome-img">
+            </div>
+        </div>
+    </div>
+    <!--DASHBOARD USERLIST NAVIGATION SCREENNSS-->
+
+    <div class="user-container">
+        <div class="admin-create"><button>Admin</button></div>
+        <form asp-action="AdminCreate" method="post" enctype="multipart/form-data">
+            <div class="dashboard-home-container">        
+                <div class="flex-row">
+                    <div class="margin-gap">
+                        <div style="position: relative;">
+                            <input asp-for="Email" type="text" class="email" placeholder="Email" required>
+                            <div class="error-invalid-email">
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pass-input">                     
+                        <input asp-for="Password" type="password" class="password" id="password" placeholder="Password" required>  
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })                                          
+                        <span class="toggle-password" onclick="togglePasswordVisibility()">
+                            <img class="img-eye" src="/images/LoginImg/eye-close-up-svgrepo-com.svg" alt="Show/Hide" id="eye-icon">
+                        </span>
+                    </div>
+                </div>
+                <div class="flex-row">         
+                    <div class="upload-container">
+                        <div style="position: relative;">
+                            <label for="myFile" class="custom-file-upload">
+                                Upload Profile Picture
+                            </label>
+                            <input type="file" id="myFile" name="ProfilePicturePath" asp-for="ProfilePicturePath" onchange="displayFileName()">
+                            <span id="file-name">No file chosen</span>
+                            <div class="error-invalid-img">
+                                @Html.ValidationMessageFor(model => model.ProfilePicturePath, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pass-input">
+                        <div style="position: relative;">
+                            <input asp-for="ConfirmPassword" type="password" class="password" id="confirm-password" placeholder="Confirm Password" required>
+                            <div class="error-invalid-password">
+                                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                            </div>
+                        </div>                            
+                        <span class="toggle-password" onclick="toggleConfirmPasswordVisibility()">
+                            <img class="img-eye" src="/images/LoginImg/eye-close-up-svgrepo-com.svg" alt="Show/Hide" id="eyeconfirm-icon">
+                        </span>
+                    </div>
+                </div>
+                
+                <input class="submit" type="submit" value="Create Admin">
+            </div>
+        </form>
+        <div class="back-to">
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        const errorMappings = [
+
+            { input: ".email", error: ".error-invalid-email" },
+            { input: ".password", error: ".error-invalid-password" },
+            { input: "#myFile", error: ".error-invalid-img" }
+        ];
+
+        errorMappings.forEach(mapping => {
+            if ($(mapping.error + " .text-danger").text().trim().length > 0) {
+                $(mapping.error).css("opacity", "1");
+            } else {
+                $(mapping.error).css("opacity", "0");
+            }
+        });
+
+        errorMappings.forEach(mapping => {
+            if (mapping.input === "#myFile") {
+
+                $(mapping.input).on("change", function () {
+                    $(mapping.error).css("opacity", "0");
+                });
+            } else {
+                $(mapping.input).on("input", function () {
+                    $(mapping.error).css("opacity", "0");
+                });
+            }
+        });
+  
+        $(document).on("click", function () {
+            errorMappings.forEach(mapping => {
+                if ($(mapping.input).val().trim().length === 0) {
+                    if ($(mapping.error + " .text-danger").text().trim().length > 0) {
+                        $(mapping.error).css("opacity", "1");
+                    }
+                }
+            });
+        });
+    });
+</script>
+<script src="~/js/login.js"></script>
+<script src="~/js/admin-create.js"></script>

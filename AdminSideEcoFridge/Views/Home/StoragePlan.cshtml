@@ -1,0 +1,160 @@
+﻿@{
+    ViewData["Title"] = "Storage Plan";
+}
+<link href="~/css/user-profiles.css" rel="stylesheet" />
+<link href="~/css/welcome-admin.css" rel="stylesheet" />
+<link href="~/css/header.css" rel="stylesheet" />
+<link href="~/css/sidebar.css" rel="stylesheet" />
+<link href="~/css/modal-approval.css" rel="stylesheet" />
+<link href="~/css/storageplan.css" rel="stylesheet" />
+<div style="margin-left: 115px; margin-top: 70px; margin-right: 10px;">
+    <h2>Storage Plan</h2>
+    <div class="storage-container">
+        <div class="plan-table">
+            <table class="user-list-table" id="plan-container">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Plan-type</th>
+                        <th>Price</th>
+                        <th>Add-on Features</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Free</td>
+                        <td>Free</td>
+                        <td>Less than 5 food items</td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="action-btn">
+                                    Actions <img src="/header-icons/down-arrow-white.svg" alt="" class="drop-arrw">
+                                </button>
+                                <div class="dropdown-content">
+                                    <button class="dropdown-item">Update</button>
+                                    <button class="dropdown-item">Disable</button>
+                                    <button class="dropdown-item">Delete</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Silver</td>
+                        <td>50</td>
+                        <td>10 food items</td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="action-btn">
+                                    Actions <img src="/header-icons/down-arrow-white.svg" alt="" class="drop-arrw">
+                                </button>
+                                <div class="dropdown-content">
+                                    <button class="dropdown-item">Update</button>
+                                    <button class="dropdown-item">Disable</button>
+                                    <button class="dropdown-item">Delete</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Gold</td>
+                        <td>200</td>
+                        <td>50 food items, expert storage tips</td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="action-btn">
+                                    Actions <img src="/header-icons/down-arrow-white.svg" alt="" class="drop-arrw">
+                                </button>
+                                <div class="dropdown-content">
+                                    <button class="dropdown-item">Update</button>
+                                    <button class="dropdown-item">Disable</button>
+                                    <button class="dropdown-item">Delete</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Platinum</td>
+                        <td>500</td>
+                        <td>Unlimited storage, expert storage tips</td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="action-btn">
+                                    Actions <img src="/header-icons/down-arrow-white.svg" alt="" class="drop-arrw">
+                                </button>
+                                <div class="dropdown-content">
+                                    <button class="dropdown-item">Update</button>
+                                    <button class="dropdown-item">Disable</button>
+                                    <button class="dropdown-item">Delete</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+            </div>
+        </div>
+        <div style="position: absolute; bottom: -40px; right: 364.5px;">
+            <button id="add-new-plan">Add new plan</button>
+        </div>
+        <!--ADD PLAN CONTAINTER-->
+        <div class="add-plan" id="add-plan">
+            <div style="position: relative; display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px; z-index: 1;">
+                <p style="font-weight: bold;">Type</p>
+                <input type="text" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;">
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
+                <p style="font-weight: bold;">Price</p>
+                <input type="text" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;">
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
+                <p style="font-weight: bold;">Add-on</p>
+                <input type="text" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;">
+            </div>
+            <button>Add</button>
+        </div>
+        <!--UPDATE PLAN CONTAINTER-->
+        <div class="update-plan" id="update-plan">
+            <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
+                <p style="font-weight: bold;">Type</p>
+                <a style="width: 150px; height: 40px; border-style: solid; display: flex; justify-content: center; align-items: center; border-color: #307A59; border-width: 1px; border-radius: 20px;">
+                    Gold
+                </a>
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
+                <p style="font-weight: bold;">Price</p>
+                <input type="text" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;">
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
+                <p style="font-weight: bold;">Add-on</p>
+                <input type="text" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;">
+            </div>
+            <button>Update</button>
+        </div>
+    </div>
+</div>
+<div class="disable-modal">
+    <div class="disable-content">
+        <img src="~/images/disableplan.svg" alt="">
+        <h3 style="color: white; margin-bottom: 0;">Selected Plan</h3>
+        <h3 style="color: white; margin-top: 0;">will be disabled</h3>
+        <button id="ok-disable">OK</button>
+        <button id="cancel-disable">Cancel</button>
+    </div>
+</div>
+<div class="delete-modal">
+    <div class="delete-content">
+        <img src="~/images/trashcan.svg" alt="">
+        <h3 style="color: white; margin-bottom: 0;">Selected Plan</h3>
+        <h3 style="color: white; margin-top: 0;">will be deleted</h3>
+        <button id="ok-delete">OK</button>
+        <button id="cancel-delete">Cancel</button>
+    </div>
+</div>
+<script src="~/js/storageplan.js"></script>
+<script src="~/js/modal.js"></script>

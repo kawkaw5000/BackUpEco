@@ -1,0 +1,219 @@
+.search-bar h2 {
+  margin-left: 43px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 2px 4px 2px 4px;
+  border-radius: 10px;
+  border-color: gray;
+}
+.user-list-table {
+width: 870px;
+border-collapse: collapse;
+}
+
+.user-list-table td {
+max-width: 0px; 
+word-wrap: break-word; 
+text-overflow: ellipsis; 
+white-space: nowrap; 
+text-align: center;
+}
+
+.user-list-table th {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+}
+
+.storage-container {
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 30px;
+margin-top: 40px;
+position: relative;
+}
+
+.plan-table {
+background-color: rgb(255, 255, 255);
+height: 380px;
+width: 900px;
+border-bottom-left-radius: 30px;
+border-top-left-radius: 30px;
+border-top-right-radius: 30px;
+box-shadow: 0px 1px 5px gray;
+position: relative;
+overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  margin-right: 5px;
+  float: left;
+}
+
+.plan-table::-webkit-scrollbar {
+  width: 15px;
+}
+
+.plan-table::-webkit-scrollbar-track {
+  background-color: rgb(255, 255, 255);
+  margin-top: 50px;
+}
+
+.plan-table::-webkit-scrollbar-thumb {
+  background-color: #307A59;
+  border-radius: 20px;
+  height: 30px;
+}
+
+.storage-container #add-new-plan {
+border-top: none;
+border-width: 1px;
+color: white;
+background-color: #307A59;
+border-color: rgb(255, 255, 255);
+width: 170px;
+height: 40px;
+font-size: 17px;
+box-shadow: 0px 1px 5px gray;
+border-bottom-left-radius: 20px;
+font-weight: bold;
+border-bottom-right-radius: 20px;
+}
+
+.add-plan,
+.update-plan {
+background-color: rgb(255, 255, 255);
+height: 380px;
+width: 300px;
+border-radius: 30px;
+box-shadow: 0px 1px 5px gray;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: start;
+}
+
+.add-plan button,
+.update-plan button {
+margin-top: 95px; 
+width: 170px; 
+padding: 20px ; 
+border-radius: 30px; 
+border: none; 
+background-color: #307A59; 
+font-weight: bold; 
+color: white;
+cursor: pointer;
+}
+
+.add-plan button:hover,
+.update-plan button:hover {
+background-color: #3ca073; 
+}
+.add-plan button:active,
+.update-plan button:active {
+background-color: #a3d6bf; 
+box-shadow: 0px 1px 5px black;
+}
+
+#add-plan {
+display: flex;
+}
+
+#update-plan {
+display: none;
+}
+
+.disable-modal,
+.delete-modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+ 
+.disable-content,
+.delete-content {
+  background-color: #307A59;
+  padding: 20px;
+  border-radius: 20px;
+  width: 180px;
+  height: 250px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.disable-content img,
+.delete-content img {
+  height: 50px;
+  margin-top: 20px;
+}
+
+.disable-content button,
+.delete-content button {
+  width: 180px;
+  margin-top: 8px;
+  padding: 13px;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+}
+
+.disable-content button:hover,
+.delete-content button:hover {
+  background-color: #B8F1B0;
+}
+
+.disable-content button:active,
+.delete-content button:active {
+  box-shadow: 0px 1px 5px black;
+}
+
+.user-list-table th {
+  text-align: center;
+  position: sticky;
+  height: 50px;
+  top: 0;
+  background-color: white;
+  border: none;
+}
+
+.plan-table .user-list-table td {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: gray;
+ 
+}
+
+.plan-table .user-list-table tr {
+  scroll-snap-type: start;
+  transition: background-color 0.2s;
+}
+ 
+.plan-table::-webkit-scrollbar::-webkit-scrollbar {
+  width: 15px;
+}
+
+.plan-table::-webkit-scrollbar-track {
+  background-color: rgb(255, 255, 255);
+}
+
+.plan-table::-webkit-scrollbar-thumb {
+  background-color: #307A59;
+  border-radius: 20px;
+}
+
+
+.plan-table > .user-list-table{
+  width: 100%;
+}

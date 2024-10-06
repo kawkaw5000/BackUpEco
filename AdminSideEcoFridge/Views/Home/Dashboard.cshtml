@@ -1,0 +1,500 @@
+﻿@using System.Security.Claims
+@model AdminSideEcoFridge.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
+<link href="~/css/user-profiles.css" rel="stylesheet" />
+<link href="~/css/welcome-admin.css" rel="stylesheet" />
+<link href="~/css/header.css" rel="stylesheet" />
+<link href="~/css/sidebar.css" rel="stylesheet" />
+<link href="~/css/modal-approval.css" rel="stylesheet" />
+<div class="container">
+    <div class="dashboard">Dashboard</div>
+    <div class="flex-container">
+        <div class="welcome-container">
+            <div class="admin-welcome">d
+                @if (User.Identity.IsAuthenticated)
+                {
+                    var userName = User.FindFirst(ClaimTypes.GivenName)?.Value;
+
+                    if (User.IsInRole("super admin"))
+                    {
+                        <div class="admin-name">
+                            Welcome Back, @userName
+                        </div>
+                    }
+                    if (User.IsInRole("admin"))
+                    {
+                        <div class="admin-name">
+                            Welcome Back, Admin @*@User.Identity.Name*@
+                        </div>
+                    }
+                }
+                <div class="check-updates">Check out new updates</div>
+                <div class="user-profile-btn-container">
+                    <form method="get" asp-action="Dashboard">
+                        <button class="user-profile-btn">
+                            User Profiles
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="welcome-pic">
+                <img src="/images/dashboardImg/AdminImg.svg" alt="" class="welcome-img">
+            </div>
+        </div>
+    </div>
+    <!--DASHBOARD USERLIST NAVIGATION SCREENNSS-->
+    <div class="user-container">
+        <div class="user-profiles">
+            User Profiles
+        </div>
+        <div class="category-btn-list-flex">
+            <div class="count-num">
+                <button class="count-btn" onclick="filterByRole('all')">All (@Model.TotalUsers)</button>
+            </div>
+            <div class="count-num">
+                <button class="count-btn" onclick="filterByRole('personal')">Donor (@Model.DonorCount)</button>
+            </div>
+            <div class="count-num">
+                <button class="count-btn" onclick="filterByRole('food business')">Food Business (@Model.FoodBusinessCount)</button>
+            </div>
+            <div class="count-num">
+                <button class="count-btn" onclick="filterByRole('donee organization')">Organization (@Model.OrganizationCount)</button>
+            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("super admin"))
+                {
+                    <div class="count-num">
+                        <button class="count-btn" onclick="filterByRole('admin')">Admin (@Model.AdminCount)</button>
+                    </div>
+                }             
+            }     
+            <div class="add">
+                <button class="add-btn" id="add-btn">
+                    <img src="/images/header-icons/plus-icon.svg" alt="" class="cross-icon">
+                </button>
+            </div>
+        </div>
+        <div class="dashboard-home-container">
+            <div class="user-profile-list-container">
+                <table class="user-list-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <img src="/images/header-icons/down-arrow.svg" alt="" class="down-arrow-img">
+                            </th>                       
+                            <th>ID</th>
+                            <th>Account-type</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <!--USER LIST------------->
+                    <tbody>
+                        @if (Model.UserList != null && Model.UserList.Any())
+                        {
+                            int i = 1;
+                            @foreach (var user in Model.UserList)
+                            {                     
+                            <tr data-user-id="@user.UserId"
+                                data-accounttype="@user.RoleName"
+                                data-firstname="@user.FirstName"
+                                data-lastname="@user.LastName"
+                                data-gender="@user.Gender"
+                                data-birthdate="@user.Birthdate"
+                                data-image="@user.ProfilePicturePath"
+                                data-foodbussiness="@user.FoodBusinessName"
+                                data-orgname="@user.DoneeOrganizationName"
+                                data-baranggay="@user.Barangay"
+                                data-city="@user.City"
+                                data-province="@user.Province"
+                                data-address="@user.Barangay, @user.City, @user.Province"
+                                data-userimg="@user.ProfilePicturePath"
+                                data-proofimg="@user.ProofPicturePath">
+                                <td>
+                                    @if (@user.AccountApproved == null)
+                                    {
+                                        <button class="pending-btn">Pending</button>
+                                    }
+                                    else if (@user.AccountApproved == false)
+                                    {
+                                        <button class="reject-btn">Rejected</button>
+                                    }
+                                    else if (@user.AccountApproved == true)
+                                    {
+                                        <button class="approved-btn">Approved</button>
+                                    }
+                                </td>
+                                <td>@i</td>
+                                <td>@user.RoleName</td>     
+                                <td>@user.Email</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="action-btn">
+                                            Actions <img src="/images/header-icons/down-arrow-white.svg" alt="" class="drop-arrw">
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <a class="dropdown-item" data-users-id="@user.UserId" href="#">Edit</a>
+                                            <a class="dropdown-item delete-user-btn" data-del-users-id="@user.UserId" href="#">Delete</a>
+
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            i++;
+                            }
+                        } else
+                        {
+                            <tr>
+                                <td colspan="5">User was not Found.</td> <!-- Adjust colspan based on your table -->
+                            </tr>
+                        }
+                        
+                    </tbody>
+                </table>  
+                
+            </div>
+               
+            <!--BLANK CONTAINER-->
+            <div class="blank-profile-container">
+            </div>
+
+            <!--SELECTED REGULAR ACCOUNT TYPE-->
+            <div class="selected-profile-container">
+                <div class="user-column-container">
+                    <div class="user-details-flex">
+                        <div class="profile">
+                            <img src="" alt="" class="user-img" id="userImg">
+                        </div>
+                        <div class="column-user-info">
+                            <div class="details-info">First Name</div>
+                            <div class="details-info">Last Name</div>
+                            <div class="details-info">Gender</div>
+                            <div class="details-info">Birth Date</div>
+                        </div>
+                        <div class="column-user-info">
+                            <div class="user-details">
+                                <input type="text" id="firstName" placeholder="" readonly>
+                            </div>
+                            <div class="user-details">
+                                <div class="user-details">
+                                    <input type="text" id="lastName" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="user-details">
+                                <div class="user-details">
+                                    <input type="text" id="gender" placeholder="" readonly>
+                                </div>
+                            </div>
+                            <div class="user-details">
+                                <div class="user-details">
+                                    <input type="text" id="birthDate" placeholder="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="address-flex-row">
+                        <div class="address">Address</div>
+                        <div class="input-address-box">
+                            <textarea id="address" class="address-text" readonly></textarea>
+                        </div>
+                    </div>
+                    <div class="fridge-storage-container">
+                        <div class="fridge">Fridge Items</div>
+                        <div class="table-fridge">
+                            <table class="fridge-items">
+                                <thead class="item-name">
+                                    <tr class="fridge">
+                                        <th class="item">Quantity</th>
+                                        <th class="item">Serving</th>
+                                        <th class="item">Item</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="fridge-list">
+                               
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            <!--EDITED REGULAR ACCOUNT TYPE-->
+            @await Html.PartialAsync("_EditUserPartialView", Model.User.FirstOrDefault())
+
+            <!--SELECT ORG ACCOUNT TYPE-->
+            <div class="select-org-user-container">
+                <div class="user-column-container">
+                    <div class="user-details-flex">
+                        <div class="profile">
+                            <img src="" alt="" class="user-img" id="orgUserImg">
+                        </div>
+                        <div class="column-user-info">
+                            <div class="details-info">Organization</div>
+                            <div class="details-info">Address</div>
+                        </div>
+                        <div class="column-user-info">
+                            <div class="user-details">
+                                <input type="text" id="orgName" placeholder="" readonly>
+                            </div>
+                            <div class="user-details">
+                                <div class="user-details">
+                                    <input type="text" id="orgAddress" placeholder="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="org-flex">
+                        <p>Fridge Items</p>
+                        <div class="Orgfridge-storage-container">
+                            <div class="table-fridge">
+                                <table class="fridge-items">
+                                    <thead class="item-name">
+                                        <tr class="fridge">
+                                            <th class="item">Quantity</th>
+                                            <th class="item">Serving</th>
+                                            <th class="item">Item</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="fridge-list">                     
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="org-flex">
+                        <p>Documents</p>
+                        <div class="org-docs-container">
+                            <img src="" alt="" class="org-docx" id="orgProofImg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--EDITED ORG ACCOUNT TYPE-->
+            @await Html.PartialAsync("_EditOrgPartialView", Model.User.FirstOrDefault())
+
+            <!--SELECT FOOD ACCOUNT TYPE-->
+            <div class="select-food-user-container">
+                <div class="user-column-container">
+                    <div class="user-details-flex">
+                        <div class="profile">
+                            <img src="" alt="" class="user-img" id="userFoodImg">
+                        </div>
+                        <div class="column-user-info">
+                            <div class="details-info">Food Business</div>
+                            <div class="details-info">Address</div>
+                        </div>
+                        <div class="column-user-info">
+                            <div class="user-details">
+                                <input type="text" id="foodName" placeholder="" readonly>
+                            </div>
+                            <div class="user-details">
+                                <div class="user-details">
+                                    <input type="text" id="foodAddress" placeholder="" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="org-flex">
+                        <p>Fridge Items</p>
+                        <div class="Orgfridge-storage-container">
+                            <div class="table-fridge">
+                                <table class="fridge-items">
+                                    <thead class="item-name">
+                                        <tr class="fridge">
+                                            <th class="item">Quantity</th>
+                                            <th class="item">Serving</th>
+                                            <th class="item">Item</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="fridge-list">
+                       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="org-flex">
+                        <p>Documents</p>
+                        <div class="org-docs-container">
+                            <img src="" alt="" class="org-docx" id="proofImg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--EDIT FOOD ACCOUNT TYPE-->
+            @await Html.PartialAsync("_EditFoodOrgPartialView", Model.User.FirstOrDefault())
+
+            <div id="modal-delacc" class="hide">
+                <div id="del-user">
+                    <img src="~/images/header-icons/trash-vec.svg" alt="Alternate Text" />
+                    <h4 style="color: white; text-align: center; padding-left: 13px; padding-right: 13px;">Selected Account will be deleted PERMANENTLY</h4>
+                    <button id="ok" style="font-weight: bold">DELETE</button>
+                    <button id="cancel">Cancel</button>
+                </div>
+                <div id="blur-bg"></div>
+            </div>
+
+            <div id="success-modal" class="hides">
+                <div class="success-checkmark">
+                    <div class="check-icon">
+                        <span class="icon-line line-tip"></span>
+                        <span class="icon-line line-long"></span>
+                        <div class="icon-circle"></div>
+                        <div class="icon-fix"></div>
+                    </div>                 
+                </div>
+                <h4 style="text-align: center;">Account Successfuly deleted!</h4>
+                <button id="done-btn">Done</button>
+            </div>
+          
+            <!-- Anti-forgery token -->
+            @Html.AntiForgeryToken()
+            <div style="display: block; position: absolute; left: 0; top: -68px;">
+                <div style="position: relative;">
+                    <form method="get" action="@Url.Action("Dashboard", "Home")">
+                        <input type="text"
+                               name="keyword"
+                               style="width: 300px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; border-color: gray; border-width: 1px; padding-left: 74px; height: 25px;"
+                               placeholder="Enter a keyword..." />
+                        <div style="position: absolute; top: -0.7px; left: 0px;">
+                            <button type="submit"
+                                    style="border-bottom-right-radius: 5px;
+                                           border-top-right-radius: 5px;
+                                           border-color: gray;
+                                           border-width: 1px;
+                                           height: 30px;
+                                           width: 70px;
+                                           color: white;
+                                           background-color: #307A59;">
+                            Search
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            
+         </div>
+            <div id="org-modal" class="org-modal">
+                <div class="org-modal-content">
+                    <img src="/images/org-img/codicon_organization.svg" alt="" class="org-style">
+                    <p id="modal-message"></p>
+                    <button class="org-close-modal-btn" id="close-modal">Close</button>
+                </div>
+            </div>
+     </div>
+</div>
+
+<div id="OrgDocuModal" class="orgImg-modal">
+    <span class="org-close">&times;</span>
+    <img class="orgDoc-modal-content" id="docOrg" data-scale="1" data-rotation="0">
+    <img class="rotate-btn" src="~/images/Create-icons/proicons--arrow-sync.svg" id="rotateButton" alt="Alternate Text" />
+    <img class="zooms-in-btn" src="~/images/Create-icons/proicons--zoom-in.svg" id="zoomInButton" alt="Alternate Text" />
+    <img class="zooms-out-btn" src="~/images/Create-icons/proicons--zoom-out.svg" id="zoomOutButton" />
+</div>
+
+<div id="FoodDocuModal" class="orgImg-modal">
+    <span class="food-close">&times;</span>
+    <img class="orgDoc-modal-content" id="docFood" data-scale="1" data-rotation="0">
+    <img class="rotate-btn" src="~/images/Create-icons/proicons--arrow-sync.svg" id="FoodrotateButton" alt="Alternate Text" />
+    <img class="zooms-in-btn" src="~/images/Create-icons/proicons--zoom-in.svg" id="FoodzoomInButton" alt="Alternate Text" />
+    <img class="zooms-out-btn" src="~/images/Create-icons/proicons--zoom-out.svg" id="FoodzoomOutButton" />
+</div>
+
+<!---MODALlllllldsdsdssd-->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="create-acc">Create a account</div>
+        <div class="account-content">
+            @if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("super admin"))
+                {
+                    <form method="get" asp-controller="Account" asp-action="AdminCreate">
+                        <button class="admin-btn">
+                            Admin
+                        </button>
+                    </form>
+                }           
+            }
+            <form method="get" asp-controller="Account" asp-action="RegularCreate">
+                <button class="admin-btn">
+                    Regular
+                </button>
+            </form>
+            <form method="get" asp-controller="Account" asp-action="FoodBusinessCreate">
+                <button class="food-act-btn">
+                    Food Business
+                </button>
+            </form>
+            <form method="get" asp-controller="Account" asp-action="OrganizationCreate">
+                <button>Organization</button>
+            </form>
+        </div>
+        <div class="close-btn-modal" id="closeModalBtn">
+            <button class="close-modal"><img src="/images/header-icons/close-btn.svg" alt="" class="close"></button>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function filterByRole(role) {
+       
+        window.location.href = '@Url.Action("Dashboard")' + '?role=' + role;
+    }
+    document.getElementById('ok').addEventListener('click', function (event) {
+        event.stopPropagation();
+
+        let successModal = document.getElementById('success-modal');
+
+        if (successModal.classList.contains('hides')) {
+            successModal.classList.remove('hides');
+            successModal.classList.add('shows');
+        } else {
+            successModal.classList.remove('shows');
+            successModal.classList.add('hides');
+        }
+    });
+
+    document.getElementById('done-btn').addEventListener('click', function (event) {
+        event.stopPropagation
+       
+        let successModal = document.getElementById('success-modal');
+
+        if (successModal.classList.contains('shows')) {
+            successModal.classList.remove('shows');
+            successModal.classList.add('hides');
+        } else {
+            successModal.classList.remove('hides');
+            successModal.classList.add('shows');
+        }
+
+        let blankContainer = document.querySelector(".blank-profile-container ");
+        let selectedProfile = document.querySelector(".selected-profile-container");
+        let selectedFoodUser = document.querySelector(".select-food-user-container");
+        let selectedOrguser = document.querySelector(".select-org-user-container");
+ 
+        blankContainer.style.display = "block";
+        selectedProfile.style.display = "none";
+        selectedFoodUser.style.display = "none";
+        selectedOrguser.style.display = "none"    
+    });
+</script>
+<script src="~/js/orgproofzoom.js"></script>
+<script src="~/js/foodproofzoom.js"></script>
+<script src="~/js/del-acc.js"></script>
+<script src="~/js/modal-approval.js"></script>
+<script src="~/js/selectuser.js"></script>
+<script src="~/js/modal.js"></script>
+<script src="~/js/edituser.js"></script>
+<script src="~/js/editorg.js"></script>
+<script src="~/js/foodlist.js"></script>
+<script src="~/js/editfoodorg.js"></script>

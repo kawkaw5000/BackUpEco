@@ -1,0 +1,81 @@
+﻿@model AdminSideEcoFridge.Models.CustomModels.CustomUserModelForLogIn
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
+    <link href="~/css/login.css" rel="stylesheet" />
+    <link href="~/css/errormodal.css" rel="stylesheet" />
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="login-img-container">
+                <img src="/images/LoginImg/Humba-Img.svg" alt="" class="humba-img">
+            </div>
+            <div id="errorModalLogin" class="modal-login">
+                <div class="modal-content-login">              
+                    <img src="/images/loginImg/warning.svg" alt="Alternate Text" />
+                    <div id="modalBodyLogin" class="text-danger-login"></div>
+                    <div class="close-container">
+                        <span class="close-btn-login">&times;</span>
+                    </div>
+                </div>
+            </div>
+            <div class="login-input-container">
+                <div class="welcome-content">
+                    Welcome Back
+                </div>
+                <form asp-action="Login">
+                    <div class="user-input">
+                        <input type="text" class="username" asp-for="Email" placeholder="Email" required>
+                    </div>
+                    <div class="pass-input">
+                        <input type="password" class="password" id="password" asp-for="Password" placeholder="Password" required>
+                        <span class="toggle-password" onclick="togglePasswordVisibility()">
+                            <img class="img-eye" src="/images/LoginImg/eye-close-up-svgrepo-com.svg" alt="Show/Hide" id="eye-icon">
+                        </span>
+                    </div>
+                    <div class="login">
+                        <button type="submit" class="login-btn">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script>
+        function showErrorModal(message) {
+            document.getElementById('modalBodyLogin').innerText = message;
+            document.getElementById('errorModalLogin').style.display = 'block';
+        }
+
+        function hideErrorModal() {
+            document.getElementById('errorModalLogin').style.display = 'none';
+        }
+
+        document.querySelector('.close-btn-login').onclick = function () {
+            hideErrorModal();
+        }
+
+        window.onclick = function (event) {
+            if (event.target === document.getElementById('errorModalLogin')) {
+                hideErrorModal();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var errorMessage = '@Html.Raw(ViewData["ErrorMessage"])';
+            if (errorMessage) {
+                showErrorModal(errorMessage);
+            }
+        });
+    </script>
+    <script src="~/js/login.js"></script>
+</body>
+</html>

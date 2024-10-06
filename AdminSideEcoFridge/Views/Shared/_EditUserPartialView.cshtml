@@ -1,0 +1,121 @@
+﻿@model AdminSideEcoFridge.Models.User
+<div class="edit-profile-container">
+    <div class="user-column-container">
+        <form id="editUserForm" method="post" asp-controller="Account" asp-action="Edit">
+            <div class="user-details-flex">
+                <div class="profile">
+                    <img src="@Model.ProfilePicturePath" alt="" class="user-img">
+                </div>
+                <div class="column-user-info">
+                    <div class="details-info">First Name</div>
+                    <div class="details-info">Last Name</div>
+                    <div class="details-info">Gender</div>
+                    <div class="details-info">Birth Date</div>
+                </div>
+                <div class="column-user-info">
+                    <div class="user-details">
+                        <input type="hidden" id="editUserId" asp-for="UserId" />
+                        <input type="hidden" id="editUserEmail" asp-for="Email" />
+                        <input type="hidden" id="editUserEmailConfirmed" asp-for="EmailConfirmed" />
+                        <input type="hidden" id="editUserEmailConfirmed" asp-for="Password" />       
+                        <input type="text" id="editFirstName" asp-for="FirstName">
+                    </div>
+                    <div class="user-details">
+                        <input type="text" id="editLastName" asp-for="LastName">
+                    </div>
+                    <div class="user-details">
+                        <input type="text" id="editGender" asp-for="Gender" readonly>
+                    </div>
+                    <div class="user-details">
+                        <input type="date" id="editBirthDate" asp-for="Birthdate">
+                    </div>
+                </div>
+            </div>
+            <div class="address-flex-row">
+                <div class="column-user-info">
+                    <div class="address">Barangay</div>
+                    <div class="address">City</div>
+                    <div class="address">Province</div>
+                </div>            
+                <div class="column-user-info">
+                  
+                    <div class="user-details">
+                        <input type="text" id="editBaranggay" asp-for="Barangay">
+                    </div>
+                    <div class="user-details">
+                        <input type="text" id="editCity" asp-for="City">
+                    </div>
+                    <div class="user-details">
+                        <input type="text" id="editProvince" asp-for="Province">
+                    </div>
+                </div>
+            <div class="save-edit">
+                @* <a onclick="saveBtn()" id="SaveBtn" class="save-edit-btn">Save</a> *@
+                <button type="submit" id="SaveBtn" class="save-edit-btn">Save</button>
+            </div>
+            </div>           
+        </form>       
+    </div>             
+</div>
+
+
+        
+
+@* <script>
+    async function saveBtn() {
+        console.log("save btn clicked");
+
+        try {
+            var userId = document.getElementById('editUserId').value;
+            console.log("User id: " + userId);
+            const url = `/Account/Edit/${userId}`;
+
+            var firstName = document.getElementById("editFirstName").value;
+            var lastName = document.getElementById("editLastName").value;
+            var gender = document.getElementById("editGender").value;
+            var birthDate = document.getElementById("editBirthDate").value; // Make sure this is in the correct format for DateOnly
+            var street = document.getElementById("editStreet").value;
+            var barangay = document.getElementById("editBaranggay").value;
+            var city = document.getElementById("editCity").value;
+            var province = document.getElementById("editProvince").value;
+
+            var user = {
+                userId: userId,
+                firstName: firstName,
+                lastName: lastName,
+                gender: gender,
+                birthDate: birthDate,
+                street: street,
+                barangay: barangay, // Corrected to match your model
+                city: city,
+                province: province,
+                ProfilePicturePath: "asdas", // Hardcoded, change if needed
+                ProofPicturePath: "asd", // Hardcoded, change if needed
+                EmailVerificationCode: "asd", // Hardcoded, change if needed
+                EmailConfirmed: "asdasd", // Hardcoded, should be a boolean
+                StorageSize: "asdas", // Hardcoded, ensure it's an integer
+                Username: "asdas", // Hardcoded, change if needed
+                Password: "asd", // Hardcoded, change if needed
+            };
+
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            console.log('User saved successfully');
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+
+</script> *@
+

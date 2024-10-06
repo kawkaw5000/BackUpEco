@@ -1,0 +1,104 @@
+﻿.modal-approval-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    display: none;
+    opacity: 0;
+}
+
+.modal-approval {
+    height: 230px;
+    width: 230px;
+    background-color: #307A59;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.modal-approval img {
+    height: 70px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.modal-approval button {
+    height: 35px;
+    width: 190px;
+    margin-top: 10px;
+    font-weight: bold;
+    border-radius: 15px;
+    border: none;
+}
+
+.modal-approval button:hover {
+    background-color: #B8F1B0;
+}
+
+.modal-approval button:active {
+    box-shadow: 0px 1px 5px black;
+}
+
+.modal-approval p {
+    color: white;
+}
+
+
+.action-dropdown {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
+.action-dropdown button {
+    width: 120px;
+    height: 30px;
+    background-color: #307A59;
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+
+.action-dropdown .dropdown {
+    height: 60px;
+    width: 120px;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.dropdown .actions {
+    height: 100%;
+    text-align: center;
+    background-color: white;
+    color: black;
+    border-radius: 0;
+}
+
+.dropdown .actions:hover {
+    background-color: #81f7c0;
+}
+
+
+
+.action-dropdown:hover .dropdown {
+    display: flex;
+}
