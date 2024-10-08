@@ -56,21 +56,50 @@
         </div>
         <div id="food-modal-approval" class="modal-approval-overlay">
             <div class="modal-approval">
-                <img src="/images/Create-icons/ApprovedImg.svg" alt="Alternate Text" />
-                <p>
-                    Organization or Beneficiary has been approved
-                </p>
-                <button type="button" id="food-closeApprovalModalBtn">OK</button>
+                <div style="display: flex; flex-direction: column; align-content: start; justify-content: start; text-align: start; width: 400px; margin-right: 10px;">
+                    <h2>Approval Notice</h2>
+                    <label for="customMessage">Message to @Model.FoodBusinessName</label>
+                    <label for="customMessage">Send to: @Model.Email</label>
+                </div>
+                <textarea id="customMessage" rows="5" style="width: 390px; padding: 10px; height: 250px; margin-top: 5px; margin-bottom: 10px; resize: none;">Congratulations @Model.FoodBusinessName your request has been approved.</textarea>
+                <button type="button" id="food-closeApprovalModalBtn">Send</button>
             </div>
         </div>
 
         <div id="food-modal-rejected" class="modal-approval-overlay">
             <div class="modal-approval">
-                <img src="/images/Create-icons/trashcan.svg" alt="Alternate Text" />
-                <p>
-                    Organization or Beneficiary has been declined
-                </p>
-                <button type="button" id="food-closeDeclineModalBtn">OK</button>
+                <div style="display: flex; flex-direction: column; align-content: start; justify-content: start; text-align: start; width: 400px; margin-right: 10px;">
+                    <h2>Rejection Notice</h2>
+                    <label for="customMessage">Message to @Model.FoodBusinessName</label>
+                    <label for="customMessage">Send to: @Model.Email</label>
+                </div>
+                <textarea id="customMessage" rows="5"
+                          style="
+        width: 390px;
+        padding: 10px;
+        height: 250px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        text-align: left;
+        line-height: 1.6;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        color: #333;
+        background-color: #f9f9f9;
+        white-space: pre-wrap;
+        resize: none;
+    ">
+Good day @Model.FoodBusinessName,
+
+We regret to inform you that your request has been rejected due to the following reason:
+
+
+Best regards,
+Management: EcoFridge
+</textarea>
+                <button type="button" id="food-closeDeclineModalBtn">Send</button>
             </div>
         </div>
         <div class="save-edit-org">

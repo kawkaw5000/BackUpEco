@@ -12,9 +12,9 @@
 }
 
 .modal-approval {
-    height: 230px;
-    width: 230px;
-    background-color: #307A59;
+    height: 440px;
+    width: 450px;
+    background-color: #fff;
     border-radius: 20px;
     position: absolute;
     top: 50%;
@@ -24,8 +24,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     text-align: center;
+    border-style: solid;
+    border-width: medium;
+    border-color: #307A59;
 }
 
 .modal-approval img {
@@ -34,14 +37,15 @@
     margin-top: 20px;
 }
 
-.modal-approval button {
-    height: 35px;
-    width: 190px;
-    margin-top: 10px;
-    font-weight: bold;
-    border-radius: 15px;
-    border: none;
-}
+    .modal-approval button {
+        height: 35px;
+        width: 190px;
+
+        font-weight: bold;
+        border-radius: 15px;
+        border: none;
+        background-color: powderblue;
+    }
 
 .modal-approval button:hover {
     background-color: #B8F1B0;

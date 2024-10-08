@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "v0V+1RFx0VuNaXQidartqoLaFCqrnsXQKtmsDrAta5s=",
+  "Hash": "v1PHJRN7pynmucxyu9q2HgrPLhGxTDINq8XfKmjgBE0=",
   "Source": "AdminSideEcoFridge",
   "BasePath": "_content/AdminSideEcoFridge",
   "Mode": "Default",
@@ -1592,6 +1592,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\Create-icons\\proicons--zoom-out.svg"
+    },
+    {
+      "Identity": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\wwwroot\\images\\Create-icons\\simple-line-icons--settings (1).svg",
+      "SourceId": "AdminSideEcoFridge",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\wwwroot\\",
+      "BasePath": "_content/AdminSideEcoFridge",
+      "RelativePath": "images/Create-icons/simple-line-icons--settings (1).svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Create-icons\\simple-line-icons--settings (1).svg"
     },
     {
       "Identity": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\wwwroot\\images\\Create-icons\\trashcan.svg",
