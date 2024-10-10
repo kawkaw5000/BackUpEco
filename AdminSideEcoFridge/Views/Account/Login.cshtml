@@ -75,7 +75,6 @@
                 <div class="spinner" id="spinner"></div>
 
                 <div id="forgotPasswordMessage" style="color: red; display: none;"></div>
-
             </div>
             <div class="blur"></div>
         </div>
@@ -99,7 +98,7 @@
                 overlay.style.display = 'block'; 
 
         
-                fetch('@Url.Action("ForgotPassword", "Account")', {
+                fetch('@Url.Action("ForgotPassword", "Mail")', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

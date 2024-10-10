@@ -1,0 +1,49 @@
+﻿.spinner {
+    border: 7px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #307a59;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s ease infinite;
+    display: block;
+    position: absolute;
+    top: 12%;
+    left: 5%;
+    z-index: 4000;
+    display: none;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner-cont {
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    width: 230px;
+    height: 60px;
+    background-color: white;
+    border-radius: 15px;
+    border-color: #307A59;
+    border-style: solid;
+    border-width: 1px;
+    display: none;
+}
+
+.spinner-cont #sending {
+    position: absolute;
+    top: 12%;
+    left: 30%;
+    font-size: 1rem;
+    display: none;
+}
+
+.spinner-cont #success-sending {
+    position: absolute;
+    top: 12%;
+    left: 30%;
+    font-size: 1rem;
+}

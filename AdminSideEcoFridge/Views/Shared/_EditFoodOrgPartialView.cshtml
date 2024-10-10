@@ -1,6 +1,6 @@
 ﻿@model AdminSideEcoFridge.Models.User
 
-
+<link href="~/css/spinner.css" rel="stylesheet" />
 <form id="editOrgUserForm" method="post" asp-controller="Account" asp-action="EditFoodResto">
     <div class="edit-food-user-container">
         <div class="user-column-container">
@@ -61,7 +61,11 @@
                     <label for="customMessage">Message to @Model.FoodBusinessName</label>
                     <label for="customMessage">Send to: @Model.Email</label>
                 </div>
-                <textarea rows="5" style="width: 390px; padding: 10px; height: 250px; margin-top: 5px; margin-bottom: 10px; resize: none;">Congratulations @Model.FoodBusinessName your request has been approved.</textarea>
+                <textarea id="customApproveMessage" rows="5" style="width: 390px; padding: 10px; height: 250px; margin-top: 5px; margin-bottom: 10px; text-align: left; line-height: 1.6; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #ccc; border-radius: 5px; color: #000000; background-color: #f9f9f9; white-space: pre-wrap; resize: none;">
+Good day @Model.FoodBusinessName,
+
+We regret to inform you that your request has been rejected due to the following reason:
+        </textarea>
                 <button type="button" id="food-closeApprovalModalBtn">Send</button>
             </div>
         </div>
@@ -73,42 +77,71 @@
                     <label for="customMessage">Message to @Model.FoodBusinessName</label>
                     <label for="customMessage">Send to: @Model.Email</label>
                 </div>
-                <textarea rows="5"
-                          style="
-        width: 390px;
-        padding: 10px;
-        height: 250px;
-        margin-top: 5px;
-        margin-bottom: 10px;
-        text-align: left;
-        line-height: 1.6;
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        color: #333;
-        background-color: #f9f9f9;
-        white-space: pre-wrap;
-        resize: none;
-    ">
+                <textarea id="customMessage" rows="5" style="width: 390px; padding: 10px; height: 250px; margin-top: 5px; margin-bottom: 10px; text-align: left; line-height: 1.6; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #ccc; border-radius: 5px; color: #000000; background-color: #f9f9f9; white-space: pre-wrap; resize: none;">
 Good day @Model.FoodBusinessName,
 
 We regret to inform you that your request has been rejected due to the following reason:
-
-
-Best regards,
-Management: EcoFridge
-</textarea>
+        </textarea>
                 <button type="button" id="food-closeDeclineModalBtn">Send</button>
             </div>
         </div>
+
         <div class="save-edit-org">
             @* <a onclick="saveBtn()" id="SaveBtn" class="save-edit-btn">Save</a> *@
             <button type="submit" class="save-edit-btn">Save</button>
         </div>
     </div>
+
+    <div id="spinner-cont" class="spinner-cont">
+        <div class="spinner" id="spinner"></div>
+        <p id="sending">Sending please wait.</p>
+        <p id="success-sending"></p>
+    </div>
 </form>
 <script>
+    document.getElementById("food-closeDeclineModalBtn").addEventListener("click", function () {
+        const spinnerCont = document.getElementById("spinner-cont");
+        const spinner = document.getElementById("spinner");
+        const sending = document.getElementById("sending");
+        const succesSend = document.getElementById("success-sending");
+        const message = document.getElementById("customMessage").value.trim(); 
+
+         spinnerCont.style.display = 'block';
+         spinner.style.display = 'block';
+         sending.style.display = 'block';
+         succesSend.style.display = 'none';
+         succesSend.innerText = '';
+   
+        fetch('/Mail/SendRejectionMessage', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ Message: message, Email: '@Model.Email' })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    spinner.style.display = 'none';
+                    sending.style.display = 'none';
+                    succesSend.style.display = 'block';
+                    succesSend.innerText = data.message;                 
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while sending the message.');
+            })
+            .finally(() => {
+                spinnerCont.style.display = 'block';
+                spinner.style.display = 'none';
+                sending.style.display = 'none';
+            });
+    });
+
+
     document.addEventListener('click', function (event) {
 
         if (event.target && event.target.id === 'food-approveBtn') {

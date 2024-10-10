@@ -284,33 +284,7 @@ namespace AdminSideEcoFridge.Controllers
             return View(u);
         }
 
-        [HttpPost]
-        public JsonResult UpdateAccountApproval(string userId, bool isApproved)
-        {
-            if (int.TryParse(userId, out int parsedUserId))
-            {     
-                var user = _userRepo.Get(parsedUserId);
-
-                if (user != null)
-                {
-                    user.AccountApproved = isApproved;
-
-                    var result = _userRepo.Update(user.UserId, user);
-
-                    if (result == ErrorCode.Success)
-                    {
-                        return Json(new { success = true, message = isApproved ? "User approved" : "User declined" });
-                    }
-
-                    return Json(new { success = false, message = "Error updating user" });
-                }
-
-                return Json(new { success = false, message = "User not found" });
-            }
-
-            return Json(new { success = false, message = "Invalid user ID" });
-        }
-
+        
 
         #endregion
 
@@ -857,69 +831,32 @@ namespace AdminSideEcoFridge.Controllers
             }
             return RedirectToAction("Dashboard", "Home");
         }
-        [AllowAnonymous]
+
         [HttpPost]
-        public IActionResult ForgotPassword([FromBody] ForgotPasswordModel model)
+        public JsonResult UpdateAccountApproval(string userId, bool isApproved)
         {
-            var user = _db.Users.Where(m => m.Email == model.Email).FirstOrDefault();
-
-            if (user == null)
+            if (int.TryParse(userId, out int parsedUserId))
             {
-                return Json(new { success = false, message = "Email not found." });
-            }
+                var user = _userRepo.Get(parsedUserId);
 
-            try
-            {
-                var sendersEmail = _configuration["EmailSettings:SendersEmail"];
-                var sendersPassword = _configuration["EmailSettings:SendersPassword"];
-                var noreplyEmail = "no-reply@ecofridge.com";
-                var subject = "Forgot Password";
-
-                Guid guid = Guid.NewGuid();
-                var temporaryPassword = guid.ToString("N").Substring(0, 8);
-                var body = $@"
-                            <div style='font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;'>
-                                <div style='max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
-                                    <h2 style='color: #333;'>Password Reset Request</h2>
-                                    <p>Hello,</p>
-                                    <p>Your new temporary password is:</p>
-                                    <p style='font-size: 18px; font-weight: bold; color: #307a59;'>{temporaryPassword}</p>
-                                    <p>You can change it in your profile settings once you log in.</p>
-                                    <hr style='border: none; border-top: 1px solid #eee; margin: 20px 0;' />
-                                    <p>If you didn't request this, please ignore this email or contact support.</p>
-                                    <p>Thank you,</p>
-                                    <p><strong>Team Snackers</strong></p>
-                                </div>
-                            </div>";
-
-                user.Password = temporaryPassword;
-
-                if (_userRepo.Update(user.UserId, user) == ErrorCode.Success)
+                if (user != null)
                 {
-                    using (MailMessage message = new MailMessage())
-                    {
-                        message.From = new MailAddress(noreplyEmail);
-                        message.To.Add(user.Email);
-                        message.Subject = subject;
-                        message.Body = body;
-                        message.IsBodyHtml = true;
+                    user.AccountApproved = isApproved;
 
-                        using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
-                        {
-                            smtp.Credentials = new NetworkCredential(sendersEmail, sendersPassword);
-                            smtp.EnableSsl = true;
-                            smtp.Send(message);
-                        }
+                    var result = _userRepo.Update(user.UserId, user);
+
+                    if (result == ErrorCode.Success)
+                    {
+                        return Json(new { success = true, message = isApproved ? "User approved" : "User declined" });
                     }
-                    return Json(new { success = true, message = "Temporary password sent to your email." });
+
+                    return Json(new { success = false, message = "Error updating user" });
                 }
 
-                return Json(new { success = false, message = "Error updating user." });
+                return Json(new { success = false, message = "User not found" });
             }
-            catch (Exception)
-            {
-                return Json(new { success = false, message = "An error occurred while processing your request." });
-            }
+
+            return Json(new { success = false, message = "Invalid user ID" });
         }
 
 
