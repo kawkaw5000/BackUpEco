@@ -45,11 +45,114 @@
                     <div class="login">
                         <button type="submit" class="login-btn">Login</button>
                     </div>
+                  
                 </form>
+                <div style="position:absolute; bottom: 170px; right: 20px; font-size: 0.9rem;">
+                    <a id="forgot-id" style="color:black" href="#">Forgot Password</a>
+                </div>
+                
             </div>
+            
         </div>
+
+        <div class="overlay" id="overlay"></div>
+        <div id="forgot-pass-con" class="hide">
+            <div class="forgot">
+                <h3 style="margin-top: 25px; margin-bottom:0;">Forgot Password?</h3>
+                <p style="margin-top: 0; font-size: 0.9rem">Remember your password? <a style="font-size: 0.9rem; color: black;" href="@Url.Action("Login", "Account")">Login here</a></p>
+
+                <p>Email</p>
+                <input id="email" style="border-radius: 0px;
+                                  border: none;
+                                  border-color: rgb(228, 228, 228);
+                                  background-color: rgb(228, 228, 228);
+                                  padding: 10px 30px 10px 10px;
+                                  width: 210px;
+                                  text-indent: 3px;
+                                  transition: border 0.1s;"
+                       type="email" name="email" required />
+                <button id="forgotPasswordBtn" style="margin:0; padding: 9px 5px 9px 5px">Submit</button>
+                <div class="spinner" id="spinner"></div>
+
+                <div id="forgotPasswordMessage" style="color: red; display: none;"></div>
+
+            </div>
+            <div class="blur"></div>
+        </div>
+
     </main>
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
+            const forgotPasswordMessage = document.getElementById('forgotPasswordMessage');
+            const spinner = document.getElementById('spinner'); 
+            const overlay = document.getElementById('overlay'); 
+
+            forgotPasswordBtn.addEventListener('click', function (e) {
+                e.preventDefault(); 
+
+                const email = document.getElementById('email').value; 
+
+                forgotPasswordMessage.style.display = 'none';
+                forgotPasswordMessage.innerText = '';
+                spinner.style.display = 'block';
+                overlay.style.display = 'block'; 
+
+        
+                fetch('@Url.Action("ForgotPassword", "Account")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'  
+                    },
+                    body: JSON.stringify({ email: email }) 
+                })
+                    .then(response => response.json())  
+                    .then(data => {
+ 
+                        if (data.success) {
+                            forgotPasswordMessage.style.color = 'green';
+                            forgotPasswordMessage.innerText = data.message;
+                        } else {
+                            forgotPasswordMessage.style.color = 'red';
+                            forgotPasswordMessage.innerText = data.message;
+                        }
+                        forgotPasswordMessage.style.display = 'block';
+                    })
+                    .catch(error => {
+              
+                        forgotPasswordMessage.style.color = 'red';
+                        forgotPasswordMessage.innerText = 'An error occurred. Please try again.';
+                        forgotPasswordMessage.style.display = 'block';
+                        console.error('Error:', error);
+                    })
+                    .finally(() => {
+                        spinner.style.display = 'none'; 
+                        overlay.style.display = 'none'; 
+                    });
+            });
+        });
+
+        document.getElementById('forgot-id').addEventListener('click', function (event) {
+            event.stopPropagation();
+
+            let modalForgot = document.getElementById('forgot-pass-con');
+
+            if (modalForgot.classList.contains('hide')) {
+                modalForgot.classList.remove('hide');
+                modalForgot.classList.add('show');
+            }
+        });
+
+        document.querySelector('.blur').addEventListener('click', function () {
+            let modalForgot = document.getElementById('forgot-pass-con');
+
+            if (modalForgot.classList.contains('show')) {
+                modalForgot.classList.remove('show');
+                modalForgot.classList.add('hide');
+            }
+        });
+
         function showErrorModal(message) {
             document.getElementById('modalBodyLogin').innerText = message;
             document.getElementById('errorModalLogin').style.display = 'block';

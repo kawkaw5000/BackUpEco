@@ -96,15 +96,15 @@ input:focus {
     overflow: hidden;
 }
 
-    .notification-dropdown p {
-        padding: 10px;
-        margin: 0;
-        border-bottom: 1px solid #eee;
-    }
+.notification-dropdown p {
+    padding: 10px;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+}
 
-        .notification-dropdown p:last-child {
-            border-bottom: none;
-        }
+.notification-dropdown p:last-child {
+    border-bottom: none;
+}
 
 .profile-container {
     position: relative;
@@ -138,6 +138,25 @@ input:focus {
     justify-content: start;
     gap: 8px;
     color: black;
+    font-weight:bold;
+}
+
+.logout-btns {
+    width: 80px;
+    padding: 10px;
+    background-color: #fcfcfc;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 8px;
+    color: black;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
 }
 
 .logout-img {
@@ -146,5 +165,9 @@ input:focus {
 }
 
 .logout-btn:hover {
+    background-color: #d6d6d6;
+}
+
+.logout-btns:hover {
     background-color: #d6d6d6;
 }

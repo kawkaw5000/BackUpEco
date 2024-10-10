@@ -96,18 +96,18 @@ function showEditUserDetails(row) {
 
         document.getElementById('editOrgName').value = row.dataset.orgname;
 
-        document.getElementById('editBaranggay').value = row.dataset.baranggay;
-        document.getElementById('editCity').value = row.dataset.city;
-        document.getElementById('editProvince').value = row.dataset.province;
+        document.getElementById('editOrgBaranggay').value = row.dataset.baranggay;
+        document.getElementById('editOrgCity').value = row.dataset.city;
+        document.getElementById('editOrgProvince').value = row.dataset.province;
 
     } else if (accountType === 'food business') {
         document.querySelector('.edit-food-user-container').style.display = 'block';
 
         document.getElementById('editFoodName').value = row.dataset.foodbussiness;
 
-        document.getElementById('editBaranggay').value = row.dataset.baranggay;
-        document.getElementById('editCity').value = row.dataset.city;
-        document.getElementById('editProvince').value = row.dataset.province;
+        document.getElementById('editFoodBaranggay').value = row.dataset.baranggay;
+        document.getElementById('editFoodCity').value = row.dataset.city;
+        document.getElementById('editFoodProvince').value = row.dataset.province;
     }
 }
 

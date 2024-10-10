@@ -15,7 +15,7 @@
     <div class="dashboard">Dashboard</div>
     <div class="flex-container">
         <div class="welcome-container">
-            <div class="admin-welcome">d
+            <div class="admin-welcome">
                 @if (User.Identity.IsAuthenticated)
                 {
                     var userName = User.FindFirst(ClaimTypes.GivenName)?.Value;
@@ -23,13 +23,13 @@
                     if (User.IsInRole("super admin"))
                     {
                         <div class="admin-name">
-                            Welcome Back, @userName
+                            Welcome Back, Super Admin
                         </div>
                     }
                     if (User.IsInRole("admin"))
                     {
                         <div class="admin-name">
-                            Welcome Back, Admin @*@User.Identity.Name*@
+                            Welcome Back, Admin @User.Identity.Name
                         </div>
                     }
                 }
@@ -444,6 +444,7 @@
         </div>
     </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     function filterByRole(role) {

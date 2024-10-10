@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@using System.Security.Claims
+<link href="~/css/forgotpass.css" rel="stylesheet" />
+
+        var email = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+<div id="reset-box" class="hide">
+    <div id="reset-con">
+        <h3>Change Password</h3>
+        <div style="position: relative;">
+            <input type="text" class="email" placeholder="Email" required value="">
+        </div>
+        <div class="pass-input">
+            <input type="password" class="password" id="current-password-login" placeholder="Current Password" required>
+            <span class="toggle-password" onclick="toggleCurrentPasswordVisibilityLogin()">
+                <img class="img-eye" src="/images/LoginImg/eye-close-up-svgrepo-com.svg" alt="Show/Hide" id="current-eye-icon">
+            </span>
+        </div>
+
+        <div class="pass-input">
+            <input type="password" class="password" id="password-login" placeholder="New Password" required>
+            <span class="toggle-password" onclick="togglePasswordVisibilityLogin()">
+                <img class="img-eye" src="/images/LoginImg/eye-close-up-svgrepo-com.svg" alt="Show/Hide" id="eye-icon">
+            </span>
+        </div>
+
+        <div class="pass-input">
+            <input type="password" class="password" id="confirm-password-login" placeholder="Confirm New Password" required>
+            <span class="toggle-password" onclick="toggleConfirmPasswordVisibilityLogin()">
+                <img class="img-eye" src="/images/LoginImg/eye-close-up-svgrepo-com.svg" alt="Show/Hide" id="eyeconfirm-icon">
+            </span>
+        </div>
+        <div class="pass-input">
+            <button>Confirm</button>
+        </div>
+        <div style="position: absolute; top: -5px; right: 10px;">
+            <a style="text-decoration:none; color: black;" href="@Url.Action("Dashboard", "Home")"><p style="font-weight:bold;">X</p></a>
+        </div>
+    </div>
+    <div id="blur-reset">
+    </div>
+</div>
+
+<script src="~/js/changepass.js"></script>
+<script src="~/js/login.js"></script>

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -6,6 +7,8 @@
     <title>@ViewData["Title"] - AdminSideEcoFridge</title>
     <link href="~/css/header.css" rel="stylesheet" />
     <link href="~/css/sidebar.css" rel="stylesheet" />
+    <link href="~/css/forgotpass.css" rel="stylesheet" />
+
 </head>
 <body>
     <header class="header">
@@ -34,12 +37,17 @@
             <!-- Profile Dropdown -->
             
             <div class="profile-dropdown" id="profileDropdown">
+                <a href="@Url.Action("ChangePass", "Account")" id="settings-link" class="logout-btns">
+                    <img src="/images/Create-icons/simple-line-icons--settings (1).svg" alt="" class="logout-img">Settings
+                </a>
                 <form method="post" asp-controller="Account" asp-action="Logout">
                     <button class="logout-btn"><img src="/images/header-icons/logout-icon.svg" alt="" class="logout-img">Logout</button>
                     @Html.AntiForgeryToken()
                 </form>
-                <button class="logout-btn"><img src="/images/Create-icons/simple-line-icons--settings (1).svg" alt="" class="logout-img">Settings</button>
+                
             </div>
+
+          
            
         </div>
     </header>
@@ -65,10 +73,13 @@
         </div>
         <div class="margin"></div>
     </nav>
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <main role="main" class="pb-3">
+        @RenderBody()   
+    </main>
+    <script src="~/js/login.js"></script>
     <script src="~/js/header.js"></script>
+   <script></script>
+   
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

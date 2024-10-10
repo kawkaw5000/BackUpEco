@@ -44,8 +44,6 @@ input {
   transition: border 0.1s;
 }
 
-.upload {}
-
 .username {
     background-image: url('/images/LoginImg/user-icon.png');
     background-position: 10px 7px;

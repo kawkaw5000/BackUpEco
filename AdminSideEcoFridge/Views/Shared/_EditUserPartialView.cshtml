@@ -1,7 +1,7 @@
 ﻿@model AdminSideEcoFridge.Models.User
 <div class="edit-profile-container">
     <div class="user-column-container">
-        <form id="editUserForm" method="post" asp-controller="Account" asp-action="Edit">
+        <form method="post" asp-controller="Account" asp-action="Edit">
             <div class="user-details-flex">
                 <div class="profile">
                     <img src="@Model.ProfilePicturePath" alt="" class="user-img">
@@ -14,10 +14,10 @@
                 </div>
                 <div class="column-user-info">
                     <div class="user-details">
-                        <input type="hidden" id="editUserId" asp-for="UserId" />
-                        <input type="hidden" id="editUserEmail" asp-for="Email" />
-                        <input type="hidden" id="editUserEmailConfirmed" asp-for="EmailConfirmed" />
-                        <input type="hidden" id="editUserEmailConfirmed" asp-for="Password" />       
+                        <input type="hidden" asp-for="UserId" />
+                        <input type="hidden" asp-for="Email" />
+                        <input type="hidden" asp-for="EmailConfirmed" />
+                        <input type="hidden" asp-for="Password" />
                         <input type="text" id="editFirstName" asp-for="FirstName">
                     </div>
                     <div class="user-details">
@@ -36,9 +36,9 @@
                     <div class="address">Barangay</div>
                     <div class="address">City</div>
                     <div class="address">Province</div>
-                </div>            
+                </div>
                 <div class="column-user-info">
-                  
+
                     <div class="user-details">
                         <input type="text" id="editBaranggay" asp-for="Barangay">
                     </div>
@@ -49,17 +49,17 @@
                         <input type="text" id="editProvince" asp-for="Province">
                     </div>
                 </div>
-            <div class="save-edit">
-                @* <a onclick="saveBtn()" id="SaveBtn" class="save-edit-btn">Save</a> *@
-                <button type="submit" id="SaveBtn" class="save-edit-btn">Save</button>
+                <div class="save-edit">
+                    @* <a onclick="saveBtn()" id="SaveBtn" class="save-edit-btn">Save</a> *@
+                    <button type="submit" class="save-edit-btn">Save</button>
+                </div>
             </div>
-            </div>           
-        </form>       
-    </div>             
+        </form>
+    </div>
 </div>
 
 
-        
+
 
 @* <script>
     async function saveBtn() {
@@ -118,4 +118,3 @@
 
 
 </script> *@
-

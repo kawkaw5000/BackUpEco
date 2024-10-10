@@ -1,0 +1,128 @@
+﻿#reset-con {
+    height: 330px;
+    width: 300px;
+    background-color: white;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2001;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: medium;
+    border-color: #307A59;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+#blur-reset {
+    height: 100vh;
+    width: 100vw;
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+
+}
+
+#reset-con .profile-img-ad {
+    height: 70px;
+    width: 70px;
+    border-radius: 100px;
+    border-style: solid;
+    border-width: 1px;
+    object-fit: cover;
+    border-color: #307A59;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#reset-box button {
+    width: 130px;
+    padding: 7px;
+    border-radius: 30px;
+    border-width: 1px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+#reset-box {
+    align-content: center;
+    justify-content: center;
+    
+}
+
+
+#reset-box input {
+    border-radius: 19px;
+    border: none;
+    border-color: rgb(228, 228, 228);
+    background-color: rgb(228, 228, 228);
+    padding: 10px 30px 10px 30px;
+    width: 200px;
+    margin-bottom: 16px;
+    text-indent: 3px;
+    transition: border 0.1s;
+}
+
+#reset-box .email {
+    background-image: url('/images/Create-icons/email.svg');
+    background-position: 10px 7px;
+    background-repeat: no-repeat;
+    background-size: 18px 18px, cover;
+}
+#reset-box .pass-input {
+    position: relative;
+    display: inline-block;
+}
+
+#reset-box .password {
+    background-image: url('/images/LoginImg/password-icon.png');
+    background-position: 10px 7px;
+    background-repeat: no-repeat;
+    background-size: 18px 18px, cover;
+}
+
+#reset-box .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+#reset-box .img-eye {
+    height: 18px;
+    margin-bottom: 10px;
+}
+
+#reset-box input:focus {
+    box-shadow: 0 0 3px rgb(16, 68, 23);
+    outline: none;
+}
+
+#reset-box input::placeholder {
+    font-size: 13px;
+}
+
+#reset-con p {
+    padding: 5px 3px 2px 3px;
+    border: solid;
+    border-width: 1px;
+    border-radius: 100px;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#reset-con p:active {
+    background-color: gray;
+}

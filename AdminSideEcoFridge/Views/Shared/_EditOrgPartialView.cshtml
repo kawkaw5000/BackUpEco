@@ -1,7 +1,7 @@
 ﻿@model AdminSideEcoFridge.Models.User
-<form id="editOrgUserForm" method="post" asp-controller="Account" asp-action="EditOrg">
-<div class="edit-org-user-container">
-    <div class="user-column-container">
+<form method="post" asp-controller="Account" asp-action="EditOrg">
+    <div class="edit-org-user-container">
+        <div class="user-column-container">
             <div class="user-details-flex">
                 <div class="profile">
                     <img src="@Model.ProfilePicturePath" alt="" class="user-img" id="userImg">
@@ -14,81 +14,81 @@
                     <div class="details-info">Province</div>
                 </div>
                 <div class="column-user-info">
-                    <input type="hidden" id="editUserId" asp-for="UserId" />
-                    <input type="hidden" id="editUserEmail" asp-for="Email" />
-                    <input type="hidden" id="editUserEmailConfirmed" asp-for="EmailConfirmed" />
-                    <input type="hidden" id="editUserEmailConfirmed" asp-for="Password" />
-           
-                    <input type="hidden" id="editFirstName" asp-for="FirstName">
+                    <input type="hidden" id="editOrgUserId" asp-for="UserId" />
+                    <input type="hidden" asp-for="Email" />
+                    <input type="hidden" asp-for="EmailConfirmed" />
+                    <input type="hidden" asp-for="Password" />
+
+                    <input type="hidden" asp-for="FirstName">
                     <div class="user-details">
                         <input type="text" id="editOrgName" asp-for="DoneeOrganizationName" readonly>
                     </div>
-                 
+
                     <div class="user-details">
-                        <input type="text" id="editBaranggay" asp-for="Barangay">
+                        <input type="text" id="editOrgBaranggay" asp-for="Barangay">
                     </div>
                     <div class="user-details">
-                        <input type="text" id="editCity" asp-for="City">
+                        <input type="text" id="editOrgCity" asp-for="City">
                     </div>
                     <div class="user-details">
-                        <input type="text" id="editProvince" asp-for="Province">
+                        <input type="text" id="editOrgProvince" asp-for="Province">
                     </div>
                 </div>
-                
-            </div>      
-        <div class="org-flex">
-            <p>Documents</p>
-            <div class="food-org-docs-container">
-                <img src="@Model.ProofPicturePath" alt="" class="org-docx">
+
+            </div>
+            <div class="org-flex">
+                <p>Documents</p>
+                <div class="food-org-docs-container">
+                    <img src="@Model.ProofPicturePath" alt="" class="org-docx">
+                </div>
             </div>
         </div>
-    </div>
-    <div class="action-dropdown">
-        <button type="button" class="action-drop">
-            Action
-        </button>
-        <div class="dropdown">
+        <div class="action-dropdown">
+            <button type="button" class="action-drop">
+                Action
+            </button>
+            <div class="dropdown">
                 <input type="hidden" id="editAccountApproved" name="AccountApproved" value="@Model.AccountApproved" />
 
-            <button class="actions" type="button" id="approveBtn">Approve</button>
-            <button class="actions" type="button" id="declineBtn">Decline</button>
+                <button class="actions" type="button" id="approveBtn">Approve</button>
+                <button class="actions" type="button" id="declineBtn">Decline</button>
+            </div>
         </div>
-    </div>  
-    <div id="modal-approval" class="modal-approval-overlay">
-        <div class="modal-approval">
+        <div id="modal-approval" class="modal-approval-overlay">
+            <div class="modal-approval">
                 <div style="display: flex; flex-direction: column; align-content: start; justify-content: start; text-align: start; width: 400px; margin-right: 10px;">
                     <h2>Approval Notice</h2>
                     <label for="customMessage">Message to @Model.DoneeOrganizationName</label>
                     <label for="customMessage">Send to: @Model.Email</label>
                 </div>
-                <textarea id="customMessage" rows="5" style="width: 390px; padding: 10px; height: 250px; margin-top: 5px; margin-bottom: 10px; resize: none;">Congratulations @Model.DoneeOrganizationName your request has been approved.</textarea>
+                <textarea rows="5" style="width: 390px; padding: 10px; height: 250px; margin-top: 5px; margin-bottom: 10px; resize: none;">Congratulations @Model.DoneeOrganizationName your request has been approved.</textarea>
                 <button type="button" id="closeApprovalModalBtn">Send</button>
+            </div>
         </div>
-    </div>
 
-    <div id="modal-rejected" class="modal-approval-overlay">
-        <div class="modal-approval">
+        <div id="modal-rejected" class="modal-approval-overlay">
+            <div class="modal-approval">
                 <div style="display: flex; flex-direction: column; align-content: start; justify-content: start; text-align: start; width: 400px; margin-right: 10px;">
                     <h2>Rejection Notice</h2>
                     <label for="customMessage">Message to @Model.DoneeOrganizationName</label>
                     <label for="customMessage">Send to: @Model.Email</label>
                 </div>
-                
-                <textarea id="customMessage" rows="5" 
-    style="
-        width: 390px; 
-        padding: 10px; 
-        height: 250px; 
-        margin-top: 5px; 
-        margin-bottom: 10px; 
+
+                <textarea rows="5"
+                          style="
+        width: 390px;
+        padding: 10px;
+        height: 250px;
+        margin-top: 5px;
+        margin-bottom: 10px;
         text-align: left;
-        line-height: 1.6; 
+        line-height: 1.6;
         font-family: Arial, sans-serif;
-        font-size: 14px; 
-        border: 1px solid #ccc; 
+        font-size: 14px;
+        border: 1px solid #ccc;
         border-radius: 5px;
         color: #333;
-        background-color: #f9f9f9; 
+        background-color: #f9f9f9;
         white-space: pre-wrap;
         resize: none;
     ">
@@ -101,13 +101,13 @@ Best regards,
 Management: EcoFridge
 </textarea>
                 <button type="button" id="closeDeclineModalBtn">Send</button>
+            </div>
+        </div>
+        <div class="save-edit-org">
+            @* <a onclick="saveBtn()" id="SaveBtn" class="save-edit-btn">Save</a> *@
+            <button type="submit" class="save-edit-btn">Save</button>
         </div>
     </div>
-    <div class="save-edit-org">
-        @* <a onclick="saveBtn()" id="SaveBtn" class="save-edit-btn">Save</a> *@
-        <button type="submit" id="SaveBtn" class="save-edit-btn">Save</button>
-    </div>
-</div>
 </form>
 
 <script>
@@ -145,7 +145,7 @@ Management: EcoFridge
     });
 
     function updateAccountApproval(isApproved) {
-        const userId = document.getElementById('editUserId').value;
+        const userId = document.getElementById('editOrgUserId').value;
 
         document.getElementById('editAccountApproved').value = isApproved;
 
@@ -180,4 +180,3 @@ Management: EcoFridge
         });
     }
 </script>
-

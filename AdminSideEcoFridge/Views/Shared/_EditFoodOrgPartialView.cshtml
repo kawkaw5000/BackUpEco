@@ -17,23 +17,23 @@
                 </div>
                 <div class="column-user-info">
                     <input type="hidden" id="editUserId" asp-for="UserId" />
-                    <input type="hidden" id="editUserEmail" asp-for="Email" />
-                    <input type="hidden" id="editUserEmailConfirmed" asp-for="EmailConfirmed" />
-                    <input type="hidden" id="editUserEmailConfirmed" asp-for="Password" />
-          
-                    <input type="hidden" id="editFirstName" asp-for="FirstName">
+                    <input type="hidden" asp-for="Email" />
+                    <input type="hidden" asp-for="EmailConfirmed" />
+                    <input type="hidden" asp-for="Password" />
+
+                    <input type="hidden" asp-for="FirstName">
                     <div class="user-details">
                         <input type="text" id="editFoodName" asp-for="FoodBusinessName" readonly>
                     </div>
-              
+
                     <div class="user-details">
-                        <input type="text" id="editBaranggay" asp-for="Barangay">
+                        <input type="text" id="editFoodBaranggay" asp-for="Barangay">
                     </div>
                     <div class="user-details">
-                        <input type="text" id="editCity" asp-for="City">
+                        <input type="text" id="editFoodCity" asp-for="City">
                     </div>
                     <div class="user-details">
-                        <input type="text" id="editProvince" asp-for="Province">
+                        <input type="text" id="editFoodProvince" asp-for="Province">
                     </div>
                 </div>
 
@@ -51,7 +51,7 @@
             </button>
             <div class="dropdown">
                 <button class="actions" type="button" id="food-approveBtn">Approve</button>
-                <button class="actions" type="button" id="food-declineBtn">Decline</button> 
+                <button class="actions" type="button" id="food-declineBtn">Decline</button>
             </div>
         </div>
         <div id="food-modal-approval" class="modal-approval-overlay">
@@ -61,7 +61,7 @@
                     <label for="customMessage">Message to @Model.FoodBusinessName</label>
                     <label for="customMessage">Send to: @Model.Email</label>
                 </div>
-                <textarea id="customMessage" rows="5" style="width: 390px; padding: 10px; height: 250px; margin-top: 5px; margin-bottom: 10px; resize: none;">Congratulations @Model.FoodBusinessName your request has been approved.</textarea>
+                <textarea rows="5" style="width: 390px; padding: 10px; height: 250px; margin-top: 5px; margin-bottom: 10px; resize: none;">Congratulations @Model.FoodBusinessName your request has been approved.</textarea>
                 <button type="button" id="food-closeApprovalModalBtn">Send</button>
             </div>
         </div>
@@ -73,7 +73,7 @@
                     <label for="customMessage">Message to @Model.FoodBusinessName</label>
                     <label for="customMessage">Send to: @Model.Email</label>
                 </div>
-                <textarea id="customMessage" rows="5"
+                <textarea rows="5"
                           style="
         width: 390px;
         padding: 10px;
@@ -104,7 +104,7 @@ Management: EcoFridge
         </div>
         <div class="save-edit-org">
             @* <a onclick="saveBtn()" id="SaveBtn" class="save-edit-btn">Save</a> *@
-            <button type="submit" id="SaveBtn" class="save-edit-btn">Save</button>
+            <button type="submit" class="save-edit-btn">Save</button>
         </div>
     </div>
 </form>
@@ -112,7 +112,7 @@ Management: EcoFridge
     document.addEventListener('click', function (event) {
 
         if (event.target && event.target.id === 'food-approveBtn') {
-            updateAccountApproval(true); 
+            updateAccountApproval(true);
             document.getElementById('food-modal-approval').style.display = 'block';
             setTimeout(function () {
                 document.getElementById('food-modal-approval').style.opacity = '1';
@@ -120,7 +120,7 @@ Management: EcoFridge
         }
 
         if (event.target && event.target.id === 'food-declineBtn') {
-            updateAccountApproval(false); 
+            updateAccountApproval(false);
             document.getElementById('food-modal-rejected').style.display = 'block';
             setTimeout(function () {
                 document.getElementById('food-modal-rejected').style.opacity = '1';
@@ -156,9 +156,9 @@ Management: EcoFridge
                 if (response.success) {
                     const row = document.querySelector(`tr[data-user-id='${userId}']`);
                     if (row) {
-                        const statusCell = row.querySelector('td:first-child'); 
+                        const statusCell = row.querySelector('td:first-child');
                         if (statusCell) {
-            
+
                             if (isApproved) {
                                 statusCell.innerHTML = '<button class="approved-btn">Approved</button>';
                             } else {
@@ -176,5 +176,4 @@ Management: EcoFridge
         });
     }
 </script>
-
 
