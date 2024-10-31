@@ -35,17 +35,19 @@ namespace AdminSideEcoFridge.Controllers
 
             storageAdd.isActive = true;
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                if (_storagePlanRepo.Create(storageAdd) == ErrorCode.Success)
-                {
-                    return RedirectToAction("StoragePlan", "Plan");
-                }
-
-                return BadRequest();
+                return BadRequest(ModelState); 
             }
 
-            return Ok();
+            var result = _storagePlanRepo.Create(storageAdd);
+            if (result == ErrorCode.Success)
+            {
+                return Ok(new { message = "Storage plan added successfully." });
+            }
+
+            ModelState.AddModelError("ServerError", "Failed to add the storage plan. Please try again.");
+            return BadRequest(ModelState); 
         }
 
         [HttpPut]
@@ -95,6 +97,64 @@ namespace AdminSideEcoFridge.Controllers
             return StatusCode(500, "An error occurred while updating the plan.");
         }
 
+        [HttpPut]
+        public IActionResult DisablePlan([FromBody] StoragePlan disablePlan)
+        {
+            if (disablePlan == null)
+            {
+                return BadRequest("Invalid plan data.");
+            }
+
+            var existingPlan = _storagePlanRepo.Get(disablePlan.StoragePlanId);
+            if (existingPlan == null)
+            {
+                return NotFound("Plan not found."); 
+            }
+
+            existingPlan.isActive = false;
+
+            if (_storagePlanRepo.Update(existingPlan.StoragePlanId, existingPlan) == ErrorCode.Success)
+            {
+                return Ok(new { message = "Plan updated successfully." });
+            }
+
+            return StatusCode(500, "An error occurred while updating the plan.");
+        }
+
+        [HttpPut]
+        public IActionResult ActivatePlan([FromBody] StoragePlan activatePlan)
+        {
+            if (activatePlan == null)
+            {
+                return BadRequest("Invalid plan data.");
+            }
+
+            var existingPlan = _storagePlanRepo.Get(activatePlan.StoragePlanId);
+            if (existingPlan == null)
+            {
+                return NotFound("Plan not found.");
+            }
+
+            existingPlan.isActive = true;
+
+            if (_storagePlanRepo.Update(existingPlan.StoragePlanId, existingPlan) == ErrorCode.Success)
+            {
+                return Ok(new { message = "Plan updated successfully." });
+            }
+
+            return StatusCode(500, "An error occurred while updating the plan.");
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            if (_storagePlanRepo.Delete(id) == ErrorCode.Success)
+            {
+                return Ok(new { message = "Plan deleted successfully." }); 
+            }
+
+            return NotFound("Plan not found."); 
+        }
 
     }
 }

@@ -136,20 +136,22 @@ display: none;
 }
 
 .disable-modal,
+.activate-modal,
 .delete-modal {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(10px);
-  z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
 }
  
 .disable-content,
+.activate-content,
 .delete-content {
   background-color: #307A59;
   padding: 20px;
@@ -170,6 +172,7 @@ display: none;
 }
 
 .disable-content button,
+.activate-content button,
 .delete-content button {
   width: 180px;
   margin-top: 8px;
@@ -180,11 +183,13 @@ display: none;
 }
 
 .disable-content button:hover,
+.activate-content button:hover,
 .delete-content button:hover {
   background-color: #B8F1B0;
 }
 
 .disable-content button:active,
+.activate-content button:active,
 .delete-content button:active {
   box-shadow: 0px 1px 5px black;
 }
@@ -233,4 +238,8 @@ input[type="number"].input-add::-webkit-outer-spin-button,
 input[type="number"].input-add::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.inactive-plan {
+    background-color: #dba8a8;
 }

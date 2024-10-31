@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zTakfBc/eyg=",
+  "dgSpecHash": "GK5bN12Ryhw=",
   "success": true,
-  "projectFilePath": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
+  "projectFilePath": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LEX\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\LEX\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
