@@ -76,10 +76,6 @@ namespace AdminSideEcoFridge.Controllers
             }
             return Json(user);
         }
-        public IActionResult StoragePlan()
-        {
-            return View();
-        }
 
     }
 }

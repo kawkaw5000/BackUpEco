@@ -116,7 +116,7 @@ namespace AdminSideEcoFridge.Controllers
         {
             if (u == null)
             {
-                return RedirectToAction("Login");
+                return NotFound();
             }
 
             var existingUser = _userRepo.Get(u.UserId);
@@ -170,7 +170,7 @@ namespace AdminSideEcoFridge.Controllers
         {
             if (u == null)
             {
-                return RedirectToAction("Login");
+                return NotFound();
             }
 
             var existingUser = _userRepo.Get(u.UserId);
@@ -236,7 +236,7 @@ namespace AdminSideEcoFridge.Controllers
 
             if (u == null)
             {
-                return RedirectToAction("Login");
+                return NotFound();
             }
 
             var existingUser = _userRepo.Get(u.UserId);

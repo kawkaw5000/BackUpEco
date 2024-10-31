@@ -1,0 +1,204 @@
+﻿@model IEnumerable<AdminSideEcoFridge.Models.StoragePlan>
+@{
+    ViewData["Title"] = "Storage Plan";
+}
+<link href="~/css/user-profiles.css" rel="stylesheet" />
+<link href="~/css/welcome-admin.css" rel="stylesheet" />
+<link href="~/css/header.css" rel="stylesheet" />
+<link href="~/css/sidebar.css" rel="stylesheet" />
+<link href="~/css/modal-approval.css" rel="stylesheet" />
+<link href="~/css/storageplan.css" rel="stylesheet" />
+<div style="margin-left: 115px; margin-top: 70px; margin-right: 10px;">
+    <h2>Storage Plan</h2>
+    <div class="storage-container">
+        <div style="position:relative;">
+        <div class="plan-table">
+            <table class="user-list-table" id="plan-container">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Plan Name</th>
+                        <th>Price</th>
+                        <th>Storage Size</th>
+                        <th>Duration</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        int i = 1;
+                        foreach(var storage in Model)
+                        {                                                    
+                            <tr data-plan-id="@storage.StoragePlanId"
+                                data-plan-name="@storage.StoragePlanName"
+                                data-plan-price="@storage.Price"
+                                data-plan-size="@storage.StorageSize"
+                                data-plan-duration="@storage.Duration">
+                                <td>@i</td>
+                                <td>@storage.StoragePlanName</td>
+                                <td>@(storage.Price == 0 ? "Free" : storage.Price)</td>
+                                <td>@(storage.StorageSize == 99999 ? "Unlimited" : storage.StorageSize)</td>
+                                <td>@(storage.Duration == 99999 ? "Unlimited" : storage.Duration)</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="action-btn">
+                                            Actions <img src="/header-icons/down-arrow-white.svg" alt="" class="drop-arrw">
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <button class="dropdown-item">Update</button>
+                                            <button class="dropdown-item">Disable</button>
+                                            <button class="dropdown-item">Delete</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        i++;
+                        }
+                    } else
+                        {
+                            <tr>
+                                <td colspan="5">No Storage plan found.</td> 
+                            </tr>
+                        }
+
+                </tbody>
+            </table>
+            <div>
+            </div>
+        </div>
+            <div style="position: absolute; bottom: -40px; right: 3px;">
+                <button id="add-new-plan">Add new plan</button>
+            </div>
+        </div>
+       
+        <!--ADD PLAN CONTAINTER-->
+        <div class="add-plan" id="add-plan">
+            <div style="position: relative; display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px; z-index: 1;">
+                <p style="font-weight: bold;">Plan Name</p>
+                <input id="storage-plan-name" type="text" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;">
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
+                <p style="font-weight: bold;">Price</p>
+                <input id="storage-price" type="number" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" class="input-add" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)">
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
+                <p style="font-weight: bold;">Size</p>
+                <input class="input-add" id="storage-size" type="number" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)">
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
+                <p style="font-weight: bold;">Duration</p>
+                <input class="input-add" id="duration" type="number" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)">
+            </div>
+            <button id="new-plan">Add</button>
+        </div>
+
+        <!--UPDATE PLAN CONTAINTER-->
+        <div class="update-plan" id="update-plan">
+            <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
+                <p style="font-weight: bold;">Plan Name</p>
+                <input id="edit-plan-name" type="text" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;">
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
+                <p style="font-weight: bold;">Price</p>
+                <input id="edit-price-plan" type="text" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" class="input-add" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)">
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
+                <p style="font-weight: bold;">Size</p>
+                <input id="edit-size-plan" type="text" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" class="input-add" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)">
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
+                <p style="font-weight: bold;">Duration</p>
+                <input id="edit-duration-plan" type="text" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" class="input-add" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)">
+            </div>
+            <button id="edit-plan">Update</button>
+        </div>
+    </div>
+</div>
+<div class="disable-modal">
+    <div class="disable-content">
+        <img src="~/images/disableplan.svg" alt="">
+        <h3 style="color: white; margin-bottom: 0;">Selected Plan</h3>
+        <h3 style="color: white; margin-top: 0;">will be disabled</h3>
+        <button id="ok-disable">OK</button>
+        <button id="cancel-disable">Cancel</button>
+    </div>
+</div>
+<div class="delete-modal">
+    <div class="delete-content">
+        <img src="~/images/trashcan.svg" alt="">
+        <h3 style="color: white; margin-bottom: 0;">Selected Plan</h3>
+        <h3 style="color: white; margin-top: 0;">will be deleted</h3>
+        <button id="ok-delete">OK</button>
+        <button id="cancel-delete">Cancel</button>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const updateModal = document.getElementById('update-plan');
+        const editPlanName = document.getElementById('edit-plan-name');
+        const editPricePlan = document.getElementById('edit-price-plan');
+        const editSizePlan = document.getElementById('edit-size-plan');
+        const editDurationPlan = document.getElementById('edit-duration-plan');
+        const editButton = document.getElementById('edit-plan');
+
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', function (event) {
+                if (this.textContent.trim() === 'Update') {
+                    const row = this.closest('tr');
+
+                    editPlanName.value = row.getAttribute('data-plan-name');
+                    editPricePlan.value = row.getAttribute('data-plan-price');
+                    editSizePlan.value = row.getAttribute('data-plan-size');
+                    editDurationPlan.value = row.getAttribute('data-plan-duration');
+
+                    editButton.setAttribute('data-plan-id', row.getAttribute('data-plan-id'));
+
+                }
+            });
+        });
+
+        editButton.addEventListener('click', function () {
+            const planId = this.getAttribute('data-plan-id');
+
+            const updatedData = {
+                storagePlanId: planId,
+                storagePlanName: editPlanName.value,
+                price: parseFloat(editPricePlan.value),
+                storageSize: parseInt(editSizePlan.value),
+                duration: parseInt(editDurationPlan.value)
+            };
+
+            fetch('/Plan/EditPlan', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updatedData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    response.json().then(errorData => {
+                        console.error('Validation errors:', errorData);
+
+                        if (errorData.errors) {
+                            if (errorData.errors.StorageSize) {
+                                alert('Error: ' + errorData.errors.StorageSize[0]);
+                            }
+                            if (errorData.errors.Duration) {
+                                alert('Error: ' + errorData.errors.Duration[0]);
+                            }
+                            if (errorData.errors.Price) {
+                                alert('Error: ' + errorData.errors.Price[0]);
+                            }
+                        }
+                    });
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
+</script>
+<script src="~/js/add-storage.js"></script>
+<script src="~/js/storageplan.js"></script>
+<script src="~/js/modal.js"></script>

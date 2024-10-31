@@ -309,6 +309,10 @@
       "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_91a80ab8-b1f4-4f16-a101-54f2100caf3b.png"
     },
     {
+      "Id": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_9949468a-342f-4b14-b867-ff01fa6d8551.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_9949468a-342f-4b14-b867-ff01fa6d8551.jpg"
+    },
+    {
       "Id": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_9978256e-fa06-4231-93d4-01653f834158.jpg",
       "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_9978256e-fa06-4231-93d4-01653f834158.jpg"
     },
@@ -317,12 +321,20 @@
       "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_c5039b7d-80d2-4e5d-9cfb-54fce08126d6.png"
     },
     {
+      "Id": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_c5c1f65e-0bcd-4c7d-b94b-882630cd9f05.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_c5c1f65e-0bcd-4c7d-b94b-882630cd9f05.jpg"
+    },
+    {
       "Id": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_ccc54f73-d57f-4550-831f-b64279346a98.png",
       "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_ccc54f73-d57f-4550-831f-b64279346a98.png"
     },
     {
       "Id": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_d5b8d2fc-1e0a-44df-b7cb-fd8b100ded72.png",
       "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_d5b8d2fc-1e0a-44df-b7cb-fd8b100ded72.png"
+    },
+    {
+      "Id": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_d6901125-c9a0-4117-ab4c-6e669c4c138b.jpg",
+      "PackagePath": "staticwebassets\\images\\profiles\\adminProfiles\\profile_d6901125-c9a0-4117-ab4c-6e669c4c138b.jpg"
     },
     {
       "Id": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\wwwroot\\images\\profiles\\adminProfiles\\profile_e86cd81e-d59f-45c4-9307-e2cb1e4267cc.jpg",
@@ -699,6 +711,10 @@
     {
       "Id": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\wwwroot\\js\\Admin-create.js",
       "PackagePath": "staticwebassets\\js\\Admin-create.js"
+    },
+    {
+      "Id": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\wwwroot\\js\\add-storage.js",
+      "PackagePath": "staticwebassets\\js\\add-storage.js"
     },
     {
       "Id": "D:\\!!!-A-BACKUP\\newbackup\\EcoFridgeAdminBackup\\AdminSideEcoFridge\\wwwroot\\js\\ajaxedit.js",

@@ -152,7 +152,7 @@
                         } else
                         {
                             <tr>
-                                <td colspan="5">User was not Found.</td> <!-- Adjust colspan based on your table -->
+                                <td colspan="5">User was not Found.</td> 
                             </tr>
                         }
                         
@@ -415,17 +415,13 @@
     <div class="modal-content">
         <div class="create-acc">Create a account</div>
         <div class="account-content">
-            @if (User.Identity.IsAuthenticated)
-            {
-                if (User.IsInRole("super admin"))
-                {
-                    <form method="get" asp-controller="Account" asp-action="AdminCreate">
-                        <button class="admin-btn">
-                            Admin
-                        </button>
-                    </form>
-                }           
-            }
+        
+            <form method="get" asp-controller="Account" asp-action="AdminCreate">
+                <button class="admin-btn">
+                    Admin
+                </button>
+            </form>
+      
             <form method="get" asp-controller="Account" asp-action="RegularCreate">
                 <button class="admin-btn">
                     Regular

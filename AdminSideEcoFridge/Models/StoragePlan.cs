@@ -15,6 +15,8 @@ public partial class StoragePlan
 
     public decimal Price { get; set; }
 
+    public bool? isActive { get; set; }
+
     public virtual ICollection<PaymentTransaction> PaymentTransactions { get; set; } = new List<PaymentTransaction>();
 
     public virtual ICollection<UserPlan> UserPlans { get; set; } = new List<UserPlan>();
