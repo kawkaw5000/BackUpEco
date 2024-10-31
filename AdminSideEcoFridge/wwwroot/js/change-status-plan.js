@@ -39,6 +39,9 @@ document.getElementById('cancel-disable').addEventListener('click', function () 
     document.querySelector('.disable-modal').style.display = 'none';
 });
 
+document.getElementById('cancel-activate').addEventListener('click', function () {
+    document.querySelector('.activate-modal').style.display = 'none';
+});
 
 document.querySelectorAll('.activate-plan').forEach(item => {
     item.addEventListener('click', function () {

@@ -166,6 +166,7 @@ display: none;
 }
 
 .disable-content img,
+.activate-content img,
 .delete-content img {
   height: 50px;
   margin-top: 20px;

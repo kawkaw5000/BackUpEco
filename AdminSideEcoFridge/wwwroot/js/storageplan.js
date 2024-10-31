@@ -54,6 +54,11 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('.delete-modal').style.display = 'none';
   });
 
+  document.getElementById('ok-activate').addEventListener('click', function (event) {
+    event.stopPropagation();
+      document.querySelector('.activate-modal').style.display = 'none';
+  });
+
   document.getElementById('cancel-delete').addEventListener('click', function(event) {
     event.stopPropagation();
     document.querySelector('.delete-modal').style.display = 'none';
