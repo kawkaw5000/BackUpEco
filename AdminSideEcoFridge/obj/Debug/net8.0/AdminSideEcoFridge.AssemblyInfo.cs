@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AdminSideEcoFridge")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f444291363434238c41debc7481bcb5885d5baa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+95e96df6742fd6fc3c1bb75f95212006475a0644")]
 [assembly: System.Reflection.AssemblyProductAttribute("AdminSideEcoFridge")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AdminSideEcoFridge")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

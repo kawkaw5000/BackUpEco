@@ -55,7 +55,7 @@ namespace AdminSideEcoFridge.Controllers
                     }
                 }
 
-                return Json(new { success = true, message = "Rejection message sent successfully." });
+                return Json(new { success = true, message = "Approved message sent successfully." });
             }
             catch (Exception)
             {
@@ -101,7 +101,7 @@ namespace AdminSideEcoFridge.Controllers
                     }
                 }
 
-                return Json(new { success = true, message = "Successfully sent!" });
+                return Json(new { success = true, message = "Rejected Successfully sent!" });
             }
             catch (Exception)
             {

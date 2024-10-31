@@ -46,9 +46,7 @@
             </div>
         </div>
         <div class="action-dropdown">
-            <button type="button" class="action-drop">
-                Action
-            </button>
+            <button type="button" class="action-drop">Action</button>
             <div class="dropdown">
                 <button class="actions" type="button" id="food-approveBtn">Approve</button>
                 <button class="actions" type="button" id="food-declineBtn">Decline</button>
@@ -58,13 +56,13 @@
             <div class="modal-approval">
                 <div style="display: flex; flex-direction: column; align-content: start; justify-content: start; text-align: start; width: 400px; margin-right: 10px;">
                     <h2>Approval Notice</h2>
-                    <label for="customMessage">Message to @Model.FoodBusinessName</label>
-                    <label for="customMessage">Send to: @Model.Email</label>
+                    <label for="customApproveMessage">Message to @Model.FoodBusinessName</label>
+                    <label for="customApproveMessage">Send to: @Model.Email</label>
                 </div>
                 <textarea id="customApproveMessage" rows="5" style="width: 390px; padding: 10px; height: 250px; margin-top: 5px; margin-bottom: 10px; text-align: left; line-height: 1.6; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #ccc; border-radius: 5px; color: #000000; background-color: #f9f9f9; white-space: pre-wrap; resize: none;">
 Good day @Model.FoodBusinessName,
 
-We regret to inform you that your request has been rejected due to the following reason:
+Congrats we are informing you that your request has been apprvoed.
         </textarea>
                 <button type="button" id="food-closeApprovalModalBtn">Send</button>
             </div>
@@ -98,6 +96,7 @@ We regret to inform you that your request has been rejected due to the following
         <p id="success-sending"></p>
     </div>
 </form>
+
 <script>
     document.getElementById("food-closeDeclineModalBtn").addEventListener("click", function () {
         const spinnerCont = document.getElementById("spinner-cont");
@@ -126,6 +125,49 @@ We regret to inform you that your request has been rejected due to the following
                     sending.style.display = 'none';
                     succesSend.style.display = 'block';
                     succesSend.innerText = data.message;                 
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while sending the message.');
+            })
+            .finally(() => {
+                spinnerCont.style.display = 'block';
+                spinner.style.display = 'none';
+                sending.style.display = 'none';
+                window.location.reload();
+            });
+    });
+
+    document.getElementById("food-closeApprovalModalBtn").addEventListener("click", function () {
+        const spinnerCont = document.getElementById("spinner-cont");
+        const spinner = document.getElementById("spinner");
+        const sending = document.getElementById("sending");
+        const succesSend = document.getElementById("success-sending");
+        const message = document.getElementById("customApproveMessage").value.trim();
+
+        spinnerCont.style.display = 'block';
+        spinner.style.display = 'block';
+        sending.style.display = 'block';
+        succesSend.style.display = 'none';
+        succesSend.innerText = '';
+
+        fetch('/Mail/SendApproveMessage', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ Message: message, Email: '@Model.Email' })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    spinner.style.display = 'none';
+                    sending.style.display = 'none';
+                    succesSend.style.display = 'block';
+                    succesSend.innerText = data.message;
                 } else {
                     alert(data.message);
                 }
