@@ -77,3 +77,37 @@ document.getElementById('ok-activate').addEventListener('click', function () {
             document.querySelector('.activate-modal').style.display = 'none';
         });
 });
+
+
+document.querySelectorAll('.delete-plan').forEach(item => {
+    item.addEventListener('click', function () {
+        const row = this.closest('tr');
+        selectedPlanId = row.dataset.planId;
+        document.querySelector('.delete-modal').style.display = 'flex';
+    });
+});
+
+document.getElementById('ok-delete').addEventListener('click', function () {
+    fetch(`/Plan/DeletePlan?id=${selectedPlanId}`, { 
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => {
+            if (response.ok) {
+                const row = document.querySelector(`tr[data-plan-id="${selectedPlanId}"]`);
+                alert('Plan deleted successfully.');
+                row.remove();
+            } else {
+                alert('Failed to delete the plan.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred.');
+        })
+        .finally(() => {
+            document.querySelector('.delete-modal').style.display = 'none';
+        });
+});

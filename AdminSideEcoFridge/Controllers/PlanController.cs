@@ -146,14 +146,14 @@ namespace AdminSideEcoFridge.Controllers
         }
 
         [HttpDelete]
-        public IActionResult Delete(int id)
+        public IActionResult DeletePlan(int id)
         {
             if (_storagePlanRepo.Delete(id) == ErrorCode.Success)
             {
-                return Ok(new { message = "Plan deleted successfully." }); 
+                return Ok(new { message = "Plan deleted successfully." });
             }
 
-            return NotFound("Plan not found."); 
+            return NotFound("Plan not found.");
         }
 
     }
