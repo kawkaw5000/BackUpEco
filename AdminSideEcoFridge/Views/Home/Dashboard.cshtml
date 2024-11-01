@@ -65,15 +65,9 @@
             <div class="count-num">
                 <button class="count-btn" onclick="filterByRole('donee organization')">Organization (@Model.OrganizationCount)</button>
             </div>
-            @if (User.Identity.IsAuthenticated)
-            {
-                if (User.IsInRole("super admin"))
-                {
-                    <div class="count-num">
-                        <button class="count-btn" onclick="filterByRole('admin')">Admin (@Model.AdminCount)</button>
-                    </div>
-                }             
-            }     
+                <div class="count-num">
+                    <button class="count-btn" onclick="filterByRole('admin')">Admin (@Model.AdminCount)</button>
+                </div>
             <div class="add">
                 <button class="add-btn" id="add-btn">
                     <img src="/images/header-icons/plus-icon.svg" alt="" class="cross-icon">
@@ -331,6 +325,7 @@
             </div>
 
             <!--EDIT FOOD ACCOUNT TYPE-->
+
             @await Html.PartialAsync("_EditFoodOrgPartialView", Model.User.FirstOrDefault())
 
             <div id="modal-delacc" class="hide">

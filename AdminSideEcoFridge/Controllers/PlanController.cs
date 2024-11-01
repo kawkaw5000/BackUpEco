@@ -11,13 +11,17 @@ namespace AdminSideEcoFridge.Controllers
         public IActionResult StoragePlan()
         {
             List<StoragePlan> storage = _storagePlanRepo.GetAll();
-            ViewBag.StoragePlan = Utils.Utils.SelectPlanType();
             return View(storage);
         }
 
         [HttpPost]
         public IActionResult AddPlan([FromBody] StoragePlan storageAdd)
         {
+            if (storageAdd == null)
+            {
+                return NotFound();
+            }
+
             if (storageAdd.StorageSize <= 0)
             {
                 ModelState.AddModelError("StorageSize", "Please enter a valid size.");

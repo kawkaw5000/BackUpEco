@@ -20,14 +20,12 @@ namespace AdminSideEcoFridge.Controllers
             List<VwUsersFoodItem> foodList = _vwUsersFoodItemRepo.GetAll();
             List<User> user = _userRepo.GetAll();
 
-            userList = userList.Where(u => u.RoleName != "super admin" && u.RoleName != "admin").ToList();
+            userList = userList.ToList();
 
             if (!string.IsNullOrEmpty(keyword))
             {
-
                 userList = _userSearchRepository.SearchUsers(keyword)
-            .Where(u => u.RoleName != "super admin" && u.RoleName != "admin")
-            .ToList();
+                    .ToList();
             }
 
             var roleCounts = userList

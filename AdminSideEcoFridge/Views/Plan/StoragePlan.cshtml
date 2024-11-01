@@ -82,40 +82,40 @@
         <div class="add-plan" id="add-plan">
             <div style="position: relative; display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px; z-index: 1;">
                 <p style="font-weight: bold;">Plan Name</p>
-                <input id="storage-plan-name" type="text" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;">
+                <input id="storage-plan-name" type="text" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" required>
             </div>
             <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
                 <p style="font-weight: bold;">Price</p>
-                <input id="storage-price" type="number" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" class="input-add" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)">
+                <input id="storage-price" type="number" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" class="input-add" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)" required>
             </div>
             <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
                 <p style="font-weight: bold;">Size</p>
-                <input class="input-add" id="storage-size" type="number" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)">
+                <input class="input-add" id="storage-size" type="number" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)" required>
             </div>
             <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
                 <p style="font-weight: bold;">Duration</p>
-                <input class="input-add" id="duration" type="number" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)">
+                <input class="input-add" id="duration" type="number" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)" required>
             </div>
             <button id="new-plan">Add</button>
         </div>
 
         <!--UPDATE PLAN CONTAINTER-->
         <div class="update-plan" id="update-plan">
-            <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
+            <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;" required>
                 <p style="font-weight: bold;">Plan Name</p>
                 <input id="edit-plan-name" type="text" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;">
             </div>
             <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
                 <p style="font-weight: bold;">Price</p>
-                <input id="edit-price-plan" type="number" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" class="input-add" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)">
+                <input id="edit-price-plan" type="number" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" class="input-add" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)" required>
             </div>
             <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
                 <p style="font-weight: bold;">Size</p>
-                <input id="edit-size-plan" type="number" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" class="input-add" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)">
+                <input id="edit-size-plan" type="number" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" class="input-add" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)" required>
             </div>
             <div style="display: flex; flex-direction: row; justify-content: space-between; width: 240px; margin-top: 20px;">
                 <p style="font-weight: bold;">Duration</p>
-                <input id="edit-duration-plan" type="number" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" class="input-add" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)">
+                <input id="edit-duration-plan" type="number" style="border-radius: 30px; width: 130px; background-color: #F2EFEF; border: none; padding-left: 20px;" class="input-add" max="99999" maxlength="5" oninput="this.value = this.value.slice(0, 5)" required>
             </div>
             <button id="edit-plan">Update</button>
         </div>

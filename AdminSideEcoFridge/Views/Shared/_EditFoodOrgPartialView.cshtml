@@ -17,7 +17,7 @@
                 </div>
                 <div class="column-user-info">
                     <input type="hidden" id="editUserId" asp-for="UserId" />
-                    <input type="hidden" asp-for="Email" />
+                    <input type="text" id="editFoodEmail" asp-for="Email" />
                     <input type="hidden" asp-for="EmailConfirmed" />
                     <input type="hidden" asp-for="Password" />
 
@@ -48,8 +48,20 @@
         <div class="action-dropdown">
             <button type="button" class="action-drop">Action</button>
             <div class="dropdown">
-                <button class="actions" type="button" id="food-approveBtn">Approve</button>
-                <button class="actions" type="button" id="food-declineBtn">Decline</button>
+                @if (Model.AccountApproved == null)
+                {
+                    <button class="actions" type="button" id="food-approveBtn">Approve</button>
+                    <button class="actions" type="button" id="food-declineBtn">Decline</button>
+                }
+                else if (Model.AccountApproved == true)
+                {
+                    <button class="actions" type="button" id="food-declineBtn">Decline</button>
+                }
+                else
+                {
+                    <button class="actions" type="button" id="food-approveBtn">Approve</button>
+                }
+
             </div>
         </div>
         <div id="food-modal-approval" class="modal-approval-overlay">
@@ -62,7 +74,7 @@
                 <textarea id="customApproveMessage" rows="5" style="width: 390px; padding: 10px; height: 250px; margin-top: 5px; margin-bottom: 10px; text-align: left; line-height: 1.6; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #ccc; border-radius: 5px; color: #000000; background-color: #f9f9f9; white-space: pre-wrap; resize: none;">
 Good day @Model.FoodBusinessName,
 
-Congrats we are informing you that your request has been apprvoed.
+Congrats we are informing you that your request has been approved.
         </textarea>
                 <button type="button" id="food-closeApprovalModalBtn">Send</button>
             </div>
@@ -90,20 +102,27 @@ We regret to inform you that your request has been rejected due to the following
         </div>
     </div>
 
-    <div id="spinner-cont" class="spinner-cont">
-        <div class="spinner" id="spinner"></div>
-        <p id="sending">Sending please wait.</p>
-        <p id="success-sending"></p>
+    <div id="food-spinner-cont" class="spinner-cont">
+        <div class="spinner" id="food-spinner"></div>
+        <p id="food-sending">Sending please wait.</p>
+        <p id="food-success-sending"><img src="/images/Create-icons/check-mark-svgrepo-com.svg"/></p>
     </div>
 </form>
-
 <script>
     document.getElementById("food-closeDeclineModalBtn").addEventListener("click", function () {
-        const spinnerCont = document.getElementById("spinner-cont");
-        const spinner = document.getElementById("spinner");
-        const sending = document.getElementById("sending");
-        const succesSend = document.getElementById("success-sending");
+        const spinnerCont = document.getElementById("food-spinner-cont");
+        const spinner = document.getElementById("food-spinner");
+        const sending = document.getElementById("food-sending");
+        const succesSend = document.getElementById("food-success-sending");
         const message = document.getElementById("customMessage").value.trim(); 
+
+        const email = document.getElementById("editFoodEmail").value;
+
+
+        if (!email) {
+        alert("No email found for the selected user.");
+        return;
+        }
 
          spinnerCont.style.display = 'block';
          spinner.style.display = 'block';
@@ -116,7 +135,7 @@ We regret to inform you that your request has been rejected due to the following
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ Message: message, Email: '@Model.Email' })
+            body: JSON.stringify({ Message: message, Email: email })
         })
             .then(response => response.json())
             .then(data => {
@@ -142,10 +161,10 @@ We regret to inform you that your request has been rejected due to the following
     });
 
     document.getElementById("food-closeApprovalModalBtn").addEventListener("click", function () {
-        const spinnerCont = document.getElementById("spinner-cont");
-        const spinner = document.getElementById("spinner");
-        const sending = document.getElementById("sending");
-        const succesSend = document.getElementById("success-sending");
+        const spinnerCont = document.getElementById("food-spinner-cont");
+        const spinner = document.getElementById("food-spinner");
+        const sending = document.getElementById("food-sending");
+        const succesSend = document.getElementById("food-success-sending");
         const message = document.getElementById("customApproveMessage").value.trim();
 
         spinnerCont.style.display = 'block';
@@ -236,9 +255,9 @@ We regret to inform you that your request has been rejected due to the following
                         if (statusCell) {
 
                             if (isApproved) {
-                                statusCell.innerHTML = '<button class="approved-btn">Approved</button>';
+                                statusCell.innerHTML = '<button id="food-approveBtn" class="approved-btn">Approved</button>';
                             } else {
-                                statusCell.innerHTML = '<button class="reject-btn">Rejected</button>';
+                                statusCell.innerHTML = '<button id="food-declineBtn" class="reject-btn">Rejected</button>';
                             }
                         }
                     }

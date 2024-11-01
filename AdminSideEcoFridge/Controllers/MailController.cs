@@ -17,7 +17,6 @@ namespace AdminSideEcoFridge.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
-        [AllowAnonymous]
         [HttpPost]
         public IActionResult SendApproveMessage([FromBody] MessageModel model)
         {
@@ -26,7 +25,7 @@ namespace AdminSideEcoFridge.Controllers
                 var sendersEmail = _configuration["EmailSettings:SendersEmail"];
                 var sendersPassword = _configuration["EmailSettings:SendersPassword"];
                 var noreplyEmail = "no-reply@ecofridge.com";
-                var subject = "Rejection Notice";
+                var subject = "Approval Notice";
 
                 var body = $@"
                     <div style='font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;'>
@@ -55,7 +54,7 @@ namespace AdminSideEcoFridge.Controllers
                     }
                 }
 
-                return Json(new { success = true, message = "Approved message sent successfully." });
+                return Json(new { success = true, message = "Sent successfully!" });
             }
             catch (Exception)
             {
@@ -63,7 +62,6 @@ namespace AdminSideEcoFridge.Controllers
             }
         }
 
-        [AllowAnonymous]
         [HttpPost]
         public IActionResult SendRejectionMessage([FromBody] MessageModel model)
         {
@@ -101,7 +99,7 @@ namespace AdminSideEcoFridge.Controllers
                     }
                 }
 
-                return Json(new { success = true, message = "Rejected Successfully sent!" });
+                return Json(new { success = true, message = "Sent successfully!" });
             }
             catch (Exception)
             {

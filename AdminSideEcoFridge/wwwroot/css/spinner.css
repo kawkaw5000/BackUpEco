@@ -33,7 +33,9 @@
     display: none;
 }
 
-.spinner-cont #sending {
+.spinner-cont #sending,
+.spinner-cont #food-sending
+{
     position: absolute;
     top: 12%;
     left: 30%;
@@ -41,7 +43,8 @@
     display: none;
 }
 
-.spinner-cont #success-sending {
+.spinner-cont #success-sending,
+.spinner-cont #food-success-sending{
     position: absolute;
     top: 12%;
     left: 30%;

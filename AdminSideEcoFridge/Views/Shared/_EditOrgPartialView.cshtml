@@ -34,7 +34,6 @@
                         <input type="text" id="editOrgProvince" asp-for="Province">
                     </div>
                 </div>
-
             </div>
             <div class="org-flex">
                 <p>Documents</p>
@@ -50,18 +49,33 @@
             <div class="dropdown">
                 <input type="hidden" id="editAccountApproved" name="AccountApproved" value="@Model.AccountApproved" />
 
-                <button class="actions" type="button" id="approveBtn">Approve</button>
-                <button class="actions" type="button" id="declineBtn">Decline</button>
+                @if (Model.AccountApproved == null)
+                {
+                    <button class="actions" type="button" id="approveBtn">Approve</button>
+                    <button class="actions" type="button" id="declineBtn">Decline</button>
+                }
+                else if (Model.AccountApproved == true)
+                {
+                    <button class="actions" type="button" id="declineBtn">Decline</button>
+                }
+                else
+                {
+                    <button class="actions" type="button" id="approveBtn">Approve</button>
+                }
             </div>
         </div>
         <div id="modal-approval" class="modal-approval-overlay">
             <div class="modal-approval">
                 <div style="display: flex; flex-direction: column; align-content: start; justify-content: start; text-align: start; width: 400px; margin-right: 10px;">
                     <h2>Approval Notice</h2>
-                    <label for="customMessage">Message to @Model.DoneeOrganizationName</label>
-                    <label for="customMessage">Send to: @Model.Email</label>
+                    <label for="customOrgApproveMessage">Message to @Model.DoneeOrganizationName</label>
+                    <label for="customOrgApproveMessage">Send to: @Model.Email</label>
                 </div>
-                <textarea rows="5" style="width: 390px; padding: 10px; height: 250px; margin-top: 5px; margin-bottom: 10px; resize: none;">Congratulations @Model.DoneeOrganizationName your request has been approved.</textarea>
+                <textarea id="customOrgApproveMessage" rows="5" style="width: 390px; padding: 10px; height: 250px; margin-top: 5px; margin-bottom: 10px; text-align: left; line-height: 1.6; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #ccc; border-radius: 5px; color: #000000; background-color: #f9f9f9; white-space: pre-wrap; resize: none;">
+Good day @Model.DoneeOrganizationName,
+
+Congrats we are informing you that your request has been approved.
+        </textarea>
                 <button type="button" id="closeApprovalModalBtn">Send</button>
             </div>
         </div>
@@ -70,36 +84,15 @@
             <div class="modal-approval">
                 <div style="display: flex; flex-direction: column; align-content: start; justify-content: start; text-align: start; width: 400px; margin-right: 10px;">
                     <h2>Rejection Notice</h2>
-                    <label for="customMessage">Message to @Model.DoneeOrganizationName</label>
-                    <label for="customMessage">Send to: @Model.Email</label>
+                    <label for="customOrgMessage">Message to @Model.DoneeOrganizationName</label>
+                    <label for="customOrgMessage">Send to: @Model.Email</label>
                 </div>
 
-                <textarea rows="5"
-                          style="
-        width: 390px;
-        padding: 10px;
-        height: 250px;
-        margin-top: 5px;
-        margin-bottom: 10px;
-        text-align: left;
-        line-height: 1.6;
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        color: #333;
-        background-color: #f9f9f9;
-        white-space: pre-wrap;
-        resize: none;
-    ">
+                <textarea id="customOrgMessage" rows="5" style="width: 390px; padding: 10px; height: 250px; margin-top: 5px; margin-bottom: 10px; text-align: left; line-height: 1.6; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #ccc; border-radius: 5px; color: #000000; background-color: #f9f9f9; white-space: pre-wrap; resize: none;">
 Good day @Model.DoneeOrganizationName,
 
 We regret to inform you that your request has been rejected due to the following reason:
-
-
-Best regards,
-Management: EcoFridge
-</textarea>
+        </textarea>
                 <button type="button" id="closeDeclineModalBtn">Send</button>
             </div>
         </div>
@@ -108,9 +101,102 @@ Management: EcoFridge
             <button type="submit" class="save-edit-btn">Save</button>
         </div>
     </div>
+
+    <div id="spinner-cont" class="spinner-cont">
+        <div class="spinner" id="spinner"></div>
+        <p id="sending">Sending please wait.</p>
+        <p id="success-sending"><img src="/images/Create-icons/check-mark-svgrepo-com.svg" /></p>
+    </div>
 </form>
 
 <script>
+
+    document.getElementById("closeDeclineModalBtn").addEventListener("click", function () {
+        const spinnerCont = document.getElementById("spinner-cont");
+        const spinner = document.getElementById("spinner");
+        const sending = document.getElementById("sending");
+        const succesSend = document.getElementById("success-sending");
+        const message = document.getElementById("customOrgMessage").value.trim();
+
+        spinnerCont.style.display = 'block';
+        spinner.style.display = 'block';
+        sending.style.display = 'block';
+        succesSend.style.display = 'none';
+        succesSend.innerText = '';
+
+        fetch('/Mail/SendRejectionMessage', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ Message: message, Email: '@Model.Email' })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    spinner.style.display = 'none';
+                    sending.style.display = 'none';
+                    succesSend.style.display = 'block';
+                    succesSend.innerText = data.message;
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while sending the message.');
+            })
+            .finally(() => {
+                spinnerCont.style.display = 'block';
+                spinner.style.display = 'none';
+                sending.style.display = 'none';
+                window.location.reload();
+            });
+    });
+
+    document.getElementById("closeApprovalModalBtn").addEventListener("click", function () {
+        const spinnerCont = document.getElementById("spinner-cont");
+        const spinner = document.getElementById("spinner");
+        const sending = document.getElementById("sending");
+        const succesSend = document.getElementById("success-sending");
+        const message = document.getElementById("customOrgMessage").value.trim();
+
+        spinnerCont.style.display = 'block';
+        spinner.style.display = 'block';
+        sending.style.display = 'block';
+        succesSend.style.display = 'none';
+        succesSend.innerText = '';
+
+        fetch('/Mail/SendApproveMessage', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ Message: message, Email: '@Model.Email' })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    spinner.style.display = 'none';
+                    sending.style.display = 'none';
+                    succesSend.style.display = 'block';
+                    succesSend.innerText = data.message;
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while sending the message.');
+            })
+            .finally(() => {
+                spinnerCont.style.display = 'block';
+                spinner.style.display = 'none';
+                sending.style.display = 'none';
+                window.location.reload();
+            });
+    });
+
     document.addEventListener('click', function (event) {
 
         if (event.target && event.target.id === 'approveBtn') {

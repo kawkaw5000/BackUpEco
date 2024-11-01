@@ -104,7 +104,7 @@ function showEditUserDetails(row) {
         document.querySelector('.edit-food-user-container').style.display = 'block';
 
         document.getElementById('editFoodName').value = row.dataset.foodbussiness;
-
+        document.getElementById('editFoodEmail').value = row.dataset.email;
         document.getElementById('editFoodBaranggay').value = row.dataset.baranggay;
         document.getElementById('editFoodCity').value = row.dataset.city;
         document.getElementById('editFoodProvince').value = row.dataset.province;
