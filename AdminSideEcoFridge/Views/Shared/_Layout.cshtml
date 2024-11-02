@@ -52,22 +52,21 @@
         <div class="logo-container">
             <img src="/images/sidbar-icons/Eco-logo.svg" alt="" class="logo-icon">
         </div>   
-        <div class="icon-container">
-            <a href="@Url.Action("Dashboard", "Home")" style="text-decoration: none;">
-                <img src="/images/sidbar-icons/home.svg" alt="" class="home-icon">
-            </a>    
-        </div>        
-        <div class="icon-container">
-            <a href="@Url.Action("StoragePlan", "Plan")" style="text-decoration: none;">
-                <img src="/images/sidbar-icons/subscription.svg" alt="" class="subscription-icon">
-            </a>
-        </div>
-   
-        <div class="icon-container">
-            <a href="#" style="text-decoration: none;">
-                <img src="/images/sidbar-icons/reports.svg" alt="" class="report-icon">
-            </a>
-        </div>
+        <a href="@Url.Action("Dashboard", "Home")" style="text-decoration: none;">
+            <div class="icon-container">       
+                <img src="/images/sidbar-icons/home.svg" alt="" class="home-icon">         
+            </div>
+        </a>
+        <a href="@Url.Action("StoragePlan", "Plan")" style="text-decoration: none;">
+            <div class="icon-container">       
+                <img src="/images/sidbar-icons/subscription.svg" alt="" class="subscription-icon">           
+            </div>
+        </a>
+        <a href="@Url.Action("Subscribers", "Transaction")" style="text-decoration: none;">
+            <div class="icon-container">           
+                <img src="/images/sidbar-icons/reports.svg" alt="" class="report-icon">       
+            </div>
+        </a>
         <div class="margin"></div>
     </nav>
     <main role="main" class="pb-3">

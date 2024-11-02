@@ -1595,7 +1595,6 @@ D:\!!!-A-BACKUP\newbackup\EcoFridgeAdminBackup\AdminSideEcoFridge\obj\Debug\net8
 D:\!!!-A-BACKUP\newbackup\EcoFridgeAdminBackup\AdminSideEcoFridge\obj\Debug\net8.0\AdminSideEcoFridge.pdb
 D:\!!!-A-BACKUP\newbackup\EcoFridgeAdminBackup\AdminSideEcoFridge\obj\Debug\net8.0\AdminSideEcoFridge.genruntimeconfig.cache
 D:\!!!-A-BACKUP\newbackup\EcoFridgeAdminBackup\AdminSideEcoFridge\obj\Debug\net8.0\ref\AdminSideEcoFridge.dll
-D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\AdminSideEcoFridge.dll
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\appsettings.Development.json
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\appsettings.json
@@ -1603,6 +1602,7 @@ D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\AdminSi
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\AdminSideEcoFridge.exe
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\AdminSideEcoFridge.deps.json
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\AdminSideEcoFridge.runtimeconfig.json
+D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\AdminSideEcoFridge.dll
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\AdminSideEcoFridge.pdb
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\Azure.Core.dll
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\Azure.Identity.dll
