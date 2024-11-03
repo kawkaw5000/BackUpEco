@@ -1,0 +1,55 @@
+﻿
+.charts {
+    position: relative;
+}
+
+.charts label {
+    font-family: Arial, sans-serif;
+    color: #004d00;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.charts select {
+    padding: 5px 10px;
+    font-family: Arial, sans-serif;
+    background-color: #e6f5e6;
+    color: #004d00;
+    border: 1px solid #004d00;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.charts select:hover {
+    background-color: #cce6cc;
+    color: #003300;
+}
+
+.charts select:focus {
+    outline: none;
+    border-color: #006600;
+    box-shadow: 0 0 5px rgba(0, 102, 0, 0.5);
+}
+
+#yearSelector {
+    display: none;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+    position: absolute;
+    top: -10px;
+    right: 200px;
+}
+
+.pieChart h2 {
+    margin: 0;
+}
+
+.charts h2 {
+    margin: 0;
+}
+
+.charts .bar-title {
+    position: absolute;
+    top: -54px;
+}

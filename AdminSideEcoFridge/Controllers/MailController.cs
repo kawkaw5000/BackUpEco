@@ -14,7 +14,7 @@ namespace AdminSideEcoFridge.Controllers
         public MailController(IConfiguration configuration, IWebHostEnvironment webHostEnvironment)
         {
             _configuration = configuration;
-            _webHostEnvironment = webHostEnvironment;
+            _webHostEnvironment = webHostEnvironment;   
         }
 
         [HttpPost]

@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\adminCreate.css"
     },
     {
+      "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\css\\charts.css",
+      "PackagePath": "staticwebassets\\css\\charts.css"
+    },
+    {
       "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\css\\check.css",
       "PackagePath": "staticwebassets\\css\\check.css"
     },
@@ -1079,6 +1083,14 @@
     {
       "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\profilepics\\default-profile.png",
+      "PackagePath": "staticwebassets\\profilepics\\default-profile.png"
+    },
+    {
+      "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\profilepics\\profile_44fcab2c-1510-4716-9e16-2c557eb20152.png",
+      "PackagePath": "staticwebassets\\profilepics\\profile_44fcab2c-1510-4716-9e16-2c557eb20152.png"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.AdminSideEcoFridge.Microsoft.AspNetCore.StaticWebAssets.props",

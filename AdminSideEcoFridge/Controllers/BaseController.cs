@@ -10,6 +10,7 @@ namespace AdminSideEcoFridge.Controllers
         public EcoFridgeDbContext _db;
         public UserSearcRepository _userSearchRepository;
         public UserRoleManager _roleManager;
+        public UserPlanManager _userPlanMgr;
         public BaseRepository<User> _userRepo;
         public BaseRepository<Role> _roleRepo;
         public BaseRepository<Notifcation> _notificationRepo;
@@ -33,6 +34,7 @@ namespace AdminSideEcoFridge.Controllers
             _db = new EcoFridgeDbContext();
             _userSearchRepository = new UserSearcRepository();
             _roleManager = new UserRoleManager();
+            _userPlanMgr = new UserPlanManager();
             _notificationRepo = new BaseRepository<Notifcation>();
             _userRepo = new BaseRepository<User>();
             _roleRepo = new BaseRepository<Role>();

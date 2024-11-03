@@ -7,19 +7,18 @@
 <link href="~/css/sidebar.css" rel="stylesheet" />
 <link href="~/css/modal-approval.css" rel="stylesheet" />
 <link href="~/css/subscriber-style.css" rel="stylesheet" />
-
-
+<link href="~/css/charts.css" rel="stylesheet" />
 
 <div style="margin-left: 115px; margin-top: 70px; margin-right: 10px; margin-bottom:0px;">
     <h2>Subscribers</h2>
 </div>
 <div class="subscriber-cont">
     <div class="subs-card">
-        <h2>Current</h2>
+        <h2>Todays Active</h2>
         <h2>Subscribers</h2>
         <div class="user-counts">
             <img src="/images/Create-icons/profile-user (2).png" />
-            <p>200</p>
+            <p>@Model.ActiveSubscribersCount</p>
         </div>
     </div>
     <div class="subs-card">
@@ -27,39 +26,42 @@
         <h2>Subscribers</h2>
         <div class="user-counts">
             <img src="/images/Create-icons/profile-user (2).png" />
-            <p>200</p>
+            <p>@Model.CurrentMonthSubscribersCount</p>
         </div>
     </div>
     <div class="subs-card">
-        <h2>Annually</h2>
+        <h2>Annual</h2>
         <h2>Subscribers</h2>
         <div class="user-counts">
             <img src="/images/Create-icons/profile-user (2).png" />
-            <p>200</p>
+            <p>@Model.CurrentYearSubscribersCount</p>
         </div>
     </div>
 </div>
 
 <div class="chart-cont">
     <div class="pieChart">
+        <h2>Current Plans</h2>
         <canvas id="myPieChart"></canvas>
     </div>
 
-    <div style="width: 70%; max-width: 600px; margin: auto; margin-top: 40px;">
-        <label for="timePeriod">Select View: </label>
+    <div class="charts" style="width: 70%; max-width: 600px; margin: auto; margin-top: 40px;">
+        <div class="bar-title">
+            <h2>Sales Chart</h2>
+        </div>        
+        <label for="timePeriod">Filter by: </label>
         <select id="timePeriod">
             <option value="yearly">Yearly</option>
             <option value="monthly">Monthly</option>
         </select>
 
-        <div id="yearSelector" style="display: none; margin-top: 10px;">
+        <div id="yearSelector" style="display: none; margin-top: 10px;">      
             <label for="year">Select Year: </label>
             <select id="year">
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
+                @for (int year = 2024; year <= 2030; year++)
+                {
+                    <option value="@year">@year</option>
+                }
             </select>
         </div>
 
@@ -69,15 +71,20 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+
+    const pieLabels = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.PieChartData.labels));
+    const pieData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.PieChartData.data));
+    const pieColors = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.PieChartData.colors)); 
+
     const ctxPie = document.getElementById('myPieChart').getContext('2d');
     const myPieChart = new Chart(ctxPie, {
         type: 'pie',
         data: {
-            labels: ['Silver', 'Gold', 'Platinum'],
+            labels: pieLabels,
             datasets: [{
                 label: 'Total Subscribers',
-                data: [40, 30, 30],
-                backgroundColor: ['#307a59', '#7ccca8', '#c1edda'],
+                data: pieData,
+                backgroundColor: pieColors,
                 hoverOffset: 4
             }]
         },
@@ -90,15 +97,16 @@
         }
     });
 
-    const yearlyData = [120, 190, 85, 230, 150];
-    const yearlyLabels = ['2019', '2020', '2021', '2022', '2023'];
+    const yearlyData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.YearlyCounts));
+    const yearlyLabels = ['2024', '2025', '2026', '2027', '2028', '2029', '2030'];
+
     const monthlyDataByYear = {
-        '2019': [10, 15, 12, 9, 14, 16, 18, 15, 20, 22, 25, 30],
-        '2020': [12, 18, 14, 16, 19, 21, 23, 17, 24, 28, 26, 32],
-        '2021': [9, 12, 10, 11, 13, 14, 18, 14, 15, 17, 21, 25],
-        '2022': [14, 17, 15, 19, 21, 23, 26, 22, 25, 29, 31, 35],
-        '2023': [16, 19, 18, 20, 22, 24, 28, 26, 29, 32, 34, 37]
+        @foreach (var year in Model.MonthlyCounts)
+        {
+            <text>'@year.Key': @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(year.Value)),</text>
+        }
     };
+
     const monthlyLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     const ctxBar = document.getElementById('myBarChart').getContext('2d');
@@ -107,7 +115,7 @@
         data: {
             labels: yearlyLabels,
             datasets: [{
-                label: 'Sales',
+                label: 'Subscriber Count',
                 data: yearlyData,
                 backgroundColor: '#307a59',
                 borderColor: '#307a59',
@@ -128,11 +136,11 @@
     function updateChartData(period, year = null) {
         if (period === 'yearly') {
             myBarChart.data.labels = yearlyLabels;
-            myBarChart.data.datasets[0].data = yearlyData;
+            myBarChart.data.datasets[0].data = yearlyData; 
             document.getElementById('yearSelector').style.display = 'none';
         } else {
             myBarChart.data.labels = monthlyLabels;
-            myBarChart.data.datasets[0].data = monthlyDataByYear[year];
+            myBarChart.data.datasets[0].data = monthlyDataByYear[year] || [];
             document.getElementById('yearSelector').style.display = 'block';
         }
         myBarChart.update();
@@ -148,8 +156,9 @@
         }
     });
 
-   document.getElementById('year').addEventListener('change', function () {
+    document.getElementById('year').addEventListener('change', function () {
         const selectedYear = this.value;
         updateChartData('monthly', selectedYear);
     });
 </script>
+
