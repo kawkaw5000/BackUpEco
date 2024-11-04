@@ -60,11 +60,11 @@
                         </div>
                     </div>
                     <div class="pass-input">                     
-                        <input asp-for="Password" type="password" class="password" id="password" placeholder="Password" required>  
+                        <input type="hidden" class="password" id="password" placeholder="Password">  
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })                                          
-                        <span class="toggle-password" onclick="togglePasswordVisibility()">
+                        @* <span class="toggle-password" onclick="togglePasswordVisibility()">
                             <img class="img-eye" src="/images/LoginImg/eye-close-up-svgrepo-com.svg" alt="Show/Hide" id="eye-icon">
-                        </span>
+                        </span> *@
                     </div>
                 </div>
                 <div class="flex-row">         
@@ -73,24 +73,13 @@
                             <label for="myFile" class="custom-file-upload">
                                 Upload Profile Picture
                             </label>
-                            <input type="file" id="myFile" name="ProfilePicturePath" asp-for="ProfilePicturePath" onchange="displayFileName()">
+                            <input type="file" id="myFile" name="ProfilePicturePath" onchange="displayFileName()" asp-for="ProfilePicturePath">
                             <span id="file-name">No file chosen</span>
                             <div class="error-invalid-img">
                                 @Html.ValidationMessageFor(model => model.ProfilePicturePath, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                    </div>
-                    <div class="pass-input">
-                        <div style="position: relative;">
-                            <input asp-for="ConfirmPassword" type="password" class="password" id="confirm-password" placeholder="Confirm Password" required>
-                            <div class="error-invalid-password">
-                                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-                            </div>
-                        </div>                            
-                        <span class="toggle-password" onclick="toggleConfirmPasswordVisibility()">
-                            <img class="img-eye" src="/images/LoginImg/eye-close-up-svgrepo-com.svg" alt="Show/Hide" id="eyeconfirm-icon">
-                        </span>
-                    </div>
+                    </div>                 
                 </div>
                 
                 <input class="submit" type="submit" value="Create Admin">

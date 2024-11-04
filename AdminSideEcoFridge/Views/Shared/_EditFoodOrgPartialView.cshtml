@@ -27,13 +27,13 @@
                     </div>
 
                     <div class="user-details">
-                        <input type="text" id="editFoodBaranggay" asp-for="Barangay">
+                        <input type="text" id="editFoodBaranggay" asp-for="Barangay" readonly>
                     </div>
                     <div class="user-details">
-                        <input type="text" id="editFoodCity" asp-for="City">
+                        <input type="text" id="editFoodCity" asp-for="City" readonly>
                     </div>
                     <div class="user-details">
-                        <input type="text" id="editFoodProvince" asp-for="Province">
+                        <input type="text" id="editFoodProvince" asp-for="Province" readonly>
                     </div>
                 </div>
 
@@ -46,58 +46,18 @@
             </div>
         </div>
         <div class="action-dropdown">
-            <button type="button" class="action-drop">Action</button>
+            @if(Model.AccountApproved == null)
+            {
+                <button type="button" class="action-drop">Action</button>
+            }           
             <div class="dropdown">
-                @if (Model.AccountApproved == null)
-                {
-                    <button class="actions" type="button" id="food-approveBtn">Approve</button>
-                    <button class="actions" type="button" id="food-declineBtn">Decline</button>
-                }
-                else if (Model.AccountApproved == true)
-                {
-                    <button class="actions" type="button" id="food-declineBtn">Decline</button>
-                }
-                else
-                {
-                    <button class="actions" type="button" id="food-approveBtn">Approve</button>
-                }
-
+                <button class="actions" type="button" data-action="approve">Approve</button>
+                <button class="actions" type="button" data-action="decline">Decline</button>
             </div>
         </div>
-        <div id="food-modal-approval" class="modal-approval-overlay">
-            <div class="modal-approval">
-                <div style="display: flex; flex-direction: column; align-content: start; justify-content: start; text-align: start; width: 400px; margin-right: 10px;">
-                    <h2>Approval Notice</h2>
-                    <label for="customApproveMessage">Message to @Model.FoodBusinessName</label>
-                    <label for="customApproveMessage">Send to: @Model.Email</label>
-                </div>
-                <textarea id="customApproveMessage" rows="5" style="width: 390px; padding: 10px; height: 250px; margin-top: 5px; margin-bottom: 10px; text-align: left; line-height: 1.6; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #ccc; border-radius: 5px; color: #000000; background-color: #f9f9f9; white-space: pre-wrap; resize: none;">
-Good day @Model.FoodBusinessName,
-
-Congrats we are informing you that your request has been approved.
-        </textarea>
-                <button type="button" id="food-closeApprovalModalBtn">Send</button>
-            </div>
-        </div>
-
-        <div id="food-modal-rejected" class="modal-approval-overlay">
-            <div class="modal-approval">
-                <div style="display: flex; flex-direction: column; align-content: start; justify-content: start; text-align: start; width: 400px; margin-right: 10px;">
-                    <h2>Rejection Notice</h2>
-                    <label for="customMessage">Message to @Model.FoodBusinessName</label>
-                    <label for="customMessage">Send to: @Model.Email</label>
-                </div>
-                <textarea id="customMessage" rows="5" style="width: 390px; padding: 10px; height: 250px; margin-top: 5px; margin-bottom: 10px; text-align: left; line-height: 1.6; font-family: Arial, sans-serif; font-size: 14px; border: 1px solid #ccc; border-radius: 5px; color: #000000; background-color: #f9f9f9; white-space: pre-wrap; resize: none;">
-Good day @Model.FoodBusinessName,
-
-We regret to inform you that your request has been rejected due to the following reason:
-        </textarea>
-                <button type="button" id="food-closeDeclineModalBtn">Send</button>
-            </div>
-        </div>
-
+       
         <div class="save-edit-org">
-            @* <a onclick="saveBtn()" id="SaveBtn" class="save-edit-btn">Save</a> *@
+           
             <button type="submit" class="save-edit-btn">Save</button>
         </div>
     </div>
@@ -109,136 +69,31 @@ We regret to inform you that your request has been rejected due to the following
     </div>
 </form>
 <script>
-    document.getElementById("food-closeDeclineModalBtn").addEventListener("click", function () {
-        const spinnerCont = document.getElementById("food-spinner-cont");
-        const spinner = document.getElementById("food-spinner");
-        const sending = document.getElementById("food-sending");
-        const succesSend = document.getElementById("food-success-sending");
-        const message = document.getElementById("customMessage").value.trim(); 
-
-        const email = document.getElementById("editFoodEmail").value;
-
-
-        if (!email) {
-        alert("No email found for the selected user.");
-        return;
-        }
-
-         spinnerCont.style.display = 'block';
-         spinner.style.display = 'block';
-         sending.style.display = 'block';
-         succesSend.style.display = 'none';
-         succesSend.innerText = '';
-   
-        fetch('/Mail/SendRejectionMessage', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ Message: message, Email: email })
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    spinner.style.display = 'none';
-                    sending.style.display = 'none';
-                    succesSend.style.display = 'block';
-                    succesSend.innerText = data.message;                 
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred while sending the message.');
-            })
-            .finally(() => {
-                spinnerCont.style.display = 'block';
-                spinner.style.display = 'none';
-                sending.style.display = 'none';
-                window.location.reload();
-            });
-    });
-
-    document.getElementById("food-closeApprovalModalBtn").addEventListener("click", function () {
-        const spinnerCont = document.getElementById("food-spinner-cont");
-        const spinner = document.getElementById("food-spinner");
-        const sending = document.getElementById("food-sending");
-        const succesSend = document.getElementById("food-success-sending");
-        const message = document.getElementById("customApproveMessage").value.trim();
-
-        spinnerCont.style.display = 'block';
-        spinner.style.display = 'block';
-        sending.style.display = 'block';
-        succesSend.style.display = 'none';
-        succesSend.innerText = '';
-
-        fetch('/Mail/SendApproveMessage', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ Message: message, Email: '@Model.Email' })
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    spinner.style.display = 'none';
-                    sending.style.display = 'none';
-                    succesSend.style.display = 'block';
-                    succesSend.innerText = data.message;
-                } else {
-                    alert(data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred while sending the message.');
-            })
-            .finally(() => {
-                spinnerCont.style.display = 'block';
-                spinner.style.display = 'none';
-                sending.style.display = 'none';
-                window.location.reload();
-            });
-    });
-
-
     document.addEventListener('click', function (event) {
-
-        if (event.target && event.target.id === 'food-approveBtn') {
-            updateAccountApproval(true);
-            document.getElementById('food-modal-approval').style.display = 'block';
-            setTimeout(function () {
-                document.getElementById('food-modal-approval').style.opacity = '1';
-            }, 10);
-        }
-
-        if (event.target && event.target.id === 'food-declineBtn') {
-            updateAccountApproval(false);
-            document.getElementById('food-modal-rejected').style.display = 'block';
-            setTimeout(function () {
-                document.getElementById('food-modal-rejected').style.opacity = '1';
-            }, 10);
-        }
-
-        if (event.target && event.target.id === 'food-closeApprovalModalBtn') {
-            document.getElementById('food-modal-approval').style.opacity = '0';
-            setTimeout(function () {
-                document.getElementById('food-modal-approval').style.display = 'none';
-            }, 300);
-        }
-
-        if (event.target && event.target.id === 'food-closeDeclineModalBtn') {
-            document.getElementById('food-modal-rejected').style.opacity = '0';
-            setTimeout(function () {
-                document.getElementById('food-modal-rejected').style.display = 'none';
-            }, 300);
+        if (event.target.classList.contains('actions')) {
+            const action = event.target.getAttribute('data-action');
+            if (action === 'approve') {
+                updateAccountApproval(true);
+                
+            } else if (action === 'decline') {
+                updateAccountApproval(false);
+                
+            }
         }
     });
 
     function updateAccountApproval(isApproved) {
         const userId = document.getElementById('editUserId').value;
+        const spinnerContainer = document.getElementById('food-spinner-cont');
+        const spinner = document.getElementById('food-spinner');
+        const sendingMessage = document.getElementById('food-sending');
+        const successMessage = document.getElementById('food-success-sending');
+
+        spinnerContainer.style.display = 'block';
+        spinner.style.display = 'block';
+        sendingMessage.style.display = 'block';
+        successMessage.style.display = 'none';
+        successMessage.innerText = '';
 
         $.ajax({
             type: 'POST',
@@ -251,24 +106,31 @@ We regret to inform you that your request has been rejected due to the following
                 if (response.success) {
                     const row = document.querySelector(`tr[data-user-id='${userId}']`);
                     if (row) {
-                        const statusCell = row.querySelector('td:first-child');
-                        if (statusCell) {
+                        if (isApproved) {
 
-                            if (isApproved) {
-                                statusCell.innerHTML = '<button id="food-approveBtn" class="approved-btn">Approved</button>';
-                            } else {
-                                statusCell.innerHTML = '<button id="food-declineBtn" class="reject-btn">Rejected</button>';
-                            }
+                            const statusCell = row.querySelector('td:first-child');
+                            statusCell.innerHTML = '<button class="approved-btn">Approved</button>';
+                        } else {
+                            row.remove();
                         }
                     }
+
+                    sendingMessage.style.display = 'none';
+                    successMessage.style.display = 'block';
+
+                    setTimeout(() => {
+                        spinnerContainer.style.display = 'none';
+                    }, 2000);
                 } else {
                     console.log('Error updating status:', response.message);
+                    spinnerContainer.style.display = 'none';
                 }
             },
             error: function (error) {
                 console.error(error);
+                spinnerContainer.style.display = 'none';
             }
         });
     }
-</script>
 
+</script>

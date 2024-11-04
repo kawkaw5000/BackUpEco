@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,10 +11,7 @@ public partial class User
 
     public string Email { get; set; } = null!;
 
-    [NotMapped]
-    public string ConfirmPassword { get; set; }
-
-    public string Password { get; set; } = null!;
+    public string? Password { get; set; }
 
     public string? FirstName { get; set; }
 

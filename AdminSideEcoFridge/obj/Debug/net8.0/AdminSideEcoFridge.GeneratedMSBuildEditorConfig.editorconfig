@@ -26,34 +26,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/\!\!\!-A-BACKUP/FINAL-ECOFRIDGEAdmin/AdminSideEcoFridge/Areas/Identity/Pages/Account/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/\!\!\!-A-BACKUP/FINAL-ECOFRIDGEAdmin/AdminSideEcoFridge/Areas/Identity/Pages/Account/Logout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/\!\!\!-A-BACKUP/FINAL-ECOFRIDGEAdmin/AdminSideEcoFridge/Areas/Identity/Pages/Account/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/\!\!\!-A-BACKUP/FINAL-ECOFRIDGEAdmin/AdminSideEcoFridge/Areas/Identity/Pages/Account/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/\!\!\!-A-BACKUP/FINAL-ECOFRIDGEAdmin/AdminSideEcoFridge/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/\!\!\!-A-BACKUP/FINAL-ECOFRIDGEAdmin/AdminSideEcoFridge/Areas/Identity/Pages/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/\!\!\!-A-BACKUP/FINAL-ECOFRIDGEAdmin/AdminSideEcoFridge/Areas/Identity/Pages/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/\!\!\!-A-BACKUP/FINAL-ECOFRIDGEAdmin/AdminSideEcoFridge/Views/Account/AdminCreate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBZG1pbkNyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -76,14 +48,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/\!\!\!-A-BACKUP/FINAL-ECOFRIDGEAdmin/AdminSideEcoFridge/Views/Account/RegularCreate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWd1bGFyQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/\!\!\!-A-BACKUP/FINAL-ECOFRIDGEAdmin/AdminSideEcoFridge/Views/Account/_LoginPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxfTG9naW5QYXJ0aWFsLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/\!\!\!-A-BACKUP/FINAL-ECOFRIDGEAdmin/AdminSideEcoFridge/Views/Account/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/\!\!\!-A-BACKUP/FINAL-ECOFRIDGEAdmin/AdminSideEcoFridge/Views/Account/_ViewStart.cshtml]

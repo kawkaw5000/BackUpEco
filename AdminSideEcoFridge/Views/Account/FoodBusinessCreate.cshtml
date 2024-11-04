@@ -62,26 +62,15 @@
                             </div>
                         </div>
                         <div class="margin-gap">
-                            <div class="pass-input">
-                                <input asp-for="Password" type="password" class="password" id="password" placeholder="Password" required>
+                            @* <div class="pass-input">
+                                <input asp-for="Password" type="password" class="password" id="password" placeholder="Password" >
                                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                                 <span class="toggle-password" onclick="togglePasswordVisibility()">
                                     <img class="img-eye" src="/images/LoginImg/eye-close-up-svgrepo-com.svg" alt="Show/Hide" id="eye-icon">
                                 </span>
-                            </div>
+                            </div> *@
                         </div>
                         <div class="margin-gap">
-                            <div class="pass-input">
-                                <div style="position: relative;">
-                                    <input asp-for="ConfirmPassword" type="password" class="password" id="confirm-password" placeholder="Confirm Password" required>
-                                    <div class="error-invalid-password">
-                                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <span class="toggle-password" onclick="toggleConfirmPasswordVisibility()">
-                                    <img class="img-eye" src="/images/LoginImg/eye-close-up-svgrepo-com.svg" alt="Show/Hide" id="eyeconfirm-icon">
-                                </span>
-                            </div>
                         </div>
                     </div>
                     <div class="food-business-cont">
@@ -146,7 +135,6 @@
         const errorMappings = [
 
             { input: ".email", error: ".error-invalid-email" },
-            { input: ".password", error: ".error-invalid-password" },
             { input: "#myFile", error: ".error-invalid-img-regular" },
             { input: "#myPermitFile", error: ".error-invalid-img-proof" },
             { input: ".foodBusinessName", error: ".error-invalid-foodName" },
