@@ -57,7 +57,7 @@
                 <button class="count-btn" onclick="filterByRole('all')">All (@Model.TotalUsers)</button>
             </div>
             <div class="count-num">
-                <button class="count-btn" onclick="filterByRole('personal')">Donor (@Model.DonorCount)</button>
+                <button class="count-btn" onclick="filterByRole('personal')">Personal (@Model.DonorCount)</button>
             </div>
             <div class="count-num">
                 <button class="count-btn" onclick="filterByRole('food business')">Food Business (@Model.FoodBusinessCount)</button>
@@ -112,18 +112,15 @@
                                 data-proofimg="@user.ProofPicturePath"
                                 data-email="@user.Email">
                                 <td>
-                                    @if (@user.AccountApproved == null)
+                                    @if (@user.AccountApproved == false)
                                     {
                                         <button class="pending-btn">Pending</button>
-                                    }
-                                    else if (@user.AccountApproved == false)
-                                    {
-                                        <button class="reject-btn">Rejected</button>
                                     }
                                     else if (@user.AccountApproved == true)
                                     {
                                         <button class="approved-btn">Approved</button>
                                     }
+                               
                                 </td>
                                 <td>@i</td>
                                 <td>@user.RoleName</td>     

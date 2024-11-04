@@ -43,11 +43,11 @@
             </div>
         </div>
         <div class="action-dropdown">
-            @if (Model.AccountApproved == null)
+            @if (Model.AccountApproved == false)
             {
                 <button type="button" class="action-drop">Action</button>
             }
-            <div class="dropdown">         
+            <div id="org-dropdown" class="dropdown">         
                     <button class="actions" type="button" data-action="org-approve">Approve</button>
                     <button class="actions" type="button" data-action="org-decline">Decline</button>          
             </div>
@@ -70,15 +70,58 @@
     document.addEventListener('click', function (event) {
         if (event.target.classList.contains('actions')) {
             const action = event.target.getAttribute('data-action');
+            const buttonAction = document.getElementById('org-dropdown');       
+            const spinnerCont = document.getElementById('spinner-cont');
+            const spinner = document.getElementById('spinner');
+            const sending = document.getElementById('sending');
+            const succesSend = document.getElementById('success-sending');
+
+            const userId = document.getElementById('editOrgUserId').value;
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            console.log('id is', userId);
+
+
+            buttonAction.style.display = 'none';
             if (action === 'org-approve') {
                 updateAccountApproval(true);
 
             } else if (action === 'org-decline') {
-                updateAccountApproval(false);
+                spinnerCont.style.display = 'block';
+                spinner.style.display = 'block';
+                sending.style.display = 'block';
+                succesSend.style.display = 'none';
+                succesSend.innerText = '';
+                fetch(`/Account/RecordDelete?userId=${userId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'RequestVerificationToken': token
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        spinner.style.display = 'none';
+                        sending.style.display = 'none';
+                        succesSend.style.display = 'block';              
+                        const row = document.querySelector(`tr[data-user-id='${userId}']`);
+                        if (row) row.remove();
+                     
+                    } else {
+                        console.error("Failed to delete the user.");
+                    }
+                })
+                .catch(error => console.error('Error:', error))
+                .finally(() => {
+                    spinnerCont.style.display = 'none';
+                });
 
             }
         }
     });
+
+
     function updateAccountApproval(isApproved) {
         const userId = document.getElementById('editOrgUserId').value;
         const spinnerContainer = document.getElementById('spinner-cont');
@@ -117,7 +160,7 @@
 
                     setTimeout(() => {
                         spinnerContainer.style.display = 'none';
-                    }, 2000);
+                    }, 1100);
                 } else {
                     console.log('Error updating status:', response.message);
                     spinnerContainer.style.display = 'none';
@@ -129,4 +172,57 @@
             }
         });
     }
+
+
+
+    // function updateAccountApproval(isApproved) {
+    //     const userId = document.getElementById('editOrgUserId').value;
+    //     const spinnerContainer = document.getElementById('spinner-cont');
+    //     const spinner = document.getElementById('spinner');
+    //     const sendingMessage = document.getElementById('sending');
+    //     const successMessage = document.getElementById('success-sending');
+
+    //     spinnerContainer.style.display = 'block';
+    //     spinner.style.display = 'block';
+    //     sendingMessage.style.display = 'block';
+    //     successMessage.style.display = 'none';
+    //     successMessage.innerText = '';
+
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: '@Url.Action("UpdateAccountApproval", "Account")',
+    //         data: {
+    //             userId: userId,
+    //             isApproved: isApproved
+    //         },
+    //         success: function (response) {
+    //             if (response.success) {
+    //                 const row = document.querySelector(`tr[data-user-id='${userId}']`);
+    //                 if (row) {
+    //                     if (isApproved) {
+
+    //                         const statusCell = row.querySelector('td:first-child');
+    //                         statusCell.innerHTML = '<button class="approved-btn">Approved</button>';
+    //                     } else {
+    //                         row.remove();
+    //                     }
+    //                 }
+
+    //                 sendingMessage.style.display = 'none';
+    //                 successMessage.style.display = 'block';
+
+    //                 setTimeout(() => {
+    //                     spinnerContainer.style.display = 'none';
+    //                 }, 2000);
+    //             } else {
+    //                 console.log('Error updating status:', response.message);
+    //                 spinnerContainer.style.display = 'none';
+    //             }
+    //         },
+    //         error: function (error) {
+    //             console.error(error);
+    //             spinnerContainer.style.display = 'none';
+    //         }
+    //     });
+    // }
 </script>

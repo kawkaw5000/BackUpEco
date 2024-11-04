@@ -598,12 +598,11 @@ namespace AdminSideEcoFridge.Controllers
             var allowedEmailDomains = new[] { "gmail.com", "yahoo.com", "ymail.com" };
             Guid guid = Guid.NewGuid();
             user.Password = guid.ToString("N").Substring(0, 8);
-            //Set blank inputs
             user.FirstName = " ";
             user.LastName = " ";
             user.Gender = "M";
             user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
-            user.AccountApproved = null;
+            user.AccountApproved = false;
 
             //Check if email already exists
             var existingEmail = _db.Users.FirstOrDefault(model => model.Email == user.Email);
@@ -792,7 +791,7 @@ namespace AdminSideEcoFridge.Controllers
             user.LastName = " ";
             user.Gender = "M";
             user.Birthdate = DateOnly.FromDateTime(DateTime.Now);
-            user.AccountApproved = null;
+            user.AccountApproved = false;
 
             //Check if email already exists
             var existingEmail = _db.Users.FirstOrDefault(model => model.Email == user.Email);
@@ -975,7 +974,68 @@ namespace AdminSideEcoFridge.Controllers
             return RedirectToAction("Dashboard", "Home");
         }
 
-      
+        
+        [HttpDelete]
+        [ValidateAntiForgeryToken]
+        public IActionResult RecordDelete(int userId)
+        {
+            // Retrieve the user by ID
+            var user =_userManager.GetUserById(userId);
+            if (user == null)
+            {
+                return NotFound(); 
+            }
+
+            try
+            {
+                var sendersEmail = _configuration["EmailSettings:SendersEmail"];
+                var sendersPassword = _configuration["EmailSettings:SendersPassword"];
+                var noreplyEmail = "no-reply@ecofridge.com";
+                var subject = "Rejection Notice";
+                var body = $@"
+                            <div style='font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;'>
+                                <div style='max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
+                                    <h2 style='color: #333;'>Rejection Notice</h2>
+                                    <p>Hello there this is from EcoFridge;</p>                                                                     
+                                    <p>We regret to inform you that your request has been rejected.</p>
+                                    <hr style='border: none; border-top: 1px solid #eee; margin: 20px 0;' />
+                                    <p>If you didn't request this, please ignore this email or contact support.</p>
+                                    <p>Thank you,</p>
+                                    <p><strong>Team Snackers</strong></p>
+                                </div>
+                            </div>";
+
+                using (MailMessage message = new MailMessage())
+                {
+                    message.From = new MailAddress(noreplyEmail);
+                    message.To.Add(user.Email);
+                    message.Subject = subject;
+                    message.Body = body;
+                    message.IsBodyHtml = true;
+
+                    using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                    {
+                        smtp.Credentials = new NetworkCredential(sendersEmail, sendersPassword);
+                        smtp.EnableSsl = true;
+                        smtp.Send(message);
+                    }
+                }
+
+                var result = _userRepo.Delete(user.UserId);
+                if (result == ErrorCode.Success)
+                {
+                    return NoContent();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error during user deletion: {ex.Message}");
+                return StatusCode(500, "An error occurred while processing your request.");
+            }
+
+            return BadRequest("User deletion failed.");
+        }
+
         [HttpPost]
         public JsonResult UpdateAccountApproval(string userId, bool isApproved)
         {
@@ -1026,6 +1086,7 @@ namespace AdminSideEcoFridge.Controllers
                                         smtp.Send(message);
                                     }
                                 }
+                                return Json(new { success = true, message = "Sent successfully!" });
                             }
                             catch (Exception ex)
                             {
