@@ -2640,6 +2640,38 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_03063822-86a6-4a70-bcbd-8de9d8d39e9e.png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_0443ff85-b4cb-40c1-83cd-85734db82383.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_0443ff85-b4cb-40c1-83cd-85734db82383.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_0443ff85-b4cb-40c1-83cd-85734db82383.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_04d2eb26-bba7-4080-b66c-41bff2616e25.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_04d2eb26-bba7-4080-b66c-41bff2616e25.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_04d2eb26-bba7-4080-b66c-41bff2616e25.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_078324db-9c51-473b-b2f1-cadd0e8fd030.png))">
       <SourceType>Package</SourceType>
       <SourceId>AdminSideEcoFridge</SourceId>
@@ -2768,6 +2800,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_1605452b-76ab-4e6b-8a04-385c4118f9d0.png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_1ec3b191-825e-4644-96be-57b26b3bd626.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_1ec3b191-825e-4644-96be-57b26b3bd626.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_1ec3b191-825e-4644-96be-57b26b3bd626.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_1f8d1cab-0f53-4618-bdf9-0a1d7599164e.png))">
       <SourceType>Package</SourceType>
       <SourceId>AdminSideEcoFridge</SourceId>
@@ -2815,6 +2863,38 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_216a64ea-bf81-490b-9f58-f87b6b2ca2e1.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_217affd6-dfa9-4201-a24c-e8108e79ebf5.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_217affd6-dfa9-4201-a24c-e8108e79ebf5.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_217affd6-dfa9-4201-a24c-e8108e79ebf5.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_24d90d20-977e-4d8f-88b8-7b083d9a3a89.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_24d90d20-977e-4d8f-88b8-7b083d9a3a89.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_24d90d20-977e-4d8f-88b8-7b083d9a3a89.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_26d5d8ad-ed61-4cd4-bb3f-1413a8225f28.png))">
       <SourceType>Package</SourceType>
@@ -3152,6 +3232,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_52d1fbff-b74f-4076-916c-c44f3ccdf79f.png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_54761095-3cd4-42c8-a2b2-b96a578c6a71.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_54761095-3cd4-42c8-a2b2-b96a578c6a71.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_54761095-3cd4-42c8-a2b2-b96a578c6a71.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_54d43e67-c454-4d79-b5be-7640ee42a54c.png))">
       <SourceType>Package</SourceType>
       <SourceId>AdminSideEcoFridge</SourceId>
@@ -3215,6 +3311,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_5ae6d07d-c60e-4c58-b7c6-c4bfb0b6aebc.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_5b775555-52c1-48d1-b47e-44cc81d4783d.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_5b775555-52c1-48d1-b47e-44cc81d4783d.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_5b775555-52c1-48d1-b47e-44cc81d4783d.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_5cc553e5-de79-4cb1-9b0e-931add0efde3.png))">
       <SourceType>Package</SourceType>
@@ -3280,6 +3392,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_62872a5f-7a53-46ad-8c60-4260a7292d8f.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_6374261c-d618-4f65-959f-30e1f58834bd.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_6374261c-d618-4f65-959f-30e1f58834bd.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_6374261c-d618-4f65-959f-30e1f58834bd.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_63ad4829-b23d-418b-a585-e55d39c054f7.png))">
       <SourceType>Package</SourceType>
       <SourceId>AdminSideEcoFridge</SourceId>
@@ -3295,6 +3423,54 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_63ad4829-b23d-418b-a585-e55d39c054f7.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_679c3068-889d-4b20-a85f-7f9d0d495e16.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_679c3068-889d-4b20-a85f-7f9d0d495e16.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_679c3068-889d-4b20-a85f-7f9d0d495e16.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_6896a276-cca9-4d04-a9a9-97813f531a2a.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_6896a276-cca9-4d04-a9a9-97813f531a2a.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_6896a276-cca9-4d04-a9a9-97813f531a2a.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_6bc591ad-e293-4dff-856a-27e2cb59c9a6.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_6bc591ad-e293-4dff-856a-27e2cb59c9a6.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_6bc591ad-e293-4dff-856a-27e2cb59c9a6.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_6c0fc706-1d49-49e2-8930-4d29d6c36a86.png))">
       <SourceType>Package</SourceType>
@@ -3344,6 +3520,38 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_74618fd1-984d-47ae-840e-c0e3d3f87cb9.png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_778b5176-a108-4111-a669-514bc133d560.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_778b5176-a108-4111-a669-514bc133d560.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_778b5176-a108-4111-a669-514bc133d560.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_782610d7-0bed-4c28-8ed4-2be6c85bedf6.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_782610d7-0bed-4c28-8ed4-2be6c85bedf6.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_782610d7-0bed-4c28-8ed4-2be6c85bedf6.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_7d36be9c-2ec9-4505-8960-3b70e2ec6466.png))">
       <SourceType>Package</SourceType>
       <SourceId>AdminSideEcoFridge</SourceId>
@@ -3391,6 +3599,38 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_7e76d890-f4d2-4f8c-b0bc-e1dfaa3e36f9.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_870bd359-a56b-4053-9b8e-d14fdfa3a801.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_870bd359-a56b-4053-9b8e-d14fdfa3a801.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_870bd359-a56b-4053-9b8e-d14fdfa3a801.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_8c341a33-211e-4399-9a91-af86ae9bee0b.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_8c341a33-211e-4399-9a91-af86ae9bee0b.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_8c341a33-211e-4399-9a91-af86ae9bee0b.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_8c374e88-4d7b-444f-8d6e-72d35842126b.png))">
       <SourceType>Package</SourceType>
@@ -3504,6 +3744,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_9be8f216-1813-43e8-846d-35140ecee820.png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_9c261553-e99d-4e82-94b9-d399e54268f6.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_9c261553-e99d-4e82-94b9-d399e54268f6.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_9c261553-e99d-4e82-94b9-d399e54268f6.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_9fb05d69-5563-4e88-ae53-0ad2a7ee47f1.png))">
       <SourceType>Package</SourceType>
       <SourceId>AdminSideEcoFridge</SourceId>
@@ -3520,6 +3776,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_9fb05d69-5563-4e88-ae53-0ad2a7ee47f1.png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_a255d549-ca95-4f1a-a97e-9e706b043623.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_a255d549-ca95-4f1a-a97e-9e706b043623.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_a255d549-ca95-4f1a-a97e-9e706b043623.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_a4c177de-2200-44bc-a652-6400ad3d6467.png))">
       <SourceType>Package</SourceType>
       <SourceId>AdminSideEcoFridge</SourceId>
@@ -3535,6 +3807,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_a4c177de-2200-44bc-a652-6400ad3d6467.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_a6119ab8-4d5a-4d4c-9aeb-4523361b92d9.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_a6119ab8-4d5a-4d4c-9aeb-4523361b92d9.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_a6119ab8-4d5a-4d4c-9aeb-4523361b92d9.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_a73db05a-4d47-4a7d-be33-2c30314c7238.png))">
       <SourceType>Package</SourceType>
@@ -3664,6 +3952,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_bff006fc-79b2-4fbe-870b-d846e7edc45b.png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_c460bd26-93c0-4f49-9557-bad677739502.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_c460bd26-93c0-4f49-9557-bad677739502.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_c460bd26-93c0-4f49-9557-bad677739502.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_c784060f-531e-4b9c-a9ca-6e4c35413ee9.png))">
       <SourceType>Package</SourceType>
       <SourceId>AdminSideEcoFridge</SourceId>
@@ -3679,6 +3983,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_c784060f-531e-4b9c-a9ca-6e4c35413ee9.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_c80ad66b-81a3-4d49-b472-c23e81cd01fb.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_c80ad66b-81a3-4d49-b472-c23e81cd01fb.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_c80ad66b-81a3-4d49-b472-c23e81cd01fb.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_cb4d91c3-193d-492b-a7b6-46aa6795dd26.png))">
       <SourceType>Package</SourceType>
@@ -3743,6 +4063,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_d0b1eca4-d019-45a6-a814-51bffa454418.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_da7684be-5d65-4bda-abd5-a2539a813d98.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_da7684be-5d65-4bda-abd5-a2539a813d98.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_da7684be-5d65-4bda-abd5-a2539a813d98.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_dfa5ba29-ce6f-46e5-b137-89bf51d6d92e.jpg))">
       <SourceType>Package</SourceType>
@@ -3872,6 +4208,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_ed54835f-e502-4992-b99c-5d46362a576d.png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_f27bf253-2d10-47b4-83ec-30c9cb6836ea.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_f27bf253-2d10-47b4-83ec-30c9cb6836ea.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_f27bf253-2d10-47b4-83ec-30c9cb6836ea.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_f29b2dbc-3c1e-4b83-a267-587f987a0528.png))">
       <SourceType>Package</SourceType>
       <SourceId>AdminSideEcoFridge</SourceId>
@@ -3919,6 +4271,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_fa34b810-815e-45c7-8c1a-4da37b17211a.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_fc18593f-db0d-491f-9be4-a05b45ee0cff.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/foodProofs/proof_fc18593f-db0d-491f-9be4-a05b45ee0cff.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_fc18593f-db0d-491f-9be4-a05b45ee0cff.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\foodProofs\proof_ff5afa7c-af09-41cb-866d-d23cdab5205f.png))">
       <SourceType>Package</SourceType>
@@ -4192,6 +4560,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_3dd87538-6c3e-4f9f-885d-9573519d582a.png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_41d72e9e-bb92-4259-ba83-d6b89738e67f.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/organizationProofs/proof_41d72e9e-bb92-4259-ba83-d6b89738e67f.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_41d72e9e-bb92-4259-ba83-d6b89738e67f.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_465a8ca6-e8ea-497a-a68b-2b790c42db40.png))">
       <SourceType>Package</SourceType>
       <SourceId>AdminSideEcoFridge</SourceId>
@@ -4207,6 +4591,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_465a8ca6-e8ea-497a-a68b-2b790c42db40.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_46e1119f-0044-4857-a597-6fbbb6667206.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/organizationProofs/proof_46e1119f-0044-4857-a597-6fbbb6667206.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_46e1119f-0044-4857-a597-6fbbb6667206.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_4908bb69-ac25-42fb-8598-7014e9c9a450.png))">
       <SourceType>Package</SourceType>
@@ -4239,6 +4639,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_4ca78190-8e29-4ea4-82fd-080c60183b71.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_5f7feebf-d579-4e1d-a417-f08ff1d3456d.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/organizationProofs/proof_5f7feebf-d579-4e1d-a417-f08ff1d3456d.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_5f7feebf-d579-4e1d-a417-f08ff1d3456d.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_5fcf7eec-c9bc-4eb5-b8a2-beadfc36d579.png))">
       <SourceType>Package</SourceType>
@@ -4287,6 +4703,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_6931929e-459d-4549-8b9b-d78738b69718.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_6b61a6e4-4a62-4d8a-9bfe-495811c9c57c.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/organizationProofs/proof_6b61a6e4-4a62-4d8a-9bfe-495811c9c57c.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_6b61a6e4-4a62-4d8a-9bfe-495811c9c57c.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_6dfce4db-26bc-48f2-8b6b-14edac2f550f.png))">
       <SourceType>Package</SourceType>
@@ -4432,6 +4864,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_b2c61341-ddc4-4ac8-9b05-f1757285b6b7.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_b920418e-9265-461a-9ebf-e76717bf9405.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/organizationProofs/proof_b920418e-9265-461a-9ebf-e76717bf9405.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_b920418e-9265-461a-9ebf-e76717bf9405.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_b9c01e1f-3f8d-4649-b60b-65854b34df99.png))">
       <SourceType>Package</SourceType>
       <SourceId>AdminSideEcoFridge</SourceId>
@@ -4480,6 +4928,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_c90aa97e-5c2f-4538-b9eb-3651c19773f9.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_cb52ca7c-0d58-43c3-9b82-a2a7fd84fdee.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/organizationProofs/proof_cb52ca7c-0d58-43c3-9b82-a2a7fd84fdee.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_cb52ca7c-0d58-43c3-9b82-a2a7fd84fdee.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_d4a49161-222b-45eb-af05-d8acfd179e2c.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>AdminSideEcoFridge</SourceId>
@@ -4495,6 +4959,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_d4a49161-222b-45eb-af05-d8acfd179e2c.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_f8991de7-4275-4c5f-b19f-4f2b558c5ae8.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>AdminSideEcoFridge</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/AdminSideEcoFridge</BasePath>
+      <RelativePath>images/proofs/organizationProofs/proof_f8991de7-4275-4c5f-b19f-4f2b558c5ae8.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\organizationProofs\proof_f8991de7-4275-4c5f-b19f-4f2b558c5ae8.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\proofs\proof_010aeabf-edce-407a-8187-72493a9110ce.png))">
       <SourceType>Package</SourceType>

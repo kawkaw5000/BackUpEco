@@ -66,7 +66,7 @@
     <div id="food-spinner-cont" class="spinner-cont">
         <div class="spinner" id="food-spinner"></div>
         <p id="food-sending">Sending please wait.</p>
-        <p id="food-success-sending">Sent Successfully!<img src="/images/Create-icons/check-mark-svgrepo-com.svg"/></p>
+        <p id="food-success-sending">Sent Successfully!@* <img style="height:60px;" src="/images/Create-icons/check-mark-svgrepo-com.svg"/> *@</p>
     </div>
 </form>
 <script>
@@ -84,20 +84,26 @@
             const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
 
 
-            buttonAction.style.display = 'none';
-
-            console.log('id is', userId);
-           
+                  
 
             if (action === 'approve') {
                 updateAccountApproval(true);
-                
-            } else if (action === 'decline') {
+                buttonAction.style.display = 'none';
                 spinnerCont.style.display = 'block';
                 spinner.style.display = 'block';
                 sending.style.display = 'block';
                 succesSend.style.display = 'none';
                 succesSend.innerText = '';
+                buttonAction.style.display = 'none';
+
+            } else if (action === 'decline') {
+             
+                spinnerCont.style.display = 'block';
+                spinner.style.display = 'block';
+                sending.style.display = 'block';
+                succesSend.style.display = 'none';
+                succesSend.innerText = '';
+                buttonAction.style.display = 'none';
                 fetch(`/Account/RecordDelete?userId=${userId}`, {
                     method: 'DELETE',
                     headers: {
@@ -110,7 +116,9 @@
                     if (response.ok) {
                         spinner.style.display = 'none';
                         sending.style.display = 'none';
-                        succesSend.style.display = 'block';              
+                        succesSend.style.display = 'none';
+                            spinnerCont.style.display = 'none';
+                        
                         const row = document.querySelector(`tr[data-user-id='${userId}']`);
                         if (row) row.remove();
                      
@@ -120,7 +128,7 @@
                 })
                 .catch(error => console.error('Error:', error))
                 .finally(() => {
-                    spinnerCont.style.display = 'none';
+                    
                 });
             }
         }
@@ -133,12 +141,6 @@
         const sendingMessage = document.getElementById('food-sending');
         const successMessage = document.getElementById('food-success-sending');
 
-        spinnerContainer.style.display = 'block';
-        spinner.style.display = 'block';
-        sendingMessage.style.display = 'block';
-        successMessage.style.display = 'none';
-        successMessage.innerText = '';
-
         $.ajax({
             type: 'POST',
             url: '@Url.Action("UpdateAccountApproval", "Account")',
@@ -150,18 +152,16 @@
                 if (response.success) {
                     const row = document.querySelector(`tr[data-user-id='${userId}']`);
                     if (row) {
-                        if (isApproved) {
-
-                            const statusCell = row.querySelector('td:first-child');
-                            statusCell.innerHTML = '<button class="approved-btn">Approved</button>';
-                        } else {
-                            row.remove();
-                        }
+                        const statusCell = row.querySelector('td:first-child');
+                        statusCell.innerHTML = isApproved ? '<button class="approved-btn">Approved</button>' : '';
+                        if (!isApproved) row.remove();
                     }
 
+                    // Hide sending and show success
                     sendingMessage.style.display = 'none';
                     successMessage.style.display = 'block';
 
+                    // Hide the spinner after success message is shown
                     setTimeout(() => {
                         spinnerContainer.style.display = 'none';
                     }, 1100);
@@ -176,5 +176,6 @@
             }
         });
     }
+
 
 </script>
