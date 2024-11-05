@@ -50,7 +50,7 @@
     <div class="user-container">
      
         <div class="admin-create"><button>Personal User</button></div>
-        <form asp-action="RegularCreate" method="post" enctype="multipart/form-data">
+        <form asp-action="RegularCreate" method="post" enctype="multipart/form-data" onsubmit="disableSubmitButton()">
         <div class="dashboard-home-container">
             <div class="food-dashboard-home-container">
                 <div class="food-business-cont">
@@ -123,7 +123,7 @@
                     </div>             
                 </div>
             </div>
-            <input class="confirm" type="submit">
+                <input class="confirm" type="submit" id="reg-submit-button">
         </div>
         </form>
     </div>
@@ -168,6 +168,12 @@
             });
         });
     });
+
+    function disableSubmitButton() {
+        const submitButton = document.getElementById('reg-submit-button');
+        submitButton.disabled = true;
+        submitButton.value = "Processing...";
+    }
 </script>
 <script src="~/js/login.js"></script>
 <script src="~/js/admin-create.js"></script>

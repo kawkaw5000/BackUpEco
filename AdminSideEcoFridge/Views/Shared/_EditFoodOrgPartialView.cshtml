@@ -157,11 +157,9 @@
                         if (!isApproved) row.remove();
                     }
 
-                    // Hide sending and show success
                     sendingMessage.style.display = 'none';
                     successMessage.style.display = 'block';
 
-                    // Hide the spinner after success message is shown
                     setTimeout(() => {
                         spinnerContainer.style.display = 'none';
                     }, 1100);

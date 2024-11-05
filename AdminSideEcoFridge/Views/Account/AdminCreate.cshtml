@@ -48,7 +48,7 @@
 
     <div class="user-container">
         <div class="admin-create"><button>Admin</button></div>
-        <form asp-action="AdminCreate" method="post" enctype="multipart/form-data">
+        <form asp-action="AdminCreate" method="post" enctype="multipart/form-data" onsubmit="disableSubmitButton()">
             <div class="dashboard-home-container">        
                 <div class="flex-row">
                     <div class="margin-gap">
@@ -82,7 +82,7 @@
                     </div>                 
                 </div>
                 
-                <input class="submit" type="submit" value="Create Admin">
+                <input id="submit-button" class="submit" type="submit" value="Create Admin">
             </div>
         </form>
         <div class="back-to">
@@ -129,6 +129,12 @@
             });
         });
     });
+
+    function disableSubmitButton() {
+        const submitButton = document.getElementById('submit-button');
+        submitButton.disabled = true;
+        submitButton.value = "Processing...";
+    }
 </script>
 <script src="~/js/login.js"></script>
 <script src="~/js/admin-create.js"></script>

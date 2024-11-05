@@ -48,7 +48,7 @@
     <div class="user-container">
         </div>
         <div class="admin-create"><button>Food Business</button></div>
-        <form asp-action="FoodBusinessCreate" method="post" enctype="multipart/form-data">
+        <form asp-action="FoodBusinessCreate" method="post" enctype="multipart/form-data" onsubmit="disableSubmitButton()">
             <div class="dashboard-home-container">
                 <div class="food-dashboard-home-container">
                     <div class="food-business-cont">
@@ -125,7 +125,7 @@
                         </div>
                     </div>
                 </div>
-                <input class="confirm" type="submit">
+                <input class="confirm" id="food-submit-button" type="submit">
             </div>
         </form>
     </div>
@@ -171,6 +171,12 @@
             });
         });
     });
+
+    function disableSubmitButton() {
+        const submitButton = document.getElementById('food-submit-button');
+        submitButton.disabled = true;
+        submitButton.value = "Processing...";
+    }
 </script>
 <script src="~/js/login.js"></script>
 <script src="~/js/admin-create.js"></script>
