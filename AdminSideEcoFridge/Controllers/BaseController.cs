@@ -2,6 +2,7 @@
 using AdminSideEcoFridge.Repository;
 using AdminSideEcoFridge.Models;
 using AdminSideEcoFridge.Models.CustomModels;
+using System.Security.Claims;
 
 namespace AdminSideEcoFridge.Controllers
 {
@@ -30,6 +31,7 @@ namespace AdminSideEcoFridge.Controllers
         public BaseRepository<Donor> _donorRepo;
         public BaseRepository<VwUsersRoleView> _vwUsersRoleViewRepo;
         public BaseRepository<VwUsersFoodItem> _vwUsersFoodItemRepo;
+        public int UserId { get { var userId = Convert.ToInt32(User.FindFirst(ClaimsIdentity.DefaultNameClaimType)?.Value); return userId; } }
         public BaseController()
         {   
             _db = new EcoFridgeDbContext();

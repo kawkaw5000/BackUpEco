@@ -1605,6 +1605,7 @@ D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\AdminSi
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\AdminSideEcoFridge.pdb
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\Azure.Core.dll
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\Azure.Identity.dll
+D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\BCrypt.Net-Next.dll
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\FluentAssertions.dll
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\Humanizer.dll
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\Microsoft.AspNetCore.Razor.Language.dll
@@ -1659,6 +1660,7 @@ D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\NuGet.P
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\NuGet.ProjectModel.dll
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\NuGet.Protocol.dll
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\NuGet.Versioning.dll
+D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\BouncyCastle.Crypto.dll
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\System.CodeDom.dll
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\System.Composition.AttributedModel.dll
 D:\!!!-A-BACKUP\FINAL-ECOFRIDGEAdmin\AdminSideEcoFridge\bin\Debug\net8.0\System.Composition.Convention.dll

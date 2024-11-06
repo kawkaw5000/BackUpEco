@@ -3,20 +3,36 @@
   "WorkspaceRootPath": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\final-ecofridgeadmin\\adminsideecofridge\\views\\account\\admincreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\account\\admincreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\final-ecofridgeadmin\\adminsideecofridge\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\final-ecofridgeadmin\\adminsideecofridge\\views\\account\\foodbusinesscreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\account\\foodbusinesscreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\final-ecofridgeadmin\\adminsideecofridge\\views\\account\\regularcreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\account\\regularcreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\final-ecofridgeadmin\\adminsideecofridge\\views\\account\\organizationcreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\account\\organizationcreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\final-ecofridgeadmin\\adminsideecofridge\\views\\account\\regularcreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\account\\regularcreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\final-ecofridgeadmin\\adminsideecofridge\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\final-ecofridgeadmin\\adminsideecofridge\\wwwroot\\css\\forgotpass.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\wwwroot\\css\\forgotpass.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\final-ecofridgeadmin\\adminsideecofridge\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\final-ecofridgeadmin\\adminsideecofridge\\views\\account\\foodbusinesscreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\account\\foodbusinesscreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\final-ecofridgeadmin\\adminsideecofridge\\views\\account\\admincreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\account\\admincreate.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,12 +47,65 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "BaseController.cs",
+              "DocumentMoniker": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Controllers\\BaseController.cs",
+              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Controllers\\BaseController.cs",
+              "ToolTip": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Controllers\\BaseController.cs",
+              "RelativeToolTip": "AdminSideEcoFridge\\Controllers\\BaseController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwAQAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T15:42:33.664Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "forgotpass.css",
+              "DocumentMoniker": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\css\\forgotpass.css",
+              "RelativeDocumentMoniker": "AdminSideEcoFridge\\wwwroot\\css\\forgotpass.css",
+              "ToolTip": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\css\\forgotpass.css",
+              "RelativeToolTip": "AdminSideEcoFridge\\wwwroot\\css\\forgotpass.css",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAAEAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-06T03:47:40.848Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "AdminSideEcoFridge\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-06T03:39:25.016Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "AdminSideEcoFridge\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAASwCMAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T15:42:59.097Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "RegularCreate.cshtml",
               "DocumentMoniker": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Views\\Account\\RegularCreate.cshtml",
               "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Account\\RegularCreate.cshtml",
               "ToolTip": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Views\\Account\\RegularCreate.cshtml",
               "RelativeToolTip": "AdminSideEcoFridge\\Views\\Account\\RegularCreate.cshtml",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAADsAAABqAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-05T14:38:36.916Z",
               "EditorCaption": ""
@@ -49,14 +118,14 @@
               "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Account\\OrganizationCreate.cshtml",
               "ToolTip": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Views\\Account\\OrganizationCreate.cshtml",
               "RelativeToolTip": "AdminSideEcoFridge\\Views\\Account\\OrganizationCreate.cshtml",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAADkAAABuAAAAAAAAAA==",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAFUAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-05T14:37:03.197Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "FoodBusinessCreate.cshtml",
               "DocumentMoniker": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Views\\Account\\FoodBusinessCreate.cshtml",
               "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Account\\FoodBusinessCreate.cshtml",
@@ -69,13 +138,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "AdminCreate.cshtml",
               "DocumentMoniker": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Views\\Account\\AdminCreate.cshtml",
               "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Account\\AdminCreate.cshtml",
               "ToolTip": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Views\\Account\\AdminCreate.cshtml",
               "RelativeToolTip": "AdminSideEcoFridge\\Views\\Account\\AdminCreate.cshtml",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAC0AAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADAAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-05T14:21:33.168Z",
               "EditorCaption": ""

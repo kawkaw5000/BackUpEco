@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using AdminSideEcoFridge.Utils;
-using AdminSideEcoFridge.Repository;
 using Microsoft.AspNetCore.Authorization;
 using System.Net.Mail;
 using System.Net;
@@ -22,6 +21,7 @@ namespace AdminSideEcoFridge.Controllers
             _configuration = configuration;
             _webHostEnvironment = webHostEnvironment;
         }
+
         #region Login Authentication -
         [AllowAnonymous]
         public IActionResult Login()
@@ -36,6 +36,92 @@ namespace AdminSideEcoFridge.Controllers
         public IActionResult ChangePass()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult ChangePass(User u)
+        {
+            if (u == null)
+            {
+                return NotFound();
+            }
+
+            var authUser = _userRepo.Get(UserId);
+            if (authUser == null)
+            {
+                return NotFound();
+            }
+
+            if (u.CurrentPassword != authUser.Password)
+            {
+                ModelState.AddModelError("CurrentPassword", "Incorrect current password!");
+            }
+
+            if (u.NewPassword != u.ConfirmNewPassword)
+            {
+                ModelState.AddModelError("NewPassword", "New and Confirm password do not match!");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    Console.WriteLine(error.ErrorMessage);
+                }
+                return View(u);
+            }
+
+            authUser.Password = u.NewPassword;
+            var result = _userRepo.Update(authUser.UserId, authUser);
+
+            if (result == ErrorCode.Success)
+            {
+
+                var sendersEmail = _configuration["EmailSettings:SendersEmail"];
+                var sendersPassword = _configuration["EmailSettings:SendersPassword"];
+                var noreplyEmail = "no-reply@ecofridge.com";
+                var subject = "Change Password Notice";
+                var body = $@"
+                <div style='font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;'>
+                    <div style='max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
+                        <h2 style='color: #333;'>Change Password Confirmation</h2>
+                        <p>Hello from EcoFridge,</p>
+                        <p>We’re writing to confirm that your password has been successfully updated.</p>
+                        <hr style='border: none; border-top: 1px solid #eee; margin: 20px 0;' />
+                        <p>If you did not request this change, please contact our support team immediately.</p>
+                        <p>Thank you,</p>
+                        <p><strong>Team Snackers</strong></p>
+                    </div>
+                </div>";
+                try
+                {
+                    using (MailMessage message = new MailMessage())
+                    {
+                        message.From = new MailAddress(noreplyEmail);
+                        message.To.Add(authUser.Email); 
+                        message.Subject = subject;
+                        message.Body = body;
+                        message.IsBodyHtml = true;
+
+                        using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+                        {
+                            smtp.Credentials = new NetworkCredential(sendersEmail, sendersPassword);
+                            smtp.EnableSsl = true;
+                            smtp.Send(message);
+                        }
+                    }
+
+                    TempData["Msg"] = $"Password for {authUser.Email} has been updated.";
+                    return Json(new { success = true, message = "Sent successfully!" });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error sending email: {ex.Message}");
+                    return Json(new { success = false, message = "Error sending approval email." });
+                }
+            }
+            ModelState.AddModelError("", "An error occurred while updating the password.");
+            return View(u);
         }
 
         [AllowAnonymous]
@@ -107,6 +193,8 @@ namespace AdminSideEcoFridge.Controllers
             {
                 return NotFound();
             }
+
+
 
             return PartialView("_EditUserPartialView", user);
         }
