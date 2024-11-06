@@ -33,13 +33,13 @@ namespace AdminSideEcoFridge.Controllers
             return View();
         }
 
-        public IActionResult ChangePass()
+        public IActionResult ChangePassword()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult ChangePass(User u)
+        public IActionResult ChangePassword(User u)
         {
             if (u == null)
             {
@@ -111,8 +111,8 @@ namespace AdminSideEcoFridge.Controllers
                         }
                     }
 
-                    TempData["Msg"] = $"Password for {authUser.Email} has been updated.";
-                    return Json(new { success = true, message = "Sent successfully!" });
+                    TempData["Msg"] = "Check your email for confirmation.";
+                    return View(u);
                 }
                 catch (Exception ex)
                 {
