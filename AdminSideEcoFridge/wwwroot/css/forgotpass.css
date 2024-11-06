@@ -152,7 +152,7 @@
     gap: 0px;
 }
 
-.modal {
+.change-modal {
     display: none;
     position: fixed;
     z-index: 3000;
@@ -165,7 +165,7 @@
     padding-top: 60px;
 }
 
-.modal-content {
+.change-modal-content {
     background-color: #fefefe;
     margin: 5% auto;
     padding: 20px;
@@ -176,7 +176,7 @@
     border-radius: 10px;
 }
 
-.modal-content button {
+.change-modal-content button {
     padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
@@ -185,6 +185,6 @@
     border-radius: 5px;
 }
 
-.modal-content button:hover {
+.change-modal-content button:hover {
     background-color: #45a049;
 }

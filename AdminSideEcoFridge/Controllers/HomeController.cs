@@ -16,7 +16,9 @@ namespace AdminSideEcoFridge.Controllers
     {
         public IActionResult Dashboard(string role = "all", string keyword = "")
         {
-            List<VwUsersRoleView> userList = _vwUsersRoleViewRepo.GetAll();
+            List<VwUsersRoleView> userList = _vwUsersRoleViewRepo.GetAll()
+                                            .OrderByDescending(user => user.UserId)
+                                            .ToList();
             List<VwUsersFoodItem> foodList = _vwUsersFoodItemRepo.GetAll();
             List<User> user = _userRepo.GetAll();
 
