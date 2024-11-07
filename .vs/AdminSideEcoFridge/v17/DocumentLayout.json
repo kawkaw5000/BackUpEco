@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\final-ecofridgeadmin\\adminsideecofridge\\views\\shared\\_editorgpartialview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\shared\\_editorgpartialview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\final-ecofridgeadmin\\adminsideecofridge\\wwwroot\\css\\user-profiles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\wwwroot\\css\\user-profiles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\final-ecofridgeadmin\\adminsideecofridge\\views\\shared\\_editfoodorgpartialview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\shared\\_editfoodorgpartialview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\final-ecofridgeadmin\\adminsideecofridge\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "_EditOrgPartialView.cshtml",
-              "DocumentMoniker": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Views\\Shared\\_EditOrgPartialView.cshtml",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Shared\\_EditOrgPartialView.cshtml",
-              "ToolTip": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Views\\Shared\\_EditOrgPartialView.cshtml",
-              "RelativeToolTip": "AdminSideEcoFridge\\Views\\Shared\\_EditOrgPartialView.cshtml",
-              "ViewState": "AgIAACMAAAAAAAAAAAAQwFkAAAAyAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
+              "ToolTip": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
+              "RelativeToolTip": "AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAAAJ8AAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-07T07:47:43.236Z",
+              "WhenOpened": "2024-11-07T09:54:09.832Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "_EditFoodOrgPartialView.cshtml",
-              "DocumentMoniker": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Views\\Shared\\_EditFoodOrgPartialView.cshtml",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Shared\\_EditFoodOrgPartialView.cshtml",
-              "ToolTip": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\Views\\Shared\\_EditFoodOrgPartialView.cshtml",
-              "RelativeToolTip": "AdminSideEcoFridge\\Views\\Shared\\_EditFoodOrgPartialView.cshtml",
-              "ViewState": "AgIAAIIAAAAAAAAAAAAQwIwAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-07T07:43:59.898Z",
+              "DocumentIndex": 0,
+              "Title": "user-profiles.css",
+              "DocumentMoniker": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\css\\user-profiles.css",
+              "RelativeDocumentMoniker": "AdminSideEcoFridge\\wwwroot\\css\\user-profiles.css",
+              "ToolTip": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\css\\user-profiles.css",
+              "RelativeToolTip": "AdminSideEcoFridge\\wwwroot\\css\\user-profiles.css",
+              "ViewState": "AgIAAOUBAAAAAAAAAADgv/QBAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-07T10:01:27.361Z",
               "EditorCaption": ""
             }
           ]

@@ -85,6 +85,10 @@
       "PackagePath": "staticwebassets\\images\\Create-icons\\ApprovedImg.svg"
     },
     {
+      "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\Create-icons\\EcoFridgMascot.svg",
+      "PackagePath": "staticwebassets\\images\\Create-icons\\EcoFridgMascot.svg"
+    },
+    {
       "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\Create-icons\\check-mark-svgrepo-com.svg",
       "PackagePath": "staticwebassets\\images\\Create-icons\\check-mark-svgrepo-com.svg"
     },
@@ -665,6 +669,10 @@
       "PackagePath": "staticwebassets\\images\\proofs\\foodProofs\\proof_018fe545-240e-4827-aed2-64f0aeda9629.png"
     },
     {
+      "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\foodProofs\\proof_020467bf-69a5-4e07-8a2d-6f80343b8a53.png",
+      "PackagePath": "staticwebassets\\images\\proofs\\foodProofs\\proof_020467bf-69a5-4e07-8a2d-6f80343b8a53.png"
+    },
+    {
       "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\foodProofs\\proof_03063822-86a6-4a70-bcbd-8de9d8d39e9e.png",
       "PackagePath": "staticwebassets\\images\\proofs\\foodProofs\\proof_03063822-86a6-4a70-bcbd-8de9d8d39e9e.png"
     },
@@ -955,6 +963,10 @@
     {
       "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\foodProofs\\proof_6c0fc706-1d49-49e2-8930-4d29d6c36a86.png",
       "PackagePath": "staticwebassets\\images\\proofs\\foodProofs\\proof_6c0fc706-1d49-49e2-8930-4d29d6c36a86.png"
+    },
+    {
+      "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\foodProofs\\proof_6f405567-11ea-456c-ad56-9eaa32613ad3.png",
+      "PackagePath": "staticwebassets\\images\\proofs\\foodProofs\\proof_6f405567-11ea-456c-ad56-9eaa32613ad3.png"
     },
     {
       "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\foodProofs\\proof_73c24e3c-de5e-421c-91e7-958d93ae7a82.png",
@@ -1265,6 +1277,10 @@
       "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_1d60f7b7-0c18-4a52-9802-df88c31db8b1.jpg"
     },
     {
+      "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_1fd5446d-63e5-4f21-a90d-189a30227f54.png",
+      "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_1fd5446d-63e5-4f21-a90d-189a30227f54.png"
+    },
+    {
       "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_260de265-b442-4b9d-ba0b-9183b349d0c4.jpg",
       "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_260de265-b442-4b9d-ba0b-9183b349d0c4.jpg"
     },
@@ -1345,6 +1361,10 @@
       "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_4ca78190-8e29-4ea4-82fd-080c60183b71.png"
     },
     {
+      "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_4d229f1e-28b8-4692-93f0-ca0c4a389fdc.png",
+      "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_4d229f1e-28b8-4692-93f0-ca0c4a389fdc.png"
+    },
+    {
       "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_5f7feebf-d579-4e1d-a417-f08ff1d3456d.png",
       "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_5f7feebf-d579-4e1d-a417-f08ff1d3456d.png"
     },
@@ -1381,12 +1401,20 @@
       "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_772118d6-c8c8-4828-989a-db6f4dd99ba5.png"
     },
     {
+      "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_7d35fca0-4611-492e-b18a-0d015590ce0d.png",
+      "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_7d35fca0-4611-492e-b18a-0d015590ce0d.png"
+    },
+    {
       "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_8771c080-970c-4146-a292-5d42026c9607.png",
       "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_8771c080-970c-4146-a292-5d42026c9607.png"
     },
     {
       "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_8b0bb798-8aa1-45b3-8413-0f83e6f58892.png",
       "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_8b0bb798-8aa1-45b3-8413-0f83e6f58892.png"
+    },
+    {
+      "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_8c78ea7d-d4fc-4341-9480-d1a48f9aef05.png",
+      "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_8c78ea7d-d4fc-4341-9480-d1a48f9aef05.png"
     },
     {
       "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_8f32f3b9-9eef-4b7e-8fec-c4fb0a4175fb.png",
@@ -1457,6 +1485,10 @@
       "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_cb52ca7c-0d58-43c3-9b82-a2a7fd84fdee.png"
     },
     {
+      "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_cead6446-4abc-421f-839b-56998b46e0fc.png",
+      "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_cead6446-4abc-421f-839b-56998b46e0fc.png"
+    },
+    {
       "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_d4a49161-222b-45eb-af05-d8acfd179e2c.jpg",
       "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_d4a49161-222b-45eb-af05-d8acfd179e2c.jpg"
     },
@@ -1469,8 +1501,16 @@
       "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_e29f92dc-e1de-43d4-879c-330a18fe1f8b.png"
     },
     {
+      "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_e32b9171-a521-423a-9c3e-ade041b04318.png",
+      "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_e32b9171-a521-423a-9c3e-ade041b04318.png"
+    },
+    {
       "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_e3475405-8ee9-4f8b-97ef-4609237021f5.png",
       "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_e3475405-8ee9-4f8b-97ef-4609237021f5.png"
+    },
+    {
+      "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_e93bb994-0862-4b01-bc4a-118808f568e1.png",
+      "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_e93bb994-0862-4b01-bc4a-118808f568e1.png"
     },
     {
       "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_ec5fc393-f62a-424a-ac64-abfcd2fdccda.png",
@@ -1479,6 +1519,10 @@
     {
       "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_f8991de7-4275-4c5f-b19f-4f2b558c5ae8.png",
       "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_f8991de7-4275-4c5f-b19f-4f2b558c5ae8.png"
+    },
+    {
+      "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\organizationProofs\\proof_fc4cad98-47d2-4621-a48a-7a7084c7b4fd.png",
+      "PackagePath": "staticwebassets\\images\\proofs\\organizationProofs\\proof_fc4cad98-47d2-4621-a48a-7a7084c7b4fd.png"
     },
     {
       "Id": "D:\\!!!-A-BACKUP\\FINAL-ECOFRIDGEAdmin\\AdminSideEcoFridge\\wwwroot\\images\\proofs\\proof_010aeabf-edce-407a-8187-72493a9110ce.png",
