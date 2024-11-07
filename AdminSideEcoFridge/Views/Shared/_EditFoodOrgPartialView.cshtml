@@ -78,20 +78,23 @@
             const spinner = document.getElementById("food-spinner");
             const sending = document.getElementById("food-sending");
             const succesSend = document.getElementById("food-success-sending");
-            
+
             const userId = document.getElementById('editUserId').value;
-            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;      
-            
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            if (buttonAction.disabled) return;
+    
+            buttonAction.disabled = true;
             buttonAction.style.display = 'none';
-                  
-            if (action === 'approve') {             
+
+            if (action === 'approve') {
                 spinnerCont.style.display = 'block';
                 spinner.style.display = 'block';
                 sending.style.display = 'block';
                 succesSend.style.display = 'none';
                 succesSend.innerText = '';
 
-                fetch(`/Account/UpdateAccountApproval`, {
+                fetch('/Account/UpdateAccountApproval', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -99,36 +102,36 @@
                     },
                     body: JSON.stringify({ userId, isApproved: true })
                 })
-                .then(response => response.json())
-                .then(response => {
-                    if (response.success) {
-        
-                        spinner.style.display = 'none';
-                        sending.style.display = 'none';
-                        succesSend.style.display = 'block';
-                        succesSend.innerText = 'User approved successfully!';
-            
-                        const row = document.querySelector(`tr[data-user-id='${userId}']`);
-                        if (row) {
-                            const statusCell = row.querySelector('td:first-child');
-                            statusCell.innerHTML = '<button class="approved-btn">Approved</button>';
+                    .then(response => response.json())
+                    .then(response => {
+                        if (response.success) {
+                            spinner.style.display = 'none';
+                            sending.style.display = 'none';
+                            succesSend.style.display = 'block';
+                            succesSend.innerText = 'User approved successfully!';
+
+                            const row = document.querySelector(`tr[data-user-id='${userId}']`);
+                            if (row) {
+                                const statusCell = row.querySelector('td:first-child');
+                                statusCell.innerHTML = '<button class="approved-btn">Approved</button>';
+                            }
+                        } else {
+                            console.error("Approval failed:", response.message);
                         }
-                    } else {
-                        console.error("Approval failed:", response.message);
-                    }
-                })
-                .catch(error => console.error('Error:', error))
-                .finally(() => {
-                    spinnerCont.style.display = 'none';
-                });
-                         
+                    })
+                    .catch(error => console.error('Error:', error))
+                    .finally(() => {
+                        spinnerCont.style.display = 'none';
+                        buttonAction.disabled = false; 
+                    });
+
             } else if (action === 'decline') {
                 spinnerCont.style.display = 'block';
                 spinner.style.display = 'block';
                 sending.style.display = 'block';
                 succesSend.style.display = 'none';
                 succesSend.innerText = '';
-                      
+
                 fetch(`/Account/RecordDelete?userId=${userId}`, {
                     method: 'DELETE',
                     headers: {
@@ -143,17 +146,17 @@
                         sending.style.display = 'none';
                         succesSend.style.display = 'none';
                         spinnerCont.style.display = 'none';
-                        
+
                         const row = document.querySelector(`tr[data-user-id='${userId}']`);
                         if (row) row.remove();
-                     
+
                     } else {
                         console.error("Failed to delete the user.");
                     }
                 })
                 .catch(error => console.error('Error:', error))
                 .finally(() => {
-                    
+                    buttonAction.disabled = false;
                 });
             }
         }

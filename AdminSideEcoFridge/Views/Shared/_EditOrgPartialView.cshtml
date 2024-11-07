@@ -66,7 +66,6 @@
     </div>
 </form>
 <script>
-
     document.addEventListener('click', function (event) {
         if (event.target.classList.contains('actions')) {
             const action = event.target.getAttribute('data-action');
@@ -79,15 +78,19 @@
             const userId = document.getElementById('editOrgUserId').value;
             const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
           
+            if (buttonAction.disabled) return;
+
+            buttonAction.disabled = true;
+            buttonAction.style.display = 'none';
+
             if (action === 'org-approve') {
-                
                 spinnerCont.style.display = 'block';
                 spinner.style.display = 'block';
                 sending.style.display = 'block';
                 succesSend.style.display = 'none';
                 succesSend.innerText = '';
 
-                fetch(`/Account/UpdateAccountApproval`, {
+                fetch('/Account/UpdateAccountApproval', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -98,7 +101,6 @@
                     .then(response => response.json())
                     .then(response => {
                         if (response.success) {
-
                             spinner.style.display = 'none';
                             sending.style.display = 'none';
                             succesSend.style.display = 'block';
@@ -116,14 +118,17 @@
                     .catch(error => console.error('Error:', error))
                     .finally(() => {
                         spinnerCont.style.display = 'none';
+                        buttonAction.disabled = false;
                     });
+
             } else if (action === 'org-decline') {
+
                 spinnerCont.style.display = 'block';
                 spinner.style.display = 'block';
                 sending.style.display = 'block';
                 succesSend.style.display = 'none';
                 succesSend.innerText = '';
-                buttonAction.style.display = 'none';
+
                 fetch(`/Account/RecordDelete?userId=${userId}`, {
                     method: 'DELETE',
                     headers: {
@@ -132,24 +137,24 @@
                         'RequestVerificationToken': token
                     }
                 })
-                .then(response => {
-                    if (response.ok) {
-                        spinner.style.display = 'none';
-                        sending.style.display = 'none';
-                        succesSend.style.display = 'none'; 
-                        spinnerCont.style.display = 'none';
-                        const row = document.querySelector(`tr[data-user-id='${userId}']`);
-                        if (row) row.remove();
-                     
-                    } else {
-                        console.error("Failed to delete the user.");
-                    }
-                })
-                .catch(error => console.error('Error:', error))
-                .finally(() => {
-                    spinnerCont.style.display = 'none';
-                });
+                    .then(response => {
+                        if (response.ok) {
+                            spinner.style.display = 'none';
+                            sending.style.display = 'none';
+                            succesSend.style.display = 'none';
+                            spinnerCont.style.display = 'none';
 
+                            const row = document.querySelector(`tr[data-user-id='${userId}']`);
+                            if (row) row.remove();
+
+                        } else {
+                            console.error("Failed to delete the user.");
+                        }
+                    })
+                    .catch(error => console.error('Error:', error))
+                    .finally(() => {
+                        buttonAction.disabled = false;
+                    });
             }
         }
     });
