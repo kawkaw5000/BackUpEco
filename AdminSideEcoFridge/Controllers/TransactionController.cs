@@ -22,7 +22,6 @@ namespace AdminSideEcoFridge.Controllers
 
             var storagePlanCounts = new Dictionary<string, int>(); 
 
-
             foreach (var plan in userSubscribers)
             {
                 if (plan.SubscriptionDate.Year >= 2024 && plan.SubscriptionDate.Year <= 2030)

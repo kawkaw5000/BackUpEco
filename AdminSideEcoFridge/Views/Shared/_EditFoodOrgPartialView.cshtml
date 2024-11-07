@@ -74,36 +74,61 @@
         if (event.target.classList.contains('actions')) {
             const action = event.target.getAttribute('data-action');
             const buttonAction = document.getElementById('status-drop');
-
             const spinnerCont = document.getElementById("food-spinner-cont");
             const spinner = document.getElementById("food-spinner");
             const sending = document.getElementById("food-sending");
             const succesSend = document.getElementById("food-success-sending");
             
             const userId = document.getElementById('editUserId').value;
-            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
-
-
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;      
+            
+            buttonAction.style.display = 'none';
                   
-
-            if (action === 'approve') {
-                updateAccountApproval(true);
-                buttonAction.style.display = 'none';
+            if (action === 'approve') {             
                 spinnerCont.style.display = 'block';
                 spinner.style.display = 'block';
                 sending.style.display = 'block';
                 succesSend.style.display = 'none';
                 succesSend.innerText = '';
-                buttonAction.style.display = 'none';
 
+                fetch(`/Account/UpdateAccountApproval`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': token
+                    },
+                    body: JSON.stringify({ userId, isApproved: true })
+                })
+                .then(response => response.json())
+                .then(response => {
+                    if (response.success) {
+        
+                        spinner.style.display = 'none';
+                        sending.style.display = 'none';
+                        succesSend.style.display = 'block';
+                        succesSend.innerText = 'User approved successfully!';
+            
+                        const row = document.querySelector(`tr[data-user-id='${userId}']`);
+                        if (row) {
+                            const statusCell = row.querySelector('td:first-child');
+                            statusCell.innerHTML = '<button class="approved-btn">Approved</button>';
+                        }
+                    } else {
+                        console.error("Approval failed:", response.message);
+                    }
+                })
+                .catch(error => console.error('Error:', error))
+                .finally(() => {
+                    spinnerCont.style.display = 'none';
+                });
+                         
             } else if (action === 'decline') {
-             
                 spinnerCont.style.display = 'block';
                 spinner.style.display = 'block';
                 sending.style.display = 'block';
                 succesSend.style.display = 'none';
                 succesSend.innerText = '';
-                buttonAction.style.display = 'none';
+                      
                 fetch(`/Account/RecordDelete?userId=${userId}`, {
                     method: 'DELETE',
                     headers: {
@@ -117,7 +142,7 @@
                         spinner.style.display = 'none';
                         sending.style.display = 'none';
                         succesSend.style.display = 'none';
-                            spinnerCont.style.display = 'none';
+                        spinnerCont.style.display = 'none';
                         
                         const row = document.querySelector(`tr[data-user-id='${userId}']`);
                         if (row) row.remove();
@@ -133,47 +158,4 @@
             }
         }
     });
-
-    function updateAccountApproval(isApproved) {
-        const userId = document.getElementById('editUserId').value;
-        const spinnerContainer = document.getElementById('food-spinner-cont');
-        const spinner = document.getElementById('food-spinner');
-        const sendingMessage = document.getElementById('food-sending');
-        const successMessage = document.getElementById('food-success-sending');
-
-        $.ajax({
-            type: 'POST',
-            url: '@Url.Action("UpdateAccountApproval", "Account")',
-            data: {
-                userId: userId,
-                isApproved: isApproved
-            },
-            success: function (response) {
-                if (response.success) {
-                    const row = document.querySelector(`tr[data-user-id='${userId}']`);
-                    if (row) {
-                        const statusCell = row.querySelector('td:first-child');
-                        statusCell.innerHTML = isApproved ? '<button class="approved-btn">Approved</button>' : '';
-                        if (!isApproved) row.remove();
-                    }
-
-                    sendingMessage.style.display = 'none';
-                    successMessage.style.display = 'block';
-
-                    setTimeout(() => {
-                        spinnerContainer.style.display = 'none';
-                    }, 1100);
-                } else {
-                    console.log('Error updating status:', response.message);
-                    spinnerContainer.style.display = 'none';
-                }
-            },
-            error: function (error) {
-                console.error(error);
-                spinnerContainer.style.display = 'none';
-            }
-        });
-    }
-
-
 </script>

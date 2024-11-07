@@ -78,19 +78,45 @@
 
             const userId = document.getElementById('editOrgUserId').value;
             const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
-
-
-            
+          
             if (action === 'org-approve') {
-                updateAccountApproval(true);
-                buttonAction.style.display = 'none';
+                
                 spinnerCont.style.display = 'block';
                 spinner.style.display = 'block';
                 sending.style.display = 'block';
                 succesSend.style.display = 'none';
                 succesSend.innerText = '';
-                buttonAction.style.display = 'none';
 
+                fetch(`/Account/UpdateAccountApproval`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': token
+                    },
+                    body: JSON.stringify({ userId, isApproved: true })
+                })
+                    .then(response => response.json())
+                    .then(response => {
+                        if (response.success) {
+
+                            spinner.style.display = 'none';
+                            sending.style.display = 'none';
+                            succesSend.style.display = 'block';
+                            succesSend.innerText = 'User approved successfully!';
+
+                            const row = document.querySelector(`tr[data-user-id='${userId}']`);
+                            if (row) {
+                                const statusCell = row.querySelector('td:first-child');
+                                statusCell.innerHTML = '<button class="approved-btn">Approved</button>';
+                            }
+                        } else {
+                            console.error("Approval failed:", response.message);
+                        }
+                    })
+                    .catch(error => console.error('Error:', error))
+                    .finally(() => {
+                        spinnerCont.style.display = 'none';
+                    });
             } else if (action === 'org-decline') {
                 spinnerCont.style.display = 'block';
                 spinner.style.display = 'block';
@@ -128,47 +154,4 @@
         }
     });
 
-
-    function updateAccountApproval(isApproved) {
-        const userId = document.getElementById('editOrgUserId').value;
-        const spinnerContainer = document.getElementById('spinner-cont');
-        const spinner = document.getElementById('spinner');
-        const sendingMessage = document.getElementById('sending');
-        const successMessage = document.getElementById('success-sending'); 
-
-        $.ajax({
-            type: 'POST',
-            url: '@Url.Action("UpdateAccountApproval", "Account")',
-            data: {
-                userId: userId,
-                isApproved: isApproved
-            },
-            success: function (response) {
-                if (response.success) {
-                    const row = document.querySelector(`tr[data-user-id='${userId}']`);
-                    if (row) {
-                        const statusCell = row.querySelector('td:first-child');
-                        statusCell.innerHTML = isApproved ? '<button class="approved-btn">Approved</button>' : '';
-                        if (!isApproved) row.remove();
-                    }
-
-                    // Hide sending and show success
-                    sendingMessage.style.display = 'none';
-                    successMessage.style.display = 'block';
-
-                    // Hide the spinner after success message is shown
-                    setTimeout(() => {
-                        spinnerContainer.style.display = 'none';
-                    }, 1100);
-                } else {
-                    console.log('Error updating status:', response.message);
-                    spinnerContainer.style.display = 'none';
-                }
-            },
-            error: function (error) {
-                console.error(error);
-                spinnerContainer.style.display = 'none';
-            }
-        });
-    }
 </script>

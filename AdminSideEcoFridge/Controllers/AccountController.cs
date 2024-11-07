@@ -1125,15 +1125,14 @@ namespace AdminSideEcoFridge.Controllers
         }
 
         [HttpPost]
-        public JsonResult UpdateAccountApproval(string userId, bool isApproved)
+        public JsonResult UpdateAccountApproval([FromBody] AccountApprovalRequest request)
         {
-            if (int.TryParse(userId, out int parsedUserId))
+            if (int.TryParse(request.UserId, out int parsedUserId))
             {
                 var user = _userRepo.Get(parsedUserId);
-
                 if (user != null)
                 {
-                    user.AccountApproved = isApproved;
+                    user.AccountApproved = request.IsApproved;
                     var result = _userRepo.Update(user.UserId, user);
 
                     if (result == ErrorCode.Success)
@@ -1145,18 +1144,17 @@ namespace AdminSideEcoFridge.Controllers
                             var noreplyEmail = "no-reply@ecofridge.com";
                             var subject = "Approval Notice";
                             var body = $@"
-                            <div style='font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;'>
-                                <div style='max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
-                                    <h2 style='color: #333;'>Approval Notice</h2>
-                                    <p>Hello there this is from EcoFridge;</p>                                                                     
-                                    <p>Congrats we are informing you that your request has been approved.</p>
-                                    <hr style='border: none; border-top: 1px solid #eee; margin: 20px 0;' />
-                                    <p>If you didn't request this, please ignore this email or contact support.</p>
-                                    <p>Thank you,</p>
-                                    <p><strong>Team Snackers</strong></p>
-                                </div>
-                            </div>";
-
+                                        <div style='font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;'>
+                                            <div style='max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
+                                                <h2 style='color: #333;'>Approval Notice</h2>
+                                                <p>Hello there this is from EcoFridge;</p>                                                                     
+                                                <p>Congrats we are informing you that your request has been approved.</p>
+                                                <hr style='border: none; border-top: 1px solid #eee; margin: 20px 0;' />
+                                                <p>If you didn't request this, please ignore this email or contact support.</p>
+                                                <p>Thank you,</p>
+                                                <p><strong>Team Snackers</strong></p>
+                                            </div>
+                                        </div>";
                             try
                             {
                                 using (MailMessage message = new MailMessage())
@@ -1178,64 +1176,11 @@ namespace AdminSideEcoFridge.Controllers
                             }
                             catch (Exception ex)
                             {
-                                // Log error (ex) if necessary
                                 return Json(new { success = false, message = "Error sending approval email." });
                             }
                         }
 
-                        if (user.AccountApproved == false)
-                        {
-                            var sendersEmail = _configuration["EmailSettings:SendersEmail"];
-                            var sendersPassword = _configuration["EmailSettings:SendersPassword"];
-                            var noreplyEmail = "no-reply@ecofridge.com";
-                            var subject = "Rejection Notice";
-                            var body = $@"
-                            <div style='font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;'>
-                                <div style='max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
-                                    <h2 style='color: #333;'>Rejection Notice</h2>
-                                    <p>Hello there this is from EcoFridge;</p>                                                                     
-                                    <p>We regret to inform you that your request has been rejected.</p>
-                                    <hr style='border: none; border-top: 1px solid #eee; margin: 20px 0;' />
-                                    <p>If you didn't request this, please ignore this email or contact support.</p>
-                                    <p>Thank you,</p>
-                                    <p><strong>Team Snackers</strong></p>
-                                </div>
-                            </div>";
-                            try
-                            {
-                                using (MailMessage message = new MailMessage())
-                                {
-                                    message.From = new MailAddress(noreplyEmail);
-                                    message.To.Add(user.Email);
-                                    message.Subject = subject;
-                                    message.Body = body;
-                                    message.IsBodyHtml = true;
-
-                                    using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
-                                    {
-                                        smtp.Credentials = new NetworkCredential(sendersEmail, sendersPassword);
-                                        smtp.EnableSsl = true;
-                                        smtp.Send(message);
-                                    }
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                // Log error (ex) if necessary
-                                return Json(new { success = false, message = "Error sending approval email." });
-                            }
-                        }
-
-                        if (user.AccountApproved == false)
-                        {
-
-                            if (_userRepo.Delete(parsedUserId) == ErrorCode.Success)
-                            {
-                                return Json(new { success = false, message = "deleted." });
-                            }
-                        }
-
-                        return Json(new { success = true, message = isApproved ? "User approved" : "User declined" });
+                        return Json(new { success = true, isApproved = request.IsApproved, message = request.IsApproved ? "User approved" : "User declined" });
                     }
 
                     return Json(new { success = false, message = "Error updating user" });
@@ -1246,6 +1191,78 @@ namespace AdminSideEcoFridge.Controllers
 
             return Json(new { success = false, message = "Invalid user ID" });
         }
+
+
+        //[HttpPost]
+        //public JsonResult UpdateAccountApproval(string userId, bool isApproved)
+        //{
+        //    if (int.TryParse(userId, out int parsedUserId))
+        //    {
+        //        var user = _userRepo.Get(parsedUserId);
+
+        //        if (user != null)
+        //        {
+        //            user.AccountApproved = isApproved;
+        //            var result = _userRepo.Update(user.UserId, user);
+
+        //            if (result == ErrorCode.Success)
+        //            {
+        //                if (user.AccountApproved == true)
+        //                {
+        //                    var sendersEmail = _configuration["EmailSettings:SendersEmail"];
+        //                    var sendersPassword = _configuration["EmailSettings:SendersPassword"];
+        //                    var noreplyEmail = "no-reply@ecofridge.com";
+        //                    var subject = "Approval Notice";
+        //                    var body = $@"
+        //                    <div style='font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;'>
+        //                        <div style='max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
+        //                            <h2 style='color: #333;'>Approval Notice</h2>
+        //                            <p>Hello there this is from EcoFridge;</p>                                                                     
+        //                            <p>Congrats we are informing you that your request has been approved.</p>
+        //                            <hr style='border: none; border-top: 1px solid #eee; margin: 20px 0;' />
+        //                            <p>If you didn't request this, please ignore this email or contact support.</p>
+        //                            <p>Thank you,</p>
+        //                            <p><strong>Team Snackers</strong></p>
+        //                        </div>
+        //                    </div>";
+
+        //                    try
+        //                    {
+        //                        using (MailMessage message = new MailMessage())
+        //                        {
+        //                            message.From = new MailAddress(noreplyEmail);
+        //                            message.To.Add(user.Email);
+        //                            message.Subject = subject;
+        //                            message.Body = body;
+        //                            message.IsBodyHtml = true;
+
+        //                            using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
+        //                            {
+        //                                smtp.Credentials = new NetworkCredential(sendersEmail, sendersPassword);
+        //                                smtp.EnableSsl = true;
+        //                                smtp.Send(message);
+        //                            }
+        //                        }
+        //                        return Json(new { success = true, message = "Sent successfully!" });
+        //                    }
+        //                    catch (Exception ex)
+        //                    {
+        //                        // Log error (ex) if necessary
+        //                        return Json(new { success = false, message = "Error sending approval email." });
+        //                    }
+        //                }
+
+        //                return Json(new { success = true, message = isApproved ? "User approved" : "User declined" });
+        //            }
+
+        //            return Json(new { success = false, message = "Error updating user" });
+        //        }
+
+        //        return Json(new { success = false, message = "User not found" });
+        //    }
+
+        //    return Json(new { success = false, message = "Invalid user ID" });
+        //}
 
     }
 }
