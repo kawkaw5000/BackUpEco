@@ -74,4 +74,6 @@ public partial class VwFoodNotification
     public int? StorageSize { get; set; }
 
     public int? FoodStoredCount { get; set; }
+
+    public bool? Display { get; set; }
 }

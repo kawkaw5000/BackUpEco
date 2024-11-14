@@ -35,7 +35,7 @@
                                 data-plan-price="@storage.Price"
                                 data-plan-size="@storage.StorageSize"
                                 data-plan-duration="@storage.Duration"
-                                class="@(storage.isActive == true ? "" : "inactive-plan")">
+                                class="@(storage.IsActive == true ? "" : "inactive-plan")">
                                 <td>@i</td>
                                 <td>@storage.StoragePlanName</td>
                                 <td>@(storage.Price == 0 ? "Free" : storage.Price)</td>
@@ -48,7 +48,7 @@
                                         </button>
                                         <div class="dropdown-content">
                                             <button class="dropdown-item">Update</button>
-                                            @if(storage.isActive == true)
+                                            @if(storage.IsActive == true)
                                             {
                                                 <button class="dropdown-item disable-plan">Disable</button>
                                             } else

@@ -51,6 +51,18 @@ public partial class User
 
     public int? FoodStoredCount { get; set; }
 
+    public string? Availability { get; set; }
+
+    public virtual ICollection<ChatConversation> ChatConversationDonees { get; set; } = new List<ChatConversation>();
+
+    public virtual ICollection<ChatConversation> ChatConversationDonors { get; set; } = new List<ChatConversation>();
+
+    public virtual ICollection<Chat> Chats { get; set; } = new List<Chat>();
+
+    public virtual ICollection<DonationTransactionMaster> DonationTransactionMasterDonees { get; set; } = new List<DonationTransactionMaster>();
+
+    public virtual ICollection<DonationTransactionMaster> DonationTransactionMasterDonors { get; set; } = new List<DonationTransactionMaster>();
+
     public virtual ICollection<Notifcation> NotifcationCreatedByNavigations { get; set; } = new List<Notifcation>();
 
     public virtual ICollection<Notifcation> NotifcationUpdatedByNavigations { get; set; } = new List<Notifcation>();

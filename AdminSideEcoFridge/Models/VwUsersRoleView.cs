@@ -5,7 +5,6 @@ namespace AdminSideEcoFridge.Models;
 
 public partial class VwUsersRoleView
 {
-
     public int UserId { get; set; }
 
     public string Email { get; set; } = null!;
@@ -41,6 +40,8 @@ public partial class VwUsersRoleView
     public int? StorageSize { get; set; }
 
     public int? FoodStoredCount { get; set; }
+
+    public string? Availability { get; set; }
 
     public int RoleId { get; set; }
 

@@ -3,8 +3,12 @@ using System.Collections.Generic;
 
 namespace AdminSideEcoFridge.Models;
 
-public partial class VwUsersFoodItem
+public partial class VwVwDonationTransactionDetailsUserView
 {
+    public int DonationTransactionDetailsId { get; set; }
+
+    public int? DonationTransactionMasterId { get; set; }
+
     public int FoodId { get; set; }
 
     public string? FoodName { get; set; }
@@ -58,6 +62,4 @@ public partial class VwUsersFoodItem
     public int? StorageSize { get; set; }
 
     public int? FoodStoredCount { get; set; }
-
-    public bool? Display { get; set; }
 }

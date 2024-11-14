@@ -15,7 +15,13 @@ public partial class EcoFridgeDbContext : DbContext
     {
     }
 
-    public virtual DbSet<DonationTransaction> DonationTransactions { get; set; }
+    public virtual DbSet<Chat> Chats { get; set; }
+
+    public virtual DbSet<ChatConversation> ChatConversations { get; set; }
+
+    public virtual DbSet<DonationTransactionDetail> DonationTransactionDetails { get; set; }
+
+    public virtual DbSet<DonationTransactionMaster> DonationTransactionMasters { get; set; }
 
     public virtual DbSet<Donee> Donees { get; set; }
 
@@ -26,6 +32,8 @@ public partial class EcoFridgeDbContext : DbContext
     public virtual DbSet<FoodCategory> FoodCategories { get; set; }
 
     public virtual DbSet<FoodIngredient> FoodIngredients { get; set; }
+
+    public virtual DbSet<FoodShelfLife> FoodShelfLives { get; set; }
 
     public virtual DbSet<Notifcation> Notifcations { get; set; }
 
@@ -53,63 +61,126 @@ public partial class EcoFridgeDbContext : DbContext
 
     public virtual DbSet<UserRole> UserRoles { get; set; }
 
+    public virtual DbSet<VwChatConversationView> VwChatConversationViews { get; set; }
+
+    public virtual DbSet<VwDonationTransactionMasterUserView> VwDonationTransactionMasterUserViews { get; set; }
+
+    public virtual DbSet<VwDoneeChatConversation> VwDoneeChatConversations { get; set; }
+
+    public virtual DbSet<VwDonorChatConversation> VwDonorChatConversations { get; set; }
+
     public virtual DbSet<VwFoodBeforeExpirationDay> VwFoodBeforeExpirationDays { get; set; }
 
     public virtual DbSet<VwFoodNotification> VwFoodNotifications { get; set; }
+
+    public virtual DbSet<VwManageDonationView> VwManageDonationViews { get; set; }
 
     public virtual DbSet<VwUsersFoodItem> VwUsersFoodItems { get; set; }
 
     public virtual DbSet<VwUsersRoleView> VwUsersRoleViews { get; set; }
 
+    public virtual DbSet<VwVwDonationTransactionDetailsUserView> VwVwDonationTransactionDetailsUserViews { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("workstation id=EcoFridgeDB.mssql.somee.com;packet size=4096;user id=lord24_SQLLogin_1;pwd=2xsxpaogou;data source=EcoFridgeDB.mssql.somee.com;persist security info=False;initial catalog=EcoFridgeDB;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Data Source=EcoFridgeDB.mssql.somee.com;Initial Catalog=EcoFridgeDB;User ID=lord24_SQLLogin_1;Password=2xsxpaogou;Encrypt=True;Trust Server Certificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<DonationTransaction>(entity =>
+        modelBuilder.Entity<Chat>(entity =>
         {
-            entity.HasKey(e => e.DonationTransactionId).HasName("PK__Donation__24AA58DDB2663727");
+            entity.HasKey(e => e.ChatId).HasName("PK__Chat__A9FBE7C6936CD95F");
 
-            entity.ToTable("DonationTransaction");
+            entity.ToTable("Chat");
+
+            entity.Property(e => e.ChatMessage).IsUnicode(false);
+            entity.Property(e => e.SentAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+
+            entity.HasOne(d => d.ChatConversation).WithMany(p => p.Chats)
+                .HasForeignKey(d => d.ChatConversationId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK__Chat__ChatConver__236943A5");
+
+            entity.HasOne(d => d.Sender).WithMany(p => p.Chats)
+                .HasForeignKey(d => d.SenderId)
+                .HasConstraintName("FK__Chat__SenderId__245D67DE");
+        });
+
+        modelBuilder.Entity<ChatConversation>(entity =>
+        {
+            entity.HasKey(e => e.ChatConversationId).HasName("PK__ChatConv__FA706609634D0AEF");
+
+            entity.ToTable("ChatConversation");
+
+            entity.HasOne(d => d.Donee).WithMany(p => p.ChatConversationDonees)
+                .HasForeignKey(d => d.DoneeId)
+                .HasConstraintName("FK__ChatConve__Donee__1AD3FDA4");
+
+            entity.HasOne(d => d.Donor).WithMany(p => p.ChatConversationDonors)
+                .HasForeignKey(d => d.DonorId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK__ChatConve__Donor__19DFD96B");
+        });
+
+        modelBuilder.Entity<DonationTransactionDetail>(entity =>
+        {
+            entity.HasKey(e => e.DonationTransactionDetailsId).HasName("PK__Donation__21C692FA891F01B0");
+
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(dateadd(hour,(8),getdate()))")
+                .HasColumnType("datetime");
+
+            entity.HasOne(d => d.DonationTransactionMaster).WithMany(p => p.DonationTransactionDetails)
+                .HasForeignKey(d => d.DonationTransactionMasterId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK__DonationT__Donat__489AC854");
+        });
+
+        modelBuilder.Entity<DonationTransactionMaster>(entity =>
+        {
+            entity.HasKey(e => e.DonationTransactionMasterId).HasName("PK__Donation__0EE80146C6DF7CED");
+
+            entity.ToTable("DonationTransactionMaster");
 
             entity.Property(e => e.Status)
-                .HasMaxLength(20)
+                .HasMaxLength(100)
                 .IsUnicode(false);
+            entity.Property(e => e.TransactionDate)
+                .HasDefaultValueSql("(dateadd(hour,(8),getdate()))")
+                .HasColumnType("datetime");
 
-            entity.HasOne(d => d.Donee).WithMany(p => p.DonationTransactions)
+            entity.HasOne(d => d.Donee).WithMany(p => p.DonationTransactionMasterDonees)
                 .HasForeignKey(d => d.DoneeId)
-                .HasConstraintName("FK__DonationT__Donee__03F0984C");
+                .HasConstraintName("FK__DonationT__Donee__40058253");
 
-            entity.HasOne(d => d.Donor).WithMany(p => p.DonationTransactions)
+            entity.HasOne(d => d.Donor).WithMany(p => p.DonationTransactionMasterDonors)
                 .HasForeignKey(d => d.DonorId)
-                .HasConstraintName("FK__DonationT__Donor__02FC7413");
-
-            entity.HasOne(d => d.UserFood).WithMany(p => p.DonationTransactions)
-                .HasForeignKey(d => d.UserFoodId)
-                .HasConstraintName("FK__DonationT__UserF__04E4BC85");
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK__DonationT__Donor__3F115E1A");
         });
 
         modelBuilder.Entity<Donee>(entity =>
         {
-            entity.HasKey(e => e.DoneeId).HasName("PK__Donee__8E69438E404EA638");
+            entity.HasKey(e => e.DoneeId).HasName("PK__Donee__8E69438E791CF6CB");
 
             entity.ToTable("Donee");
 
             entity.HasOne(d => d.UserRole).WithMany(p => p.Donees)
                 .HasForeignKey(d => d.UserRoleId)
-                .HasConstraintName("FK__Donee__UserRoleI__76969D2E");
+                .HasConstraintName("FK__Donee__UserRoleI__5165187F");
         });
 
         modelBuilder.Entity<Donor>(entity =>
         {
-            entity.HasKey(e => e.DonorId).HasName("PK__Donor__052E3F7838A607BC");
+            entity.HasKey(e => e.DonorId).HasName("PK__Donor__052E3F7871F232E0");
 
             entity.ToTable("Donor");
 
             entity.HasOne(d => d.UserRole).WithMany(p => p.Donors)
                 .HasForeignKey(d => d.UserRoleId)
-                .HasConstraintName("FK__Donor__UserRoleI__73BA3083");
+                .HasConstraintName("FK__Donor__UserRoleI__52593CB8");
         });
 
         modelBuilder.Entity<Food>(entity =>
@@ -133,7 +204,7 @@ public partial class EcoFridgeDbContext : DbContext
 
         modelBuilder.Entity<FoodCategory>(entity =>
         {
-            entity.HasKey(e => e.FoodCategoryId).HasName("PK__FoodCate__5451B7EBF4B90333");
+            entity.HasKey(e => e.FoodCategoryId).HasName("PK__FoodCate__5451B7EB0EEC8BEF");
 
             entity.ToTable("FoodCategory");
 
@@ -144,7 +215,7 @@ public partial class EcoFridgeDbContext : DbContext
 
         modelBuilder.Entity<FoodIngredient>(entity =>
         {
-            entity.HasKey(e => e.FoodIngredientId).HasName("PK__FoodIngr__CB78CEA6B46AFB3F");
+            entity.HasKey(e => e.FoodIngredientId).HasName("PK__FoodIngr__CB78CEA6F52B9D42");
 
             entity.ToTable("FoodIngredient");
 
@@ -155,6 +226,21 @@ public partial class EcoFridgeDbContext : DbContext
             entity.HasOne(d => d.Food).WithMany(p => p.FoodIngredients)
                 .HasForeignKey(d => d.FoodId)
                 .HasConstraintName("FK__FoodIngre__FoodI__5812160E");
+        });
+
+        modelBuilder.Entity<FoodShelfLife>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__FoodShel__3214EC0701EA6B75");
+
+            entity.ToTable("FoodShelfLife");
+
+            entity.Property(e => e.Category)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.ContainedIngredients).IsUnicode(false);
+            entity.Property(e => e.FoodName)
+                .HasMaxLength(255)
+                .IsUnicode(false);
         });
 
         modelBuilder.Entity<Notifcation>(entity =>
@@ -194,7 +280,7 @@ public partial class EcoFridgeDbContext : DbContext
 
         modelBuilder.Entity<PaymentTransaction>(entity =>
         {
-            entity.HasKey(e => e.PaymentTransactionId).HasName("PK__PaymentT__C22AEFE01C2A3737");
+            entity.HasKey(e => e.PaymentTransactionId).HasName("PK__PaymentT__C22AEFE0DCC766C0");
 
             entity.ToTable("PaymentTransaction");
 
@@ -212,7 +298,7 @@ public partial class EcoFridgeDbContext : DbContext
 
             entity.HasOne(d => d.StoragePlan).WithMany(p => p.PaymentTransactions)
                 .HasForeignKey(d => d.StoragePlanId)
-                .HasConstraintName("FK__PaymentTr__Stora__70DDC3D8");
+                .HasConstraintName("FK__PaymentTr__Stora__5812160E");
 
             entity.HasOne(d => d.User).WithMany(p => p.PaymentTransactions)
                 .HasForeignKey(d => d.UserId)
@@ -221,7 +307,7 @@ public partial class EcoFridgeDbContext : DbContext
 
         modelBuilder.Entity<RecommendedFood>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Recommen__3214EC079E0820F8");
+            entity.HasKey(e => e.Id).HasName("PK__Recommen__3214EC070E6DE4F7");
 
             entity.ToTable("RecommendedFood");
 
@@ -237,7 +323,7 @@ public partial class EcoFridgeDbContext : DbContext
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.RoleId).HasName("PK__Role__8AFACE1AA3B71A03");
+            entity.HasKey(e => e.RoleId).HasName("PK__Role__8AFACE1AB67F2267");
 
             entity.ToTable("Role");
 
@@ -248,7 +334,7 @@ public partial class EcoFridgeDbContext : DbContext
 
         modelBuilder.Entity<StoragePlan>(entity =>
         {
-            entity.HasKey(e => e.StoragePlanId).HasName("PK__StorageP__4F8B77F4296B6E5D");
+            entity.HasKey(e => e.StoragePlanId).HasName("PK__StorageP__4F8B77F43C6D9D6D");
 
             entity.ToTable("StoragePlan");
 
@@ -269,13 +355,13 @@ public partial class EcoFridgeDbContext : DbContext
 
         modelBuilder.Entity<StorageTipForFoodCategory>(entity =>
         {
-            entity.HasKey(e => e.StorageTipFoFoodCategoryId).HasName("PK__StorageT__2602B46EBAEE01B8");
+            entity.HasKey(e => e.StorageTipFoFoodCategoryId).HasName("PK__StorageT__2602B46E38E2CABD");
 
             entity.ToTable("StorageTipForFoodCategory");
 
             entity.HasOne(d => d.FoodCategory).WithMany(p => p.StorageTipForFoodCategories)
                 .HasForeignKey(d => d.FoodCategoryId)
-                .HasConstraintName("FK__StorageTi__FoodC__619B8048");
+                .HasConstraintName("FK__StorageTi__FoodC__59FA5E80");
 
             entity.HasOne(d => d.StorageTip).WithMany(p => p.StorageTipForFoodCategories)
                 .HasForeignKey(d => d.StorageTipId)
@@ -284,7 +370,7 @@ public partial class EcoFridgeDbContext : DbContext
 
         modelBuilder.Entity<TempImg>(entity =>
         {
-            entity.HasKey(e => e.TempImgId).HasName("PK__TempImg__232A163F10F9354F");
+            entity.HasKey(e => e.TempImgId).HasName("PK__TempImg__232A163FF309913A");
 
             entity.ToTable("TempImg");
 
@@ -295,7 +381,7 @@ public partial class EcoFridgeDbContext : DbContext
 
         modelBuilder.Entity<Unit>(entity =>
         {
-            entity.HasKey(e => e.UnitId).HasName("PK__Unit__44F5ECB54BAA0D42");
+            entity.HasKey(e => e.UnitId).HasName("PK__Unit__44F5ECB5BAEA8004");
 
             entity.ToTable("Unit");
 
@@ -310,6 +396,9 @@ public partial class EcoFridgeDbContext : DbContext
 
             entity.ToTable("User");
 
+            entity.Property(e => e.Availability)
+                .HasMaxLength(255)
+                .IsUnicode(false);
             entity.Property(e => e.Barangay)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -357,6 +446,8 @@ public partial class EcoFridgeDbContext : DbContext
 
             entity.ToTable("UserFood");
 
+            entity.Property(e => e.Display).HasDefaultValue(true);
+
             entity.HasOne(d => d.Food).WithMany(p => p.UserFoods)
                 .HasForeignKey(d => d.FoodId)
                 .HasConstraintName("FK_UserFood_Food");
@@ -368,7 +459,7 @@ public partial class EcoFridgeDbContext : DbContext
 
         modelBuilder.Entity<UserPlan>(entity =>
         {
-            entity.HasKey(e => e.UserPlanId).HasName("PK__UserPlan__B2231FE1EABE836D");
+            entity.HasKey(e => e.UserPlanId).HasName("PK__UserPlan__B2231FE1477EB2E5");
 
             entity.ToTable("UserPlan");
 
@@ -377,7 +468,7 @@ public partial class EcoFridgeDbContext : DbContext
 
             entity.HasOne(d => d.StoragePlan).WithMany(p => p.UserPlans)
                 .HasForeignKey(d => d.StoragePlanId)
-                .HasConstraintName("FK__UserPlan__Storag__6754599E");
+                .HasConstraintName("FK__UserPlan__Storag__5EBF139D");
 
             entity.HasOne(d => d.User).WithMany(p => p.UserPlans)
                 .HasForeignKey(d => d.UserId)
@@ -386,17 +477,268 @@ public partial class EcoFridgeDbContext : DbContext
 
         modelBuilder.Entity<UserRole>(entity =>
         {
-            entity.HasKey(e => e.UserRoleId).HasName("PK__UserRole__3D978A355DF1379B");
+            entity.HasKey(e => e.UserRoleId).HasName("PK__UserRole__3D978A354B33FD13");
 
             entity.ToTable("UserRole");
 
             entity.HasOne(d => d.Role).WithMany(p => p.UserRoles)
                 .HasForeignKey(d => d.RoleId)
-                .HasConstraintName("FK__UserRole__RoleId__5070F446");
+                .HasConstraintName("FK__UserRole__RoleId__5FB337D6");
 
             entity.HasOne(d => d.User).WithMany(p => p.UserRoles)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK__UserRole__UserId__4F7CD00D");
+        });
+
+        modelBuilder.Entity<VwChatConversationView>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("vw_ChatConversationView");
+
+            entity.Property(e => e.Availability)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.BusinessProofPicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.ChatMessage).IsUnicode(false);
+            entity.Property(e => e.DoneeOrganizationName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.DoneesBarangay)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.DoneesCity)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.DoneesEmail)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.DoneesProfilePicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.DoneesProofPicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.DoneesProvince)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.DonorsBarangay)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.DonorsBusinesName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.DonorsCity)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.DonorsEmail)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.DonorsFirstName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.DonorsLastName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.DonorsProfilePicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.DonorsProvince)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.SentAt).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<VwDonationTransactionMasterUserView>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("vw_donationTransactionMasterUserView");
+
+            entity.Property(e => e.AccountType)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Availability)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Barangay)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.City)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.DoneeOrgName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.DoneeOrganizationName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.DoneeProfilePicPath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.FirstName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FoodBusinessName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.Gender)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.LastName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Password)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.ProfilePicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.ProofPicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Province)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.RoleName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Status)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.TransactionDate).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<VwDoneeChatConversation>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("vw_DoneeChatConversation");
+
+            entity.Property(e => e.Availability)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Barangay)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.City)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.DoneeOrganizationName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.FirstName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FoodBusinessName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.Gender)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.LastChat)
+                .HasMaxLength(1)
+                .IsUnicode(false);
+            entity.Property(e => e.LastName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.LastSentAt)
+                .HasMaxLength(1)
+                .IsUnicode(false);
+            entity.Property(e => e.Password)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.ProfilePicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.ProofPicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Province)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.ThisFirstName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.ThisFoodBusinessName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.ThisLastName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.ThisProfilePicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<VwDonorChatConversation>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("vw_DonorChatConversation");
+
+            entity.Property(e => e.Availability)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Barangay)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.City)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.DoneeOrganizationName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.FirstName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FoodBusinessName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.Gender)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.LastChat)
+                .HasMaxLength(1)
+                .IsUnicode(false);
+            entity.Property(e => e.LastName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.LastSentAt)
+                .HasMaxLength(1)
+                .IsUnicode(false);
+            entity.Property(e => e.Password)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.ProfilePicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.ProofPicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Province)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.ThisDoneeOrganizationName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.ThisProfilePicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
         });
 
         modelBuilder.Entity<VwFoodBeforeExpirationDay>(entity =>
@@ -486,6 +828,76 @@ public partial class EcoFridgeDbContext : DbContext
                 .IsUnicode(false);
         });
 
+        modelBuilder.Entity<VwManageDonationView>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("vw_manageDonationView");
+
+            entity.Property(e => e.Barangay)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.City)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.CreatedAt).HasColumnType("datetime");
+            entity.Property(e => e.DateAdded).HasColumnType("datetime");
+            entity.Property(e => e.DoneeOrganizationName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.DonorsFirstName)
+                .HasMaxLength(1)
+                .IsUnicode(false);
+            entity.Property(e => e.DonorsLastName)
+                .HasMaxLength(1)
+                .IsUnicode(false);
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.ExpiryDate).HasColumnType("datetime");
+            entity.Property(e => e.FirstName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FoodBusinessName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.FoodCategoryName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FoodName)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.FoodPicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Gender)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.LastName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Password)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.ProfilePicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.ProofPicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Province)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Status)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.TransactionDate).HasColumnType("datetime");
+            entity.Property(e => e.Unit)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<VwUsersFoodItem>(entity =>
         {
             entity
@@ -551,6 +963,9 @@ public partial class EcoFridgeDbContext : DbContext
                 .HasNoKey()
                 .ToView("vw_usersRoleView");
 
+            entity.Property(e => e.Availability)
+                .HasMaxLength(255)
+                .IsUnicode(false);
             entity.Property(e => e.Barangay)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -589,6 +1004,65 @@ public partial class EcoFridgeDbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.RoleName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<VwVwDonationTransactionDetailsUserView>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("vw_vw_DonationTransactionDetailsUserView");
+
+            entity.Property(e => e.Barangay)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.City)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.DateAdded).HasColumnType("datetime");
+            entity.Property(e => e.DoneeOrganizationName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.ExpiryDate).HasColumnType("datetime");
+            entity.Property(e => e.FirstName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FoodBusinessName)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.FoodCategoryName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.FoodName)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.FoodPicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Gender)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.LastName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Password)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.ProfilePicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.ProofPicturePath)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.Province)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Unit)
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });

@@ -3,25 +3,13 @@ using System.Collections.Generic;
 
 namespace AdminSideEcoFridge.Models;
 
-public partial class VwUsersFoodItem
+public partial class VwDoneeChatConversation
 {
-    public int FoodId { get; set; }
+    public int ChatConversationId { get; set; }
 
-    public string? FoodName { get; set; }
+    public int? DonorId { get; set; }
 
-    public int? Quantity { get; set; }
-
-    public string? Unit { get; set; }
-
-    public DateTime ExpiryDate { get; set; }
-
-    public int FoodCategoryId { get; set; }
-
-    public string FoodCategoryName { get; set; } = null!;
-
-    public DateTime DateAdded { get; set; }
-
-    public string? FoodPicturePath { get; set; }
+    public int? DoneeId { get; set; }
 
     public int UserId { get; set; }
 
@@ -59,5 +47,17 @@ public partial class VwUsersFoodItem
 
     public int? FoodStoredCount { get; set; }
 
-    public bool? Display { get; set; }
+    public string? Availability { get; set; }
+
+    public string LastChat { get; set; } = null!;
+
+    public string LastSentAt { get; set; } = null!;
+
+    public string? ThisFirstName { get; set; }
+
+    public string? ThisLastName { get; set; }
+
+    public string? ThisFoodBusinessName { get; set; }
+
+    public string? ThisProfilePicturePath { get; set; }
 }

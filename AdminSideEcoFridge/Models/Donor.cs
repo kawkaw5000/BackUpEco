@@ -9,7 +9,5 @@ public partial class Donor
 
     public int? UserRoleId { get; set; }
 
-    public virtual ICollection<DonationTransaction> DonationTransactions { get; set; } = new List<DonationTransaction>();
-
     public virtual UserRole? UserRole { get; set; }
 }

@@ -11,7 +11,7 @@ public partial class UserFood
 
     public int? FoodId { get; set; }
 
-    public virtual ICollection<DonationTransaction> DonationTransactions { get; set; } = new List<DonationTransaction>();
+    public bool? Display { get; set; }
 
     public virtual Food? Food { get; set; }
 

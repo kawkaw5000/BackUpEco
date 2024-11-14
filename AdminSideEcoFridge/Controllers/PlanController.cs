@@ -37,7 +37,7 @@ namespace AdminSideEcoFridge.Controllers
                 ModelState.AddModelError("Price", "Please enter a valid price.");
             }
 
-            storageAdd.isActive = true;
+            storageAdd.IsActive = true;
 
             if (!ModelState.IsValid)
             {
@@ -115,7 +115,7 @@ namespace AdminSideEcoFridge.Controllers
                 return NotFound("Plan not found."); 
             }
 
-            existingPlan.isActive = false;
+            existingPlan.IsActive = false;
 
             if (_storagePlanRepo.Update(existingPlan.StoragePlanId, existingPlan) == ErrorCode.Success)
             {
@@ -139,7 +139,7 @@ namespace AdminSideEcoFridge.Controllers
                 return NotFound("Plan not found.");
             }
 
-            existingPlan.isActive = true;
+            existingPlan.IsActive = true;
 
             if (_storagePlanRepo.Update(existingPlan.StoragePlanId, existingPlan) == ErrorCode.Success)
             {
