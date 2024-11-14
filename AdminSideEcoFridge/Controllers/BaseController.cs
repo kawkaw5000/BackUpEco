@@ -31,6 +31,8 @@ namespace AdminSideEcoFridge.Controllers
         public BaseRepository<Donor> _donorRepo;
         public BaseRepository<VwUsersRoleView> _vwUsersRoleViewRepo;
         public BaseRepository<VwUsersFoodItem> _vwUsersFoodItemRepo;
+        public BaseRepository<VwDonationTransactionMasterUserView> _vwDonationTransaction;
+        public DonationTransactionManager _donationTransaction;
         public int UserId { get { var userId = Convert.ToInt32(User.FindFirst(ClaimsIdentity.DefaultNameClaimType)?.Value); return userId; } }
         public BaseController()
         {   
@@ -57,6 +59,8 @@ namespace AdminSideEcoFridge.Controllers
             _donorRepo = new BaseRepository<Donor>();
             _vwUsersRoleViewRepo = new BaseRepository<VwUsersRoleView>();
             _vwUsersFoodItemRepo = new BaseRepository<VwUsersFoodItem>();
+            _vwDonationTransaction = new BaseRepository<VwDonationTransactionMasterUserView>();
+            _donationTransaction = new DonationTransactionManager();
         }
     }
 }

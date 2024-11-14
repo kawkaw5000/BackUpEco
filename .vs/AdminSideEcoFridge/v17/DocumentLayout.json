@@ -3,51 +3,40 @@
   "WorkspaceRootPath": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\views\\transaction\\donationtransaction.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\transaction\\donationtransaction.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\repository\\usersearcrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\repository\\usersearcrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\wwwroot\\css\\donationtranslist.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\wwwroot\\css\\donationtranslist.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\models\\storageplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\models\\storageplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\repository\\donationtransactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\repository\\donationtransactionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\repository\\storageplanmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\repository\\storageplanmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\VS2022\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\wwwroot\\css\\admincreate.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\wwwroot\\css\\admincreate.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\models\\userplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\models\\userplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\models\\ecofridgedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\models\\ecofridgedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\repository\\userplanmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\repository\\userplanmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\wwwroot\\css\\user-profiles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\wwwroot\\css\\user-profiles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|d:\\!!!-a-backup\\newbackup\\new folder (2)\\backupeco\\adminsideecofridge\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D3F67EED-7141-4E85-A89F-CDB49F9CE87D}|AdminSideEcoFridge\\AdminSideEcoFridge.csproj|solutionrelative:adminsideecofridge\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -57,152 +46,125 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "AdminSideEcoFridge\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAUwB4AAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-14T09:37:14.093Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "StoragePlan.cs",
-              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Models\\StoragePlan.cs",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Models\\StoragePlan.cs",
-              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Models\\StoragePlan.cs",
-              "RelativeToolTip": "AdminSideEcoFridge\\Models\\StoragePlan.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAASAAAAAAAAAA==",
+              "Title": "UserSearcRepository.cs",
+              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Repository\\UserSearcRepository.cs",
+              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Repository\\UserSearcRepository.cs",
+              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Repository\\UserSearcRepository.cs",
+              "RelativeToolTip": "AdminSideEcoFridge\\Repository\\UserSearcRepository.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowBwAAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T08:24:12.287Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TransactionController.cs",
-              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Controllers\\TransactionController.cs",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Controllers\\TransactionController.cs",
-              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Controllers\\TransactionController.cs",
-              "RelativeToolTip": "AdminSideEcoFridge\\Controllers\\TransactionController.cs",
-              "ViewState": "AgIAAH8AAAAAAAAAAAAgwI4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T05:02:29.211Z",
+              "WhenOpened": "2024-11-14T14:29:47.299Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "StoragePlanManager.cs",
-              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Repository\\StoragePlanManager.cs",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Repository\\StoragePlanManager.cs",
-              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Repository\\StoragePlanManager.cs",
-              "RelativeToolTip": "AdminSideEcoFridge\\Repository\\StoragePlanManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T03:56:23.752Z"
+              "Title": "donationTransList.css",
+              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\wwwroot\\css\\donationTransList.css",
+              "RelativeDocumentMoniker": "AdminSideEcoFridge\\wwwroot\\css\\donationTransList.css",
+              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\wwwroot\\css\\donationTransList.css",
+              "RelativeToolTip": "AdminSideEcoFridge\\wwwroot\\css\\donationTransList.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-14T15:12:38.545Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "adminCreate.css",
-              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\wwwroot\\css\\adminCreate.css",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\wwwroot\\css\\adminCreate.css",
-              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\wwwroot\\css\\adminCreate.css",
-              "RelativeToolTip": "AdminSideEcoFridge\\wwwroot\\css\\adminCreate.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-14T04:40:15.995Z"
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "AdminSideEcoFridge\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwBwAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T14:30:08.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DonationTransaction.cshtml",
+              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Views\\Transaction\\DonationTransaction.cshtml",
+              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Transaction\\DonationTransaction.cshtml",
+              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Views\\Transaction\\DonationTransaction.cshtml",
+              "RelativeToolTip": "AdminSideEcoFridge\\Views\\Transaction\\DonationTransaction.cshtml",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAAGIAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-14T14:14:12.718Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Microsoft.Common.CurrentVersion.targets",
-              "DocumentMoniker": "D:\\VS2022\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\VS2022\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ToolTip": "D:\\VS2022\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "RelativeToolTip": "..\\..\\..\\..\\VS2022\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ViewState": "AgIAAMUWAAAAAAAAAAAqwNQWAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2024-11-14T03:52:19.991Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UserPlan.cs",
-              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Models\\UserPlan.cs",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Models\\UserPlan.cs",
-              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Models\\UserPlan.cs",
-              "RelativeToolTip": "AdminSideEcoFridge\\Models\\UserPlan.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAA5AAAAAAAAAA==",
+              "Title": "TransactionController.cs",
+              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Controllers\\TransactionController.cs",
+              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Controllers\\TransactionController.cs",
+              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Controllers\\TransactionController.cs",
+              "RelativeToolTip": "AdminSideEcoFridge\\Controllers\\TransactionController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAgwAABAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T03:55:57.866Z"
+              "WhenOpened": "2024-11-14T13:09:00.243Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "User.cs",
-              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Models\\User.cs",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Models\\User.cs",
-              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Models\\User.cs",
-              "RelativeToolTip": "AdminSideEcoFridge\\Models\\User.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAwwDEAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T03:53:33.13Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "EcoFridgeDbContext.cs",
-              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Models\\EcoFridgeDbContext.cs",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Models\\EcoFridgeDbContext.cs",
-              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Models\\EcoFridgeDbContext.cs",
-              "RelativeToolTip": "AdminSideEcoFridge\\Models\\EcoFridgeDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T03:51:38.955Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UserPlanManager.cs",
-              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Repository\\UserPlanManager.cs",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Repository\\UserPlanManager.cs",
-              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Repository\\UserPlanManager.cs",
-              "RelativeToolTip": "AdminSideEcoFridge\\Repository\\UserPlanManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T03:35:20.389Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 5,
               "Title": "Dashboard.cshtml",
               "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
               "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
               "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
               "RelativeToolTip": "AdminSideEcoFridge\\Views\\Home\\Dashboard.cshtml",
-              "ViewState": "AgIAAI0AAAAAAAAAAAAAAJUAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAGABAAAAAAAAAADwv3YBAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-07T09:54:09.832Z"
+              "WhenOpened": "2024-11-14T14:19:26.318Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "user-profiles.css",
-              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\wwwroot\\css\\user-profiles.css",
-              "RelativeDocumentMoniker": "AdminSideEcoFridge\\wwwroot\\css\\user-profiles.css",
-              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\wwwroot\\css\\user-profiles.css",
-              "RelativeToolTip": "AdminSideEcoFridge\\wwwroot\\css\\user-profiles.css",
-              "ViewState": "AgIAAOUBAAAAAAAAAADgv/QBAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-07T10:01:27.361Z"
+              "DocumentIndex": 6,
+              "Title": "DonationTransactionManager.cs",
+              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Repository\\DonationTransactionManager.cs",
+              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Repository\\DonationTransactionManager.cs",
+              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Repository\\DonationTransactionManager.cs",
+              "RelativeToolTip": "AdminSideEcoFridge\\Repository\\DonationTransactionManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T14:32:26.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "AdminSideEcoFridge\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAEUAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-14T09:37:14.093Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "StoragePlanManager.cs",
+              "DocumentMoniker": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Repository\\StoragePlanManager.cs",
+              "RelativeDocumentMoniker": "AdminSideEcoFridge\\Repository\\StoragePlanManager.cs",
+              "ToolTip": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\Repository\\StoragePlanManager.cs",
+              "RelativeToolTip": "AdminSideEcoFridge\\Repository\\StoragePlanManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T13:33:16.75Z",
+              "EditorCaption": ""
             }
           ]
         }

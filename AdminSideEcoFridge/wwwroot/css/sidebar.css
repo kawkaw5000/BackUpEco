@@ -22,12 +22,16 @@
   z-index: 100;
 }
 
+.donation-icon {
+    height: 37px;
+}
+
 .logo-container {
-  margin-top: 12px;
-  background-color: #307A59;
-  padding: 4px 14px 4px 14px;
-  border-radius: 100px;
-  margin-bottom: 20px;
+    margin-top: 12px;
+    background-color: #307A59;
+    padding: 4px 14px 4px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
 }
 
 .logo-icon {
@@ -40,6 +44,16 @@
   padding: 40px 40px 40px 40px;
 }
 
+.icons-container {
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    padding: 30px 30px 30px 30px;
+}
+
+.icons-container:hover {
+    background-color: rgb(228, 228, 228);
+}
+
 .icon-container:hover {
-  background-color: rgb(228, 228, 228);
+    background-color: rgb(228, 228, 228);
 }

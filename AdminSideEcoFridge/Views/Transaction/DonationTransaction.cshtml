@@ -1,0 +1,99 @@
+﻿@model IEnumerable<AdminSideEcoFridge.Models.VwDonationTransactionMasterUserView>
+@{
+    ViewData["Title"] = "Donation Transaction";
+}
+<link href="~/css/donationtranslist.css" rel="stylesheet" />
+<div style="margin-left: 115px; margin-top: 70px; margin-right: 10px;">
+    <h2>Donation Transaction List</h2>
+    <div class="storage-container">
+
+        <div style="position:relative;">
+            <div style="position: absolute; left: 23px; top: -10px">
+                <form method="get" action="@Url.Action("DonationTransaction", "Transaction")">
+                <input type="text"
+                       name="keyword"
+                       style="width: 300px; border-radius: 5px; border-color: gray; border-width: 1px; padding-left: 74px; height: 25px;"
+                       placeholder="Enter a keyword..." />
+                <div style="position: absolute; top: -0.7px; left: 0px;">
+                    <button type="submit"
+                            style="
+                                           border-radius: 5px;
+                                           border-color: gray;
+                                           border-width: 1px;
+                                           height: 30px;
+                                           width: 70px;
+                                           color: white;
+                                           background-color: #307A59;">
+                        Search
+                    </button>          
+                </div>
+                </form>
+            </div>
+            <div class="plan-table">
+                <table class="user-list-table" id="plan-container">
+                    <thead>
+                        <tr>
+                            <th>
+                                <a href="@Url.Action("DonationTransaction", new { sortColumn = "ID", sortDirection = (ViewData["SortDirection"]?.ToString() == "asc" ? "desc" : "asc") })">
+                                    ID
+                                </a>
+                            </th>
+                            <th>
+                                <a href="@Url.Action("DonationTransaction", new { sortColumn = "DonorName", sortDirection = (ViewData["SortDirection"]?.ToString() == "asc" ? "desc" : "asc") })">
+                                    Donor Name
+                                </a>
+                            </th>
+                            <th>
+                                <a href="@Url.Action("DonationTransaction", new { sortColumn = "DoneeOrganizationName", sortDirection = (ViewData["SortDirection"]?.ToString() == "asc" ? "desc" : "asc") })">
+                                    Donee Organization Name
+                                </a>
+                            </th>
+                            <th>
+                                <a href="@Url.Action("DonationTransaction", new { sortColumn = "Status", sortDirection = (ViewData["SortDirection"]?.ToString() == "asc" ? "desc" : "asc") })">
+                                    Status
+                                </a>
+                            </th>
+                            <th>
+                                <a href="@Url.Action("DonationTransaction", new { sortColumn = "AccountType", sortDirection = (ViewData["SortDirection"]?.ToString() == "asc" ? "desc" : "asc") })">
+                                    Account Type
+                                </a>
+                            </th>
+                            <th>
+                                <a href="@Url.Action("DonationTransaction", new { sortColumn = "TransactionDate", sortDirection = (ViewData["SortDirection"]?.ToString() == "asc" ? "desc" : "asc") })">
+                                    Transaction Date
+                                </a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            int i = 1;
+                            foreach (var list in Model)
+                            {
+                                <tr>
+                                    <td>@list.DonationTransactionMasterId</td>
+                                    <td>@((list.FirstName == null) ? list.FoodBusinessName : list.FirstName) </td>
+                                    <td>@list.DoneeOrgName</td>
+                                    <td>@list.Status</td>
+                                    <td>@list.AccountType</td>
+                                    <td>@list.TransactionDate</td>
+                              
+                                </tr>
+                                i++;
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5">No Donation Transaction History.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div>
+                </div>
+            </div>    
+        </div>
+    </div>
+</div>

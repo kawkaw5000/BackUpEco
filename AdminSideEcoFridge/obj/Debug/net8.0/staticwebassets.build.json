@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mnFhrFSJK7QAAMQT+Njs25VjamxSPuw24tGtRvC2DKw=",
+  "Hash": "L4Fx2Kgw3cr0eV2l0Y2PC+MAnqgzdSXj5VdoLEkqSVE=",
   "Source": "AdminSideEcoFridge",
   "BasePath": "_content/AdminSideEcoFridge",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\check.css"
+    },
+    {
+      "Identity": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\wwwroot\\css\\donationTransList.css",
+      "SourceId": "AdminSideEcoFridge",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\wwwroot\\",
+      "BasePath": "_content/AdminSideEcoFridge",
+      "RelativePath": "css/donationTransList.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\donationTransList.css"
     },
     {
       "Identity": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\wwwroot\\css\\errorModal.css",
@@ -452,6 +471,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\Create-icons\\check-mark-svgrepo-com.svg"
+    },
+    {
+      "Identity": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\wwwroot\\images\\Create-icons\\donation.png",
+      "SourceId": "AdminSideEcoFridge",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\wwwroot\\",
+      "BasePath": "_content/AdminSideEcoFridge",
+      "RelativePath": "images/Create-icons/donation.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Create-icons\\donation.png"
     },
     {
       "Identity": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\wwwroot\\images\\Create-icons\\EcoFridgMascot.svg",

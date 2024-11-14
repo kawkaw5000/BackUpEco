@@ -7,6 +7,73 @@ namespace AdminSideEcoFridge.Controllers
 {
     public class TransactionController : BaseController
     {
+        private string GetSubscriberName(User user)
+        {
+            if (user == null) return "Unknown Name";
+
+            if (!string.IsNullOrEmpty(user.DoneeOrganizationName) && !string.IsNullOrEmpty(user.FoodBusinessName))
+            {
+                return user.FirstName ?? "Unknown Name";
+            }
+            else if (string.IsNullOrEmpty(user.DoneeOrganizationName) && string.IsNullOrEmpty(user.FirstName))
+            {
+                return user.FoodBusinessName ?? "Unknown Name";
+            }
+            else if (string.IsNullOrEmpty(user.FoodBusinessName) && string.IsNullOrEmpty(user.FirstName))
+            {
+                return user.DoneeOrganizationName ?? "Unknown Name";
+            }
+            else
+            {
+                return user.FirstName ?? user.FoodBusinessName ?? user.DoneeOrganizationName ?? "Unknown Name";
+            }
+        }
+        private string[] GenerateColors(int count)
+        {
+            var colors = new List<string>();
+            for (int i = 0; i < count; i++)
+            {
+                var lightness = 80 - (i * 60 / (count - 1));
+                var saturation = 30 + (i * 40 / (count - 1));
+
+                colors.Add($"hsl(120, {saturation}%, {lightness}%)");
+            }
+            return colors.ToArray();
+        }
+        private List<VwDonationTransactionMasterUserView> SortDonations(List<VwDonationTransactionMasterUserView> donationList, string sortColumn, bool ascending)
+        {
+            switch (sortColumn.ToLower())
+            {
+                case "id":
+                    donationList = ascending ? donationList.OrderBy(x => x.DonationTransactionMasterId).ToList() :
+                                               donationList.OrderByDescending(x => x.DonationTransactionMasterId).ToList();
+                    break;
+                case "donorname":
+                    donationList = ascending ? donationList.OrderBy(x => x.FirstName).ToList() :
+                                               donationList.OrderByDescending(x => x.FirstName).ToList();
+                    break;
+                case "doneeorganizationname":
+                    donationList = ascending ? donationList.OrderBy(x => x.DoneeOrgName).ToList() :
+                                               donationList.OrderByDescending(x => x.DoneeOrgName).ToList();
+                    break;
+                case "status":
+                    donationList = ascending ? donationList.OrderBy(x => x.Status).ToList() :
+                                               donationList.OrderByDescending(x => x.Status).ToList();
+                    break;
+                case "accounttype":
+                    donationList = ascending ? donationList.OrderBy(x => x.AccountType).ToList() :
+                                               donationList.OrderByDescending(x => x.AccountType).ToList();
+                    break;
+                case "transactiondate":
+                    donationList = ascending ? donationList.OrderBy(x => x.TransactionDate).ToList() :
+                                               donationList.OrderByDescending(x => x.TransactionDate).ToList();
+                    break;
+                default:
+                    break;
+            }
+            return donationList;
+        }
+
         public IActionResult Subscribers()
         {
             var userSubscribers = _userPlanMgr.GetAll();
@@ -82,20 +149,6 @@ namespace AdminSideEcoFridge.Controllers
 
             return View(model);
         }
-
-        private string[] GenerateColors(int count)
-        {
-            var colors = new List<string>();
-            for (int i = 0; i < count; i++)
-            {
-                var lightness = 80 - (i * 60 / (count - 1));
-                var saturation = 30 + (i * 40 / (count - 1));
-
-                colors.Add($"hsl(120, {saturation}%, {lightness}%)");
-            }
-            return colors.ToArray();
-        }
-
         public IActionResult GenerateSalesReport(string period, int year)
         {
             var userSubscribers = _userPlanMgr.GetAll();
@@ -184,27 +237,23 @@ namespace AdminSideEcoFridge.Controllers
                 return BadRequest("An error occurred while generating the report.");
             }
         }
-        private string GetSubscriberName(User user)
-        {
-            if (user == null) return "Unknown Name";
 
-            if (!string.IsNullOrEmpty(user.DoneeOrganizationName) && !string.IsNullOrEmpty(user.FoodBusinessName))
+        public IActionResult DonationTransaction(string keyword = "", string sortColumn = "TransactionDate", string sortDirection = "asc")
+        {
+            // Get the list of donations, either filtered by the keyword or unfiltered
+            var donationList = _userSearchRepository.SearchDonation(keyword);
+
+            // Apply sorting based on the column and direction
+            if (sortDirection == "asc")
             {
-                return user.FirstName ?? "Unknown Name";
-            }
-            else if (string.IsNullOrEmpty(user.DoneeOrganizationName) && string.IsNullOrEmpty(user.FirstName))
-            {
-                return user.FoodBusinessName ?? "Unknown Name";
-            }
-            else if (string.IsNullOrEmpty(user.FoodBusinessName) && string.IsNullOrEmpty(user.FirstName))
-            {
-                return user.DoneeOrganizationName ?? "Unknown Name";
+                donationList = SortDonations(donationList, sortColumn, true);  // Ascending
             }
             else
             {
-                return user.FirstName ?? user.FoodBusinessName ?? user.DoneeOrganizationName ?? "Unknown Name";
+                donationList = SortDonations(donationList, sortColumn, false); // Descending
             }
-        }
 
+            return View(donationList);
+        }      
     }
 }

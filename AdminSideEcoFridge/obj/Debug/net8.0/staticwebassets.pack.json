@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\css\\check.css"
     },
     {
+      "Id": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\wwwroot\\css\\donationTransList.css",
+      "PackagePath": "staticwebassets\\css\\donationTransList.css"
+    },
+    {
       "Id": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\wwwroot\\css\\errorModal.css",
       "PackagePath": "staticwebassets\\css\\errorModal.css"
     },
@@ -91,6 +95,10 @@
     {
       "Id": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\wwwroot\\images\\Create-icons\\check-mark-svgrepo-com.svg",
       "PackagePath": "staticwebassets\\images\\Create-icons\\check-mark-svgrepo-com.svg"
+    },
+    {
+      "Id": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\wwwroot\\images\\Create-icons\\donation.png",
+      "PackagePath": "staticwebassets\\images\\Create-icons\\donation.png"
     },
     {
       "Id": "D:\\!!!-A-BACKUP\\newbackup\\New folder (2)\\BackUpEco\\AdminSideEcoFridge\\wwwroot\\images\\Create-icons\\email.svg",

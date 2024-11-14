@@ -24,4 +24,15 @@ public class UserSearcRepository
         return users ?? new List<VwUsersRoleView>();
     }
 
+    public List<VwDonationTransactionMasterUserView> SearchDonation(string keyword)
+    {
+        var parameter = new SqlParameter("@Keyword", keyword ?? (object)DBNull.Value);
+
+        var donations = _db.VwDonationTransactionMasterUserViews
+            .FromSqlRaw("EXEC SearchDonation @Keyword", parameter)
+            .ToList();
+
+        return donations ?? new List<VwDonationTransactionMasterUserView>();
+    }
+
 }
