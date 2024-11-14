@@ -10,6 +10,24 @@
     margin-right: 5px;
 }
 
+.generate-btn {
+    position: absolute;
+    right: -135px;
+    top: -70px;
+
+}
+
+.generate-btn button {
+    padding: 6px 10px;
+    font-family: Arial, sans-serif;
+    background-color: #e6f5e6;
+    color: #004d00;
+    border: 1px solid #004d00;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
 .charts select {
     padding: 5px 10px;
     font-family: Arial, sans-serif;
