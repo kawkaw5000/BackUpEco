@@ -15,6 +15,7 @@ namespace AdminSideEcoFridge.Repository
         public List<UserPlan> GetAll()
         {
             return _userPlan._table
+                .Include(e => e.User)
                 .Include(e => e.StoragePlan)
                 .ToList();
         }

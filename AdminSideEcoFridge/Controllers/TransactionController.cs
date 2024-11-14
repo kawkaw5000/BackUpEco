@@ -1,6 +1,7 @@
 ﻿using AdminSideEcoFridge.Models;
+using iText.Html2pdf;
+using iText.Kernel.Pdf;
 using Microsoft.AspNetCore.Mvc;
-
 namespace AdminSideEcoFridge.Controllers
 {
     public class TransactionController : BaseController
@@ -94,6 +95,68 @@ namespace AdminSideEcoFridge.Controllers
             return colors.ToArray();
         }
 
+        public IActionResult GenerateSalesReport(string period, int year)
+        {
 
+            var userSubscribers = _userPlanMgr.GetAll();
+            IEnumerable<UserPlan> filteredSubscribers;
+
+            if (period == "yearly")
+            {
+                filteredSubscribers = userSubscribers.Where(plan => plan.SubscriptionDate.Year == year);
+            }
+            else
+            {
+                filteredSubscribers = userSubscribers.Where(plan =>
+                    plan.SubscriptionDate.Year == year && plan.SubscriptionDate.Month == DateTime.Now.Month);
+            }
+
+            var htmlContent = "<h1>Sales Report</h1>";
+            htmlContent += $"<p>Period: {period} - {year}</p>";
+            htmlContent += "<table border='1'><tr><th>Subscriber Name</th><th>Plan</th><th>Plan Price</th><th>Subscription Date</th></tr>";
+
+            foreach (var plan in filteredSubscribers)
+            {
+                string name;
+
+                if (!string.IsNullOrEmpty(plan.User?.DoneeOrganizationName) && !string.IsNullOrEmpty(plan.User?.FoodBusinessName))
+                {
+                    name = plan.User.FirstName;
+                }
+                else if (string.IsNullOrEmpty(plan.User?.DoneeOrganizationName) && string.IsNullOrEmpty(plan.User?.FirstName))
+                {
+                    name = plan.User.FoodBusinessName;
+                }
+                else if (string.IsNullOrEmpty(plan.User?.FoodBusinessName) && string.IsNullOrEmpty(plan.User?.FirstName))
+                {
+                    name = plan.User.DoneeOrganizationName;
+                }
+                else
+                {
+                    name = !string.IsNullOrEmpty(plan.User?.FirstName)
+                        ? plan.User.FirstName
+                        : (!string.IsNullOrEmpty(plan.User?.FoodBusinessName)
+                            ? plan.User.FoodBusinessName
+                            : plan.User.DoneeOrganizationName);
+                }
+
+                htmlContent += $"<tr><td>{name}</td><td>{plan.StoragePlan?.StoragePlanName}</td><td>{plan.StoragePlan?.Price}</td><td>{plan.SubscriptionDate.ToShortDateString()}</td></tr>";
+            }
+
+            htmlContent += "</table>";
+
+            using (var memoryStream = new MemoryStream())
+            {
+                var writer = new PdfWriter(memoryStream);
+                using (var pdfDoc = new iText.Kernel.Pdf.PdfDocument(writer))
+                {
+                    pdfDoc.SetTagged();
+                    var converterProperties = new ConverterProperties();
+                    HtmlConverter.ConvertToPdf(htmlContent, pdfDoc, converterProperties);
+                }
+
+                return File(memoryStream.ToArray(), "application/pdf", "SalesReport.pdf");
+            }
+        }
     }
 }

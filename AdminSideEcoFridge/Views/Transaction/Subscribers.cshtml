@@ -65,11 +65,21 @@
             </select>
         </div>
 
+        <button id="generateReportButton" class="btn btn-primary" style="margin-top: 20px;">Generate Sales Report</button>
         <canvas id="myBarChart" style="margin-top: 20px;"></canvas>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.getElementById('generateReportButton').addEventListener('click', function () {
+        const timePeriod = document.getElementById('timePeriod').value;
+        const selectedYear = document.getElementById('year').value;
+        const url = `/Transaction/GenerateSalesReport?period=${timePeriod}&year=${selectedYear}`;
+
+        window.location.href = url;
+    });
+</script>
 <script>
 
     const pieLabels = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.PieChartData.labels));
