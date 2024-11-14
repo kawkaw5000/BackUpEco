@@ -2,6 +2,7 @@
 using iText.Html2pdf;
 using iText.Kernel.Pdf;
 using Microsoft.AspNetCore.Mvc;
+using System.Numerics;
 namespace AdminSideEcoFridge.Controllers
 {
     public class TransactionController : BaseController
@@ -97,66 +98,113 @@ namespace AdminSideEcoFridge.Controllers
 
         public IActionResult GenerateSalesReport(string period, int year)
         {
-
             var userSubscribers = _userPlanMgr.GetAll();
             IEnumerable<UserPlan> filteredSubscribers;
+
+            decimal yearSum = 0;
+            decimal monthSum = 0;
 
             if (period == "yearly")
             {
                 filteredSubscribers = userSubscribers.Where(plan => plan.SubscriptionDate.Year == year);
+                foreach (var plan in filteredSubscribers)
+                {
+                    decimal planPrice = (plan.StoragePlan != null) ? plan.StoragePlan.Price : 0.0m;
+                    yearSum += planPrice;
+                }
             }
             else
             {
                 filteredSubscribers = userSubscribers.Where(plan =>
                     plan.SubscriptionDate.Year == year && plan.SubscriptionDate.Month == DateTime.Now.Month);
+                foreach (var plan in filteredSubscribers)
+                {
+                    decimal planPrice = (plan.StoragePlan != null) ? plan.StoragePlan.Price : 0.0m;
+                    monthSum += planPrice;
+                }
             }
+
+            decimal totalSales = (period == "yearly") ? yearSum : monthSum;
 
             var htmlContent = "<h1>Sales Report</h1>";
             htmlContent += $"<p>Period: {period} - {year}</p>";
+            htmlContent += $"<h1>Total Sales: {totalSales:C}</h1>";
+
             htmlContent += "<table border='1'><tr><th>Subscriber Name</th><th>Plan</th><th>Plan Price</th><th>Subscription Date</th></tr>";
 
             foreach (var plan in filteredSubscribers)
             {
-                string name;
+                string name = "Unknown Name"; 
 
-                if (!string.IsNullOrEmpty(plan.User?.DoneeOrganizationName) && !string.IsNullOrEmpty(plan.User?.FoodBusinessName))
+                if (plan.User != null)
                 {
-                    name = plan.User.FirstName;
-                }
-                else if (string.IsNullOrEmpty(plan.User?.DoneeOrganizationName) && string.IsNullOrEmpty(plan.User?.FirstName))
-                {
-                    name = plan.User.FoodBusinessName;
-                }
-                else if (string.IsNullOrEmpty(plan.User?.FoodBusinessName) && string.IsNullOrEmpty(plan.User?.FirstName))
-                {
-                    name = plan.User.DoneeOrganizationName;
-                }
-                else
-                {
-                    name = !string.IsNullOrEmpty(plan.User?.FirstName)
-                        ? plan.User.FirstName
-                        : (!string.IsNullOrEmpty(plan.User?.FoodBusinessName)
-                            ? plan.User.FoodBusinessName
-                            : plan.User.DoneeOrganizationName);
+                    name = GetSubscriberName(plan.User);  
                 }
 
-                htmlContent += $"<tr><td>{name}</td><td>{plan.StoragePlan?.StoragePlanName}</td><td>{plan.StoragePlan?.Price}</td><td>{plan.SubscriptionDate.ToShortDateString()}</td></tr>";
+                string planName = plan.StoragePlan?.StoragePlanName ?? "Unknown Plan";
+                decimal planPrice = plan.StoragePlan?.Price ?? 0.0m;
+                string subscriptionDate = plan.SubscriptionDate.ToShortDateString();
+
+                htmlContent += $"<tr><td>{name}</td><td>{planName}</td><td>{planPrice:C}</td><td>{subscriptionDate}</td></tr>";
             }
 
             htmlContent += "</table>";
 
-            using (var memoryStream = new MemoryStream())
+            if (string.IsNullOrEmpty(htmlContent))
             {
-                var writer = new PdfWriter(memoryStream);
-                using (var pdfDoc = new iText.Kernel.Pdf.PdfDocument(writer))
-                {
-                    pdfDoc.SetTagged();
-                    var converterProperties = new ConverterProperties();
-                    HtmlConverter.ConvertToPdf(htmlContent, pdfDoc, converterProperties);
-                }
+                htmlContent = "<h1>Sales Report is empty.</h1>"; 
+            }
 
-                return File(memoryStream.ToArray(), "application/pdf", "SalesReport.pdf");
+            try
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    var writer = new PdfWriter(memoryStream);
+                    using (var pdfDoc = new iText.Kernel.Pdf.PdfDocument(writer))
+                    {
+                        pdfDoc.SetTagged();
+                        var converterProperties = new ConverterProperties();
+
+                        if (!string.IsNullOrEmpty(htmlContent))
+                        {
+                            HtmlConverter.ConvertToPdf(htmlContent, pdfDoc, converterProperties);
+                        }
+                        else
+                        {                         
+                            HtmlConverter.ConvertToPdf("<h1>No Data Available</h1>", pdfDoc, converterProperties);
+                        }
+                    }
+
+                    return File(memoryStream.ToArray(), "application/pdf", "SalesReport.pdf");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error generating PDF: {ex.Message}");
+                return BadRequest("An error occurred while generating the report.");
             }
         }
+        private string GetSubscriberName(User user)
+        {
+            if (user == null) return "Unknown Name";
+
+            if (!string.IsNullOrEmpty(user.DoneeOrganizationName) && !string.IsNullOrEmpty(user.FoodBusinessName))
+            {
+                return user.FirstName ?? "Unknown Name";
+            }
+            else if (string.IsNullOrEmpty(user.DoneeOrganizationName) && string.IsNullOrEmpty(user.FirstName))
+            {
+                return user.FoodBusinessName ?? "Unknown Name";
+            }
+            else if (string.IsNullOrEmpty(user.FoodBusinessName) && string.IsNullOrEmpty(user.FirstName))
+            {
+                return user.DoneeOrganizationName ?? "Unknown Name";
+            }
+            else
+            {
+                return user.FirstName ?? user.FoodBusinessName ?? user.DoneeOrganizationName ?? "Unknown Name";
+            }
+        }
+
     }
 }

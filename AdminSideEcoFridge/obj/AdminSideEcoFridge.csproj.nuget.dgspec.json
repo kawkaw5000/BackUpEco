@@ -76,6 +76,10 @@
               "target": "Package",
               "version": "[1.9.0, )"
             },
+            "Xceed.Document.NET": {
+              "target": "Package",
+              "version": "[3.0.23523.1209, )"
+            },
             "itext7": {
               "target": "Package",
               "version": "[8.0.5, )"
