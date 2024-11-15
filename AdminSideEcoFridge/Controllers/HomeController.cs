@@ -16,7 +16,13 @@ namespace AdminSideEcoFridge.Controllers
     {
         public IActionResult Dashboard(string role = "all", string keyword = "")
         {
+            if(!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             List<VwUsersRoleView> userList = _vwUsersRoleViewRepo.GetAll()
+                                            .Where(user => user.UserId != UserId)
                                             .OrderByDescending(user => user.UserId)
                                             .ToList();
             List<VwUsersFoodItem> foodList = _vwUsersFoodItemRepo.GetAll();
