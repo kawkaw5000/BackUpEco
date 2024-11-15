@@ -106,3 +106,80 @@
 .action-dropdown:hover .dropdown {
     display: flex;
 }
+
+#success-update-plan,
+#success-disable-plan,
+#success-activate-plan,
+#success-deleted-plan {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2001;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#success-update-plan.hide,
+#success-disable-plan.hide,
+#success-activate-plan.hide,
+#success-deleted-plan.hide{
+    opacity: 0;
+    visibility: hidden;
+}
+
+#success-update-plan.show,
+#success-disable-plan.show,
+#success-activate-plan.show,
+#success-deleted-plan.show{
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.success-plan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #307A59;
+    border-radius: 8px;
+    padding: 20px;
+    width:200px;
+    text-align: center;
+    margin: 20px auto;
+    flex-wrap: wrap;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.success-plan img {
+    height: 40px;
+
+}
+
+.success-plan p {
+    font-size: 1rem;
+}
+
+#bg-blur {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(3px);
+    width: 100vw;
+    height: 100%;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#bg-blur.hide {
+     opacity: 0;
+    visibility: hidden;
+}
+
+#bg-blur.show {
+     opacity: 1;
+    visibility: visible;
+}

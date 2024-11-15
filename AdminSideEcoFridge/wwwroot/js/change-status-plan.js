@@ -18,10 +18,11 @@ document.getElementById('ok-disable').addEventListener('click', function () {
     })
         .then(response => {
             if (response.ok) {
-
                 const row = document.querySelector(`tr[data-plan-id="${selectedPlanId}"]`);
-                alert('Plan disabled successfully.');
-                window.location.reload();
+                document.getElementById('success-disable-plan').classList.add('show');
+                document.getElementById('success-disable-plan').classList.remove('hide');
+                document.getElementById('bg-blur').classList.add('show');
+                document.getElementById('bg-blur').classList.remove('hide');
             } else {
                 alert('Failed to disable the plan.');
             }
@@ -51,6 +52,21 @@ document.querySelectorAll('.activate-plan').forEach(item => {
     });
 });
 
+document.getElementById('bg-blur').addEventListener('click', function (event) {
+    event.stopPropagation
+
+    document.getElementById('success-disable-plan').classList.add('hide');
+    document.getElementById('success-disable-plan').classList.remove('show');
+    document.getElementById('success-activate-plan').classList.add('hide');
+    document.getElementById('success-activate-plan').classList.remove('show');
+    document.getElementById('success-deleted-plan').classList.add('hide');
+    document.getElementById('success-deleted-plan').classList.remove('show');
+    document.getElementById('bg-blur').classList.add('hide');
+    document.getElementById('bg-blur').classList.remove('show');
+
+    window.location.reload();
+})
+
 document.getElementById('ok-activate').addEventListener('click', function () {
     fetch('/Plan/ActivatePlan', {
         method: 'PUT',
@@ -61,10 +77,11 @@ document.getElementById('ok-activate').addEventListener('click', function () {
     })
         .then(response => {
             if (response.ok) {
-
                 const row = document.querySelector(`tr[data-plan-id="${selectedPlanId}"]`);
-                alert('Plan activated successfully.');
-                window.location.reload();
+                document.getElementById('success-activate-plan').classList.add('show');
+                document.getElementById('success-activate-plan').classList.remove('hide');
+                document.getElementById('bg-blur').classList.add('show');
+                document.getElementById('bg-blur').classList.remove('hide');
             } else {
                 alert('Failed to activate the plan.');
             }
@@ -97,7 +114,10 @@ document.getElementById('ok-delete').addEventListener('click', function () {
         .then(response => {
             if (response.ok) {
                 const row = document.querySelector(`tr[data-plan-id="${selectedPlanId}"]`);
-                alert('Plan deleted successfully.');
+                document.getElementById('success-deleted-plan').classList.add('show');
+                document.getElementById('success-deleted-plan').classList.remove('hide');
+                document.getElementById('bg-blur').classList.add('show');
+                document.getElementById('bg-blur').classList.remove('hide');
                 row.remove();
             } else {
                 alert('Failed to delete the plan.');

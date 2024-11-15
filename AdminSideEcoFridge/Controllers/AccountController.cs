@@ -491,14 +491,14 @@ namespace AdminSideEcoFridge.Controllers
                     var sendersEmail = _configuration["EmailSettings:SendersEmail"];
                     var sendersPassword = _configuration["EmailSettings:SendersPassword"];
                     var noreplyEmail = "no-reply@ecofridge.com";
-                    var subject = "Temporary Password";
+                    var subject = "Password";
 
                     var body = $@"
                             <div style='font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;'>
                                 <div style='max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
                                     <h2 style='color: #333;'>Temporary Password</h2>
                                     <p>Hello,</p>
-                                    <p>Your new temporary password is:</p>
+                                    <p>Your password is:</p>
                                     <p style='font-size: 18px; font-weight: bold; color: #307a59;'>{user.Password}</p>
                                     <p>You can change it in your profile settings once you log in.</p>
                                     <hr style='border: none; border-top: 1px solid #eee; margin: 20px 0;' />
@@ -628,14 +628,14 @@ namespace AdminSideEcoFridge.Controllers
                     var sendersEmail = _configuration["EmailSettings:SendersEmail"];
                     var sendersPassword = _configuration["EmailSettings:SendersPassword"];
                     var noreplyEmail = "no-reply@ecofridge.com";
-                    var subject = "Temporary Password";
+                    var subject = "Password";
 
                     var body = $@"
                             <div style='font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;'>
                                 <div style='max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
                                     <h2 style='color: #333;'>Temporary Password</h2>
                                     <p>Hello,{user.FirstName}</p>
-                                    <p>Your new temporary password is:</p>
+                                    <p>Your password is:</p>
                                     <p style='font-size: 18px; font-weight: bold; color: #307a59;'>{user.Password}</p>
                                     <p>You can change it in your profile settings once you log in.</p>
                                     <hr style='border: none; border-top: 1px solid #eee; margin: 20px 0;' />
@@ -817,14 +817,14 @@ namespace AdminSideEcoFridge.Controllers
                     var sendersEmail = _configuration["EmailSettings:SendersEmail"];
                     var sendersPassword = _configuration["EmailSettings:SendersPassword"];
                     var noreplyEmail = "no-reply@ecofridge.com";
-                    var subject = "Temporary Password";
+                    var subject = "Password";
 
                     var body = $@"
                             <div style='font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;'>
                                 <div style='max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
                                     <h2 style='color: #333;'>Temporary Password</h2>
                                     <p>Hello,{user.FoodBusinessName}</p>
-                                    <p>Your new temporary password is:</p>
+                                    <p>Your password is:</p>
                                     <p style='font-size: 18px; font-weight: bold; color: #307a59;'>{user.Password}</p>
                                     <p>You can change it in your profile settings once you log in.</p>
                                     <hr style='border: none; border-top: 1px solid #eee; margin: 20px 0;' />
@@ -1007,14 +1007,14 @@ namespace AdminSideEcoFridge.Controllers
                     var sendersEmail = _configuration["EmailSettings:SendersEmail"];
                     var sendersPassword = _configuration["EmailSettings:SendersPassword"];
                     var noreplyEmail = "no-reply@ecofridge.com";
-                    var subject = "Temporary Password";
+                    var subject = "Password";
 
                     var body = $@"
                             <div style='font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4;'>
                                 <div style='max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
                                     <h2 style='color: #333;'>Temporary Password</h2>
                                     <p>Hello,{user.DoneeOrganizationName}</p>
-                                    <p>Your new temporary password is:</p>
+                                    <p>Your password is:</p>
                                     <p style='font-size: 18px; font-weight: bold; color: #307a59;'>{user.Password}</p>
                                     <p>You can change it in your profile settings once you log in.</p>
                                     <hr style='border: none; border-top: 1px solid #eee; margin: 20px 0;' />
@@ -1085,7 +1085,7 @@ namespace AdminSideEcoFridge.Controllers
                                 <div style='max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
                                     <h2 style='color: #333;'>Rejection Notice</h2>
                                     <p>Hello there this is from EcoFridge;</p>                                                                     
-                                    <p>We regret to inform you that your request has been rejected.</p>
+                                    <p>After evaluation, we regret to inform you that your registration has been rejected.</p>
                                     <hr style='border: none; border-top: 1px solid #eee; margin: 20px 0;' />
                                     <p>If you didn't request this, please ignore this email or contact support.</p>
                                     <p>Thank you,</p>
@@ -1148,9 +1148,9 @@ namespace AdminSideEcoFridge.Controllers
                                             <div style='max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>
                                                 <h2 style='color: #333;'>Approval Notice</h2>
                                                 <p>Hello there this is from EcoFridge;</p>                                                                     
-                                                <p>Congrats we are informing you that your request has been approved.</p>
+                                                <p>Congrats! we are informing you that your account has been approved.</p>
                                                 <hr style='border: none; border-top: 1px solid #eee; margin: 20px 0;' />
-                                                <p>If you didn't request this, please ignore this email or contact support.</p>
+                                                <p>You can now access your account.</p>
                                                 <p>Thank you,</p>
                                                 <p><strong>Team Snackers</strong></p>
                                             </div>

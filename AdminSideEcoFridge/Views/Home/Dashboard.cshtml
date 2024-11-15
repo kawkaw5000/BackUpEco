@@ -80,8 +80,9 @@
                     <thead>
                         <tr>
                             <th>
-                                <img src="/images/header-icons/down-arrow.svg" alt="" class="down-arrow-img">
-                            </th>                       
+                                <img src="/images/header-icons/down-arrow.svg" alt="" class="down-arrow-img" data-sort="desc">
+                            </th>
+
                             <th>ID</th>
                             <th>Account-type</th>
                             <th>Email</th>
@@ -418,7 +419,7 @@
       
             <form method="get" asp-controller="Account" asp-action="RegularCreate">
                 <button class="admin-btn">
-                    Regular
+                    Personal
                 </button>
             </form>
             <form method="get" asp-controller="Account" asp-action="FoodBusinessCreate">
@@ -479,6 +480,32 @@
         selectedFoodUser.style.display = "none";
         selectedOrguser.style.display = "none"    
     });
+    document.querySelector('.down-arrow-img').addEventListener('click', function () {
+        const sortDirection = this.getAttribute('data-sort');
+
+        const table = document.querySelector('.user-list-table tbody');
+        const rows = Array.from(table.querySelectorAll('tr'));
+
+        if (sortDirection === 'desc') {
+            rows.sort((rowA, rowB) => {
+                const idA = parseInt(rowA.children[1].textContent, 10);
+                const idB = parseInt(rowB.children[1].textContent, 10);
+                return idA - idB; 
+            });
+            this.setAttribute('data-sort', 'asc');
+        } else {
+            rows.sort((rowA, rowB) => {
+                const idA = parseInt(rowA.children[1].textContent, 10);
+                const idB = parseInt(rowB.children[1].textContent, 10);
+                return idB - idA;
+            });
+            this.setAttribute('data-sort', 'desc');
+        }
+
+        rows.forEach(row => table.appendChild(row));
+    });
+
+
 </script>
 <script src="~/js/orgproofzoom.js"></script>
 <script src="~/js/foodproofzoom.js"></script>
