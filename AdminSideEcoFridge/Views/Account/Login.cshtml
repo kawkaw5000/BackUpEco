@@ -106,29 +106,29 @@
                     },
                     body: JSON.stringify({ email: email }) 
                 })
-                    .then(response => response.json())  
-                    .then(data => {
+                .then(response => response.json())  
+                .then(data => {
  
-                        if (data.success) {
-                            forgotPasswordMessage.style.color = 'green';
-                            forgotPasswordMessage.innerText = data.message;
-                        } else {
-                            forgotPasswordMessage.style.color = 'red';
-                            forgotPasswordMessage.innerText = data.message;
-                        }
-                        forgotPasswordMessage.style.display = 'block';
-                    })
-                    .catch(error => {
-              
+                    if (data.success) {
+                        forgotPasswordMessage.style.color = 'green';
+                        forgotPasswordMessage.innerText = data.message;
+                    } else {
                         forgotPasswordMessage.style.color = 'red';
-                        forgotPasswordMessage.innerText = 'An error occurred. Please try again.';
-                        forgotPasswordMessage.style.display = 'block';
-                        console.error('Error:', error);
-                    })
-                    .finally(() => {
-                        spinner.style.display = 'none'; 
-                        overlay.style.display = 'none'; 
-                    });
+                        forgotPasswordMessage.innerText = data.message;
+                    }
+                    forgotPasswordMessage.style.display = 'block';
+                })
+                .catch(error => {
+              
+                    forgotPasswordMessage.style.color = 'red';
+                    forgotPasswordMessage.innerText = 'An error occurred. Please try again.';
+                    forgotPasswordMessage.style.display = 'block';
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    spinner.style.display = 'none'; 
+                    overlay.style.display = 'none'; 
+                });
             });
         });
 

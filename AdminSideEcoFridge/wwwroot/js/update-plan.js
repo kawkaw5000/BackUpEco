@@ -40,8 +40,11 @@
         })
             .then(response => {
                 if (response.ok) {
-                    alert('Plan Updated successfully.');
-                    window.location.reload();
+                    document.getElementById('success-update-plan').classList.add('show');
+                    document.getElementById('success-update-plan').classList.remove('hide');
+                    document.getElementById('bg-blur').classList.add('show');
+                    document.getElementById('bg-blur').classList.remove('hide');
+             
                 } else {
                     response.json().then(errorData => {
                         console.error('Validation errors:', errorData);
@@ -62,4 +65,15 @@
             })
             .catch(error => console.error('Error:', error));
     });
+
+    document.getElementById('bg-blur').addEventListener('click', function (event) {
+        event.stopPropagation
+
+        document.getElementById('success-update-plan').classList.add('hide');
+        document.getElementById('success-update-plan').classList.remove('show');
+        document.getElementById('bg-blur').classList.add('hide');
+        document.getElementById('bg-blur').classList.remove('show');
+
+        window.location.reload();
+    })
 });
