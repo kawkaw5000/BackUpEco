@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Numerics;
 namespace AdminSideEcoFridge.Controllers
 {
+    //[Route("api/[controller]")]
     public class TransactionController : BaseController
     {
         private string GetSubscriberName(User user)
@@ -240,20 +241,31 @@ namespace AdminSideEcoFridge.Controllers
 
         public IActionResult DonationTransaction(string keyword = "", string sortColumn = "TransactionDate", string sortDirection = "asc")
         {
-            // Get the list of donations, either filtered by the keyword or unfiltered
             var donationList = _userSearchRepository.SearchDonation(keyword);
 
-            // Apply sorting based on the column and direction
             if (sortDirection == "asc")
             {
-                donationList = SortDonations(donationList, sortColumn, true);  // Ascending
+                donationList = SortDonations(donationList, sortColumn, true); 
             }
             else
             {
-                donationList = SortDonations(donationList, sortColumn, false); // Descending
+                donationList = SortDonations(donationList, sortColumn, false); 
             }
 
             return View(donationList);
-        }      
+        }
+
+        [HttpGet]
+        public IActionResult GetDonationByDonoMasterId(int donorId)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return BadRequest(new { message = "User is not Authenticated." });
+            }
+
+            var donatedItems = _donationTransaction.donationItemsDetails(donorId);
+
+            return Json(donatedItems);
+        }
     }
 }

@@ -3,6 +3,7 @@
     ViewData["Title"] = "Donation Transaction";
 }
 <link href="~/css/donationtranslist.css" rel="stylesheet" />
+<link href="~/css/user-profiles.css" rel="stylesheet" />
 <div style="margin-left: 115px; margin-top: 70px; margin-right: 10px;">
     <h2>Donation Transaction List</h2>
     <div class="storage-container">
@@ -63,6 +64,7 @@
                                     Transaction Date
                                 </a>
                             </th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,10 +77,19 @@
                                     <td>@list.DonationTransactionMasterId</td>
                                     <td>@((list.FirstName == null) ? list.FoodBusinessName : list.FirstName) </td>
                                     <td>@list.DoneeOrgName</td>
-                                    <td>@list.Status</td>
+                                    <td>
+                                        @if (list.Status == "Approved")
+                                        {
+                                            <button class="approved-btn">Approved</button>
+                                        }
+                                    </td>
                                     <td>@list.AccountType</td>
                                     <td>@list.TransactionDate</td>
-                              
+                                    <td>
+                                        <button class="action-btn" data-donation-id="@list.DonationTransactionMasterId">
+                                            View Items
+                                        </button>
+                                    </td>
                                 </tr>
                                 i++;
                             }
@@ -91,9 +102,89 @@
                         }
                     </tbody>
                 </table>
+
                 <div>
                 </div>
             </div>    
         </div>
     </div>
 </div>
+
+<div id="item-list" class="hide">
+    <div class="donatedItemList">
+        <table class="item-table">
+            <thead>
+                <tr>
+                    <th>Food Name</th>
+                    <th>Quantity</th>
+                    <th>Unit</th>
+                    <th>Expiration Date</th>
+                    <th>Food Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>             
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="blur-item" class="hide">
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const buttons = document.querySelectorAll('.action-btn');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', async function () {
+                const donationId = this.getAttribute('data-donation-id');
+
+                try {
+
+                    const response = await fetch(`/Transaction/GetDonationByDonoMasterId?donorId=${donationId}`);
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch donation items');
+                    }
+
+                    const data = await response.json();
+
+                    const itemListDiv = document.getElementById('item-list');                  
+                    itemListDiv.classList.remove('hide');
+                    itemListDiv.classList.add('show');
+                    document.getElementById('blur-item').classList.remove('hide');
+                    document.getElementById('blur-item').classList.add('show');
+
+                    const tbody = itemListDiv.querySelector('tbody');
+                    tbody.innerHTML = ''; 
+
+                    data.forEach(item => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${item.foodName}</td>
+                            <td>${item.quantity}</td>
+                            <td>${item.unit}</td>
+                            <td>${new Date(item.expiryDate).toLocaleDateString()}</td>
+                            <td>${item.foodCategoryName}</td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                } catch (error) {
+                    console.error('Error fetching donation items:', error);
+                }
+            });
+        });
+    });
+    document.getElementById('blur-item').addEventListener('click', function(){
+        const itemListDiv = document.getElementById('item-list');
+        itemListDiv.classList.remove('show');
+        itemListDiv.classList.add('hide');
+        document.getElementById('blur-item').classList.remove('show');
+        document.getElementById('blur-item').classList.add('hide');
+    })
+</script>
