@@ -11673,19 +11673,37 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\PC\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\acer\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+>>>>>>> 97d183f2625870e01bb02b372d924de1caa451e4
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "D:\\TEST\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
       "projectName": "AdminSideEcoFridge",
       "projectPath": "D:\\TEST\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
       "outputPath": "D:\\TEST\\AdminSideEcoFridge\\obj\\",
+=======
+      "projectUniqueName": "C:\\Github\\BackUpEco\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
+      "projectName": "AdminSideEcoFridge",
+      "projectPath": "C:\\Github\\BackUpEco\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
+      "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
+      "outputPath": "C:\\Github\\BackUpEco\\AdminSideEcoFridge\\obj\\",
+>>>>>>> 97d183f2625870e01bb02b372d924de1caa451e4
       "projectStyle": "PackageReference",
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> 97d183f2625870e01bb02b372d924de1caa451e4
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11779,7 +11797,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
