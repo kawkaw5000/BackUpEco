@@ -22,6 +22,7 @@
                         <th>Price</th>
                         <th>Storage Size</th>
                         <th>Duration</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -42,6 +43,7 @@
                                 <td>@(storage.Price == 0 ? "Free" : storage.Price)</td>
                                 <td>@(storage.StorageSize == 99999 ? "Unlimited" : storage.StorageSize)</td>
                                 <td>@(storage.Duration == 99999 ? "Unlimited" : storage.Duration)</td>
+                                    <td>@(storage.IsActive.Value ? ("Active") : ("Disabled"))</td>
                                 <td>
                                     <div class="dropdown">
                                         <button class="action-btn">
