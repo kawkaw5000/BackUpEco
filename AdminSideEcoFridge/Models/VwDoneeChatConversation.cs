@@ -49,6 +49,8 @@ public partial class VwDoneeChatConversation
 
     public string? Availability { get; set; }
 
+    public string? VerificationCode { get; set; }
+
     public string LastChat { get; set; } = null!;
 
     public string LastSentAt { get; set; } = null!;

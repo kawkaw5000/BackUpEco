@@ -21,11 +21,13 @@ public partial class VwFoodBeforeExpirationDay
 
     public string? FoodPicturePath { get; set; }
 
+    public string? Storagemethod { get; set; }
+
     public int UserFoodId { get; set; }
 
     public string FoodCategoryName { get; set; } = null!;
 
     public int UserId { get; set; }
 
-    public int? DaysToExpire { get; set; }
+    public decimal? DaysToExpire { get; set; }
 }

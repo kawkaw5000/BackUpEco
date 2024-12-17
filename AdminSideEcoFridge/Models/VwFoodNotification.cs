@@ -39,6 +39,8 @@ public partial class VwFoodNotification
 
     public string? FoodPicturePath { get; set; }
 
+    public string? Storagemethod { get; set; }
+
     public int UserId { get; set; }
 
     public string Email { get; set; } = null!;

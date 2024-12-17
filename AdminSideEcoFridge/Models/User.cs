@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -9,9 +8,10 @@ public partial class User
 {
     public int UserId { get; set; }
 
-    public string? Email { get; set; }
+    public string Email { get; set; } = null!;
 
-    public string? Password { get; set; }
+    public string Password { get; set; } = null!;
+
     [NotMapped]
     public string? CurrentPassword { get; set; }
 
@@ -52,6 +52,8 @@ public partial class User
     public int? FoodStoredCount { get; set; }
 
     public string? Availability { get; set; }
+
+    public string? VerificationCode { get; set; }
 
     public virtual ICollection<ChatConversation> ChatConversationDonees { get; set; } = new List<ChatConversation>();
 

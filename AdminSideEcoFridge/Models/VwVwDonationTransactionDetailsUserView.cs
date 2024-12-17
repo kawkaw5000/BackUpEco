@@ -27,6 +27,8 @@ public partial class VwVwDonationTransactionDetailsUserView
 
     public string? FoodPicturePath { get; set; }
 
+    public string? Storagemethod { get; set; }
+
     public int UserId { get; set; }
 
     public string Email { get; set; } = null!;
@@ -62,4 +64,6 @@ public partial class VwVwDonationTransactionDetailsUserView
     public int? StorageSize { get; set; }
 
     public int? FoodStoredCount { get; set; }
+
+    public bool? Display { get; set; }
 }

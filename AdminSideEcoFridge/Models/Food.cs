@@ -21,6 +21,8 @@ public partial class Food
 
     public string? FoodPicturePath { get; set; }
 
+    public string? StorageMethod { get; set; }
+
     public virtual ICollection<FoodIngredient> FoodIngredients { get; set; } = new List<FoodIngredient>();
 
     public virtual ICollection<Notifcation> Notifcations { get; set; } = new List<Notifcation>();

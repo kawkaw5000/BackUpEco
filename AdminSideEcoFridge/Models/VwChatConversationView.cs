@@ -35,7 +35,7 @@ public partial class VwChatConversationView
 
     public string? DonorsLastName { get; set; }
 
-    public string? DonorsBusinesName { get; set; }
+    public string? DonorsBusinessName { get; set; }
 
     public string? DonorsProvince { get; set; }
 

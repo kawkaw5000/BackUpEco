@@ -43,9 +43,17 @@ public partial class VwUsersRoleView
 
     public string? Availability { get; set; }
 
+    public string? VerificationCode { get; set; }
+
     public int RoleId { get; set; }
 
     public string RoleName { get; set; } = null!;
 
     public int UserRoleId { get; set; }
+
+    public int? UserPlanId { get; set; }
+
+    public int? StoragePlanId { get; set; }
+
+    public string? StoragePlanName { get; set; }
 }

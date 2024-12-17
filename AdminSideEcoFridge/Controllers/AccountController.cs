@@ -1055,6 +1055,38 @@ namespace AdminSideEcoFridge.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
+            var hasChats = _db.ChatConversations.Where(m => m.DoneeId == id || m.DonorId == id).ToList();
+
+            if (hasChats.Count > 0)
+            {
+                foreach (var item in hasChats)
+                {
+                    if (_chatConversationRepo.Delete(item.ChatConversationId) == ErrorCode.Success)
+                    {
+                        continue;
+                    } else
+                    {
+                        return BadRequest();
+                    }
+                }
+            }
+
+            var hasDonations = _db.DonationTransactionMasters.Where(m => m.DoneeId == id || m.DonorId == id).ToList();
+
+            if (hasDonations.Count > 0)
+            {
+                foreach (var item in hasDonations)
+                {
+                    if (_donationTransactionMasterRepo.Delete(item.DonationTransactionMasterId) == ErrorCode.Success)
+                    {
+                        continue;
+                    } else
+                    {
+                        return BadRequest();
+                    }
+                }
+            }
+
             if (_userRepo.Delete(id) == ErrorCode.Success)
             {
                 return Ok();

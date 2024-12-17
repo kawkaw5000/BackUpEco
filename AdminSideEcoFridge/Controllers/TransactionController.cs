@@ -33,6 +33,15 @@ namespace AdminSideEcoFridge.Controllers
         private string[] GenerateColors(int count)
         {
             var colors = new List<string>();
+
+            var user = _db.Users.Where(m => m.StorageSize != 5).ToList();
+
+            if(user.Count <= 1)
+            {
+                colors.Add($"hsl(120, 19%, 42%)");
+                return colors.ToArray();
+            }
+
             for (int i = 0; i < count; i++)
             {
                 var lightness = 80 - (i * 60 / (count - 1));
@@ -189,7 +198,7 @@ namespace AdminSideEcoFridge.Controllers
             var imageSrc = $"file:///{imagePath}";
             var htmlContent = $@"
             <div style='text-align: center; margin-bottom: 20px;'>
-                <img src='{imageSrc}' alt='Company Logo' style='width: 60px; height: 60px; margin-bottom: 10px;' />
+                <img src='https://i.ibb.co/nBNbF7T/EcoLogo.png' alt='Company Logo' style='width: 150px; height: 150px; margin-bottom: 10px;' />
                 <h1>Sales Report</h1>
             </div>";
 
