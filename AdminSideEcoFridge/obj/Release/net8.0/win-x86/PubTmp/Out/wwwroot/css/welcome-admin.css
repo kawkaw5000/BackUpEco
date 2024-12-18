@@ -1,0 +1,67 @@
+/*WELCOME ADMIN BIX---------------------------*/
+.container {
+  margin-top: 70px;
+  margin-left: 110px;
+}
+
+.dashboard {
+  font-weight: bold;
+  font-size: 23px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.welcome-container {
+  background-color: #B8F1B0;
+  background-image: linear-gradient(to right, #B8F1B0, #307a59ad);
+  height: 140px;
+  width: 1484px;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.admin-welcome {
+  margin-left: 50px;
+  margin-top: 0;
+}
+
+.admin-name {
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.check-updates {
+  margin-top: 7px;
+  font-size: 13px;
+}
+
+.user-profile-btn {
+  padding: 10px 18px 10px 18px;
+  font-weight: bold;
+  background-color: white;
+  border: none;
+  margin-top: 15px;
+  font-family: 'SF Pro Display', sans-serif; 
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.user-profile-btn:active {
+  background-color: #bbbbbb;
+}
+
+.welcome-pic {
+  margin-bottom: 110px;
+}

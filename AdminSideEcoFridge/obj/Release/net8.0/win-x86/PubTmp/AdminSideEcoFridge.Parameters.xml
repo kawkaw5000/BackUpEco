@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="lagare824-001-site1" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\HOME\\Documents\\GitHub\\BackUpEco\\AdminSideEcoFridge\\obj\\Release\\net8\.0\\win-x86\\PubTmp\\Out\\$" />
+  </parameter>
+  <parameter name="AdminSideEcoFridge.Models.EcoFridgeDbContext" description="" value="workstation id=EcoFridgeDB.mssql.somee.com;packet size=4096;user id=lord24_SQLLogin_1;pwd=2xsxpaogou;data source=EcoFridgeDB.mssql.somee.com;persist security info=False;initial catalog=EcoFridgeDB;TrustServerCertificate=True" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\Users\\HOME\\Documents\\GitHub\\BackUpEco\\AdminSideEcoFridge\\obj\\Release\\net8\.0\\win-x86\\PubTmp\\EFSQLScripts\\AdminSideEcoFridge\.Models\.EcoFridgeDbContext\.sql$" />
+  </parameter>
+</parameters>
