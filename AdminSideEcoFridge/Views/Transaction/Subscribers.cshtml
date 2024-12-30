@@ -52,7 +52,7 @@
         <label for="timePeriod">Filter by: </label>
         <select id="timePeriod">
             <option value="yearly">Yearly</option>
-            <option value="monthly">Monthly</option>
+            <option value="daterange">Date Range</option>
         </select>
 
         <div id="yearSelector" style="display: none; margin-top: 10px;">
@@ -81,6 +81,8 @@
 </div>
 
 
+
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     document.getElementById('generateReportButton').addEventListener('click', function () {
@@ -89,35 +91,16 @@
         const startDate = document.getElementById('startDate').value;
         const endDate = document.getElementById('endDate').value;
 
-        // Validate input values
-        if (timePeriod === 'monthly' && (!startDate || !endDate)) {
-            alert('Please select both a start date and an end date for the monthly report.');
-            return;
+        let url = `/Transaction/GenerateSalesReport?period=${timePeriod}`;
+
+        if (timePeriod === 'yearly') {
+            url += `&year=${selectedYear}`;
+        } else if (timePeriod === 'daterange' && startDate && endDate) {
+            url += `&startDate=${startDate}&endDate=${endDate}`;
         }
 
-        // Reformat dates if necessary (e.g., to YYYY-MM-DD)
-        const formattedStartDate = formatDate(startDate);
-        const formattedEndDate = formatDate(endDate);
-
-        // Build URL
-        let url = `/Transaction/GenerateSalesReport?period=${timePeriod}&year=${selectedYear}`;
-        if (timePeriod === 'monthly') {
-            url += `&startDate=${formattedStartDate}&endDate=${formattedEndDate}`;
-        }
-
-        console.log('Redirecting to:', url); // Debugging log
         window.location.href = url;
     });
-
-    // Helper function to format dates to YYYY-MM-DD
-    function formatDate(date) {
-        if (!date) return '';
-        const d = new Date(date);
-        const year = d.getFullYear();
-        const month = String(d.getMonth() + 1).padStart(2, '0');
-        const day = String(d.getDate()).padStart(2, '0');
-        return `${year}-${month}-${day}`;
-    }
 
 </script>
 <script>
@@ -182,82 +165,73 @@
         }
     });
 
-    function updateChartData(period, year = null) {
-        if (period === 'yearly') {
-            myBarChart.data.labels = yearlyLabels;
-            myBarChart.data.datasets[0].data = yearlyData;
-            document.getElementById('yearSelector').style.display = 'none';
-            document.getElementById('dateRangeSelector').style.display = 'none';
-        } else {
-            myBarChart.data.labels = monthlyLabels;
-            myBarChart.data.datasets[0].data = monthlyDataByYear[year] || [];
-            document.getElementById('yearSelector').style.display = 'none';
-            document.getElementById('dateRangeSelector').style.display = 'block';
-        }
-        myBarChart.update();
-    }
-    
-    function filterMonthlyData(startDate, endDate) {
-    if (startDate && endDate) {
-        const start = new Date(startDate); // Convert to Date object
-        const end = new Date(endDate); // Convert to Date object
-        end.setHours(23, 59, 59, 999); // Ensure end date includes the entire day
+    function filterDateRangeData(startDate, endDate, subscriptionData) {
+        if (startDate && endDate) {
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+            const monthCounts = {};
 
-        // Ensure start date is earlier than end date
-        if (start > end) {
-            console.error("Start date must be earlier than end date.");
-            return;
-        }
+            for (let d = start; d <= end; d.setDate(d.getDate() + 1)) {
+                const formattedDate = d.toISOString().split('T')[0];
+                const monthName = d.toLocaleString('default', { month: 'long' });
 
-        // Initialize arrays to hold filtered data
-        const filteredData = [];
-        const filteredLabels = [];
-
-        // Loop through monthlyDataByYear to filter based on date range
-        for (const year in monthlyDataByYear) {
-            monthlyDataByYear[year].forEach((data, monthIndex) => {
-                const monthStartDate = new Date(year, monthIndex, 1); // First day of the month
-                const monthEndDate = new Date(year, monthIndex + 1, 0); // Last day of the month
-
-                // Check if any day within the month's range is within the selected date range
-                if ((start <= monthEndDate && end >= monthStartDate)) {
-                    // Push data for this month to filtered arrays
-                    filteredData.push(data);
-                    filteredLabels.push(monthlyLabels[monthIndex]);
+                if (!monthCounts[monthName]) {
+                    monthCounts[monthName] = 0;
                 }
-            });
+
+                monthCounts[monthName] += subscriptionData[formattedDate] || 0;
+            }
+
+            myBarChart.data.labels = Object.keys(monthCounts);
+            myBarChart.data.datasets[0].data = Object.values(monthCounts);
+            myBarChart.update();
         }
-
-        // Update chart with filtered data
-        myBarChart.data.labels = filteredLabels;
-        myBarChart.data.datasets[0].data = filteredData;
-        myBarChart.update();
     }
-}
-
 
     document.getElementById('timePeriod').addEventListener('change', function () {
         const selectedPeriod = this.value;
+
+        const yearSelector = document.getElementById('yearSelector');
+        const dateRangeSelector = document.getElementById('dateRangeSelector');
+
         if (selectedPeriod === 'yearly') {
+            dateRangeSelector.style.display = 'none';
             updateChartData('yearly');
-        } else if (selectedPeriod === 'monthly') {
-            document.getElementById('dateRangeSelector').style.display = 'block';
-            const startDate = document.getElementById('startDate').value;
-            const endDate = document.getElementById('endDate').value;
-            filterMonthlyData(startDate, endDate);
+        } else if (selectedPeriod === 'daterange') {
+            dateRangeSelector.style.display = 'block';
+            updateChartData('daterange');
         }
     });
+
 
     document.getElementById('startDate').addEventListener('change', function () {
         const startDate = this.value;
         const endDate = document.getElementById('endDate').value;
-        filterMonthlyData(startDate, endDate);
+        if (startDate && endDate) {
+            const adjustedEndDate = new Date(endDate);
+            adjustedEndDate.setHours(23, 59, 59);
+            fetch(`/Transaction/FilterSubscriptions?startDate=${startDate}&endDate=${adjustedEndDate.toISOString()}`)
+                .then(response => response.json())
+                .then(subscriptionDates => {
+                    filterDateRangeData(startDate, endDate, subscriptionDates);
+                })
+                .catch(error => console.error('Error fetching subscription data:', error));
+        }
     });
 
     document.getElementById('endDate').addEventListener('change', function () {
         const startDate = document.getElementById('startDate').value;
         const endDate = this.value;
-        filterMonthlyData(startDate, endDate);
+        if (startDate && endDate) {
+            const adjustedEndDate = new Date(endDate);
+            adjustedEndDate.setHours(23, 59, 59); // Adjust to include the entire end day
+            fetch(`/Transaction/FilterSubscriptions?startDate=${startDate}&endDate=${adjustedEndDate.toISOString()}`)
+                .then(response => response.json())
+                .then(subscriptionDates => {
+                    filterDateRangeData(startDate, endDate, subscriptionDates);
+                })
+                .catch(error => console.error('Error fetching subscription data:', error));
+        }
     });
 
 </script>

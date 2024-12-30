@@ -35,14 +35,13 @@ namespace AdminSideEcoFridge.Controllers
 
             var colors = new List<string>();
 
-            //var user = _db.Users.Where(m => m.StorageSize != 5).ToList();
+            var user = _db.Users.Where(m => m.StorageSize != 5).ToList();
 
-            //if (user.Count <= 1)
-            //{
-            //    colors.Add($"hsl(120, 19%, 42%)");
-            //    return colors.ToArray();
-            //}
-
+            if (user.Count <= 1)
+            {
+                colors.Add($"hsl(120, 19%, 42%)");
+                return colors.ToArray();
+            }
             for (int i = 0; i < count; i++)
             {
                 var lightness = 80 - (i * 60 / (count - 1));
@@ -86,12 +85,25 @@ namespace AdminSideEcoFridge.Controllers
             return donationList;
         }
 
-        public IActionResult Subscribers(DateTime? startDate, DateTime? endDate)
+        [HttpGet]
+        public JsonResult FilterSubscriptions(DateTime startDate, DateTime endDate)
+        {
+            endDate = endDate.Date.AddDays(1).AddSeconds(-1);
+
+            var subscriptionDates = _userPlanMgr.GetAll()
+                .Where(plan => plan.SubscriptionDate >= startDate && plan.SubscriptionDate <= endDate)
+                .GroupBy(plan => plan.SubscriptionDate.ToString("yyyy-MM-dd"))
+                .ToDictionary(g => g.Key, g => g.Count());
+
+            return Json(subscriptionDates);
+        }
+
+        public IActionResult Subscribers()
         {
             var userSubscribers = _userPlanMgr.GetAll();
 
             DateTime today = DateTime.Now;
-            int activeSubscribersCount = userSubscribers.Count(plan => plan.ExpiryDate > today);
+            int activeSubscribersCount = userSubscribers.Count(plan => plan.ExpiryDate > DateTime.Now);
             int currentMonthSubscribersCount = userSubscribers.Count(plan =>
                 plan.SubscriptionDate.Year == today.Year &&
                 plan.SubscriptionDate.Month == today.Month &&
@@ -140,19 +152,9 @@ namespace AdminSideEcoFridge.Controllers
             {
                 if (plan.SubscriptionDate.Year >= 2024 && plan.SubscriptionDate.Year <= 2030)
                 {
-                    if (startDate.HasValue && endDate.HasValue)
+                    int month = plan.SubscriptionDate.Month - 1;
+                    if (plan.SubscriptionDate.Month >= 1 && plan.SubscriptionDate.Month <= 12)
                     {
-                        // Filter by exact SubscriptionDate between startDate and endDate
-                        if (plan.SubscriptionDate >= startDate.Value && plan.SubscriptionDate <= endDate.Value)
-                        {
-                            int month = plan.SubscriptionDate.Month - 1;
-                            monthlyCounts[plan.SubscriptionDate.Year][month]++;
-                        }
-                    }
-                    else
-                    {
-                        // If no date range is provided, count as usual
-                        int month = plan.SubscriptionDate.Month - 1;
                         monthlyCounts[plan.SubscriptionDate.Year][month]++;
                     }
                 }
@@ -171,111 +173,30 @@ namespace AdminSideEcoFridge.Controllers
             return View(model);
         }
 
-
-        //public IActionResult Subscribers()
-        //{
-        //    var userSubscribers = _userPlanMgr.GetAll();
-
-        //    DateTime today = DateTime.Now;
-        //    int activeSubscribersCount = userSubscribers.Count(plan => plan.ExpiryDate > DateTime.Now);
-        //    int currentMonthSubscribersCount = userSubscribers.Count(plan =>
-        //        plan.SubscriptionDate.Year == today.Year &&
-        //        plan.SubscriptionDate.Month == today.Month &&
-        //        plan.ExpiryDate > today);
-        //    int currentYearSubscribersCount = userSubscribers.Count(plan =>
-        //        plan.SubscriptionDate.Year == today.Year &&
-        //        plan.ExpiryDate > today);
-        //    int[] yearlyCounts = new int[7];
-
-        //    var storagePlanCounts = new Dictionary<string, int>();
-
-        //    foreach (var plan in userSubscribers)
-        //    {
-        //        if (plan.SubscriptionDate.Year >= 2024 && plan.SubscriptionDate.Year <= 2030)
-        //        {
-        //            yearlyCounts[plan.SubscriptionDate.Year - 2024]++;
-
-        //            if (plan.StoragePlan != null)
-        //            {
-        //                string storagePlanName = plan.StoragePlan.StoragePlanName;
-
-        //                if (!storagePlanCounts.ContainsKey(storagePlanName))
-        //                {
-        //                    storagePlanCounts[storagePlanName] = 0;
-        //                }
-        //                storagePlanCounts[storagePlanName]++;
-        //            }
-        //        }
-        //    }
-
-        //    var pieChartData = new
-        //    {
-        //        labels = storagePlanCounts.Keys.Select(k => k.ToString()).ToArray(),
-        //        data = storagePlanCounts.Values.ToArray(),
-        //        colors = GenerateColors(storagePlanCounts.Count)
-        //    };
-
-        //    var monthlyCounts = new Dictionary<int, int[]>();
-
-        //    for (int year = 2024; year <= 2030; year++)
-        //    {
-        //        monthlyCounts[year] = new int[12];
-        //    }
-
-        //    foreach (var plan in userSubscribers)
-        //    {
-        //        if (plan.SubscriptionDate.Year >= 2024 && plan.SubscriptionDate.Year <= 2030)
-        //        {
-        //            int month = plan.SubscriptionDate.Month - 1;
-        //            if (plan.SubscriptionDate.Month >= 1 && plan.SubscriptionDate.Month <= 12)
-        //            {
-        //                monthlyCounts[plan.SubscriptionDate.Year][month]++;
-        //            }
-        //        }
-        //    }
-
-        //    var model = new
-        //    {
-
-        //        YearlyCounts = yearlyCounts,
-        //        MonthlyCounts = monthlyCounts.ToDictionary(x => x.Key, x => x.Value),
-        //        PieChartData = pieChartData,
-        //        CurrentMonthSubscribersCount = currentMonthSubscribersCount,
-        //        CurrentYearSubscribersCount = currentYearSubscribersCount,
-        //        ActiveSubscribersCount = activeSubscribersCount
-        //    };
-
-        //    return View(model);
-        //}
-
-        public IActionResult GenerateSalesReport(string period, int year, DateTime? startDate = null, DateTime? endDate = null)
+        public IActionResult GenerateSalesReport(string period, int? year = null, DateTime? startDate = null, DateTime? endDate = null)
         {
             var userSubscribers = _userPlanMgr.GetAll();
             IEnumerable<UserPlan> filteredSubscribers;
-
             decimal totalSum = 0;
-
             var cultureInfo = new CultureInfo("fil-PH");
 
-            if (period == "yearly")
+            if (period == "yearly" && year.HasValue)
             {
-                filteredSubscribers = userSubscribers.Where(plan => plan.SubscriptionDate.Year == year);
+                filteredSubscribers = userSubscribers.Where(plan => plan.SubscriptionDate.Year == year.Value);
             }
-            else if (startDate.HasValue && endDate.HasValue)
+            else if (period == "daterange" && startDate.HasValue && endDate.HasValue)
             {
                 filteredSubscribers = userSubscribers.Where(plan =>
-                    plan.SubscriptionDate >= startDate.Value && plan.SubscriptionDate <= endDate.Value);
+                    plan.SubscriptionDate.Date >= startDate.Value.Date && plan.SubscriptionDate.Date <= endDate.Value.Date);
             }
             else
             {
-                filteredSubscribers = userSubscribers.Where(plan =>
-                    plan.SubscriptionDate.Year == year && plan.SubscriptionDate.Month == DateTime.Now.Month);
+                return BadRequest("Invalid period or missing parameters.");
             }
 
             foreach (var plan in filteredSubscribers)
             {
-                decimal planPrice = plan.StoragePlan?.Price ?? 0.0m;
-                totalSum += planPrice;
+                totalSum += plan.StoragePlan?.Price ?? 0.0m;
             }
 
             decimal totalSales = totalSum;
@@ -288,17 +209,13 @@ namespace AdminSideEcoFridge.Controllers
                     <h1>Sales Report</h1>
                 </div>";
 
-            if (period == "yearly")
+            if (period == "yearly" && year.HasValue)
             {
                 htmlContent += $"<p style='text-align: center;'>Period: Yearly - {year}</p>";
             }
-            else if (startDate.HasValue && endDate.HasValue)
+            else if (period == "daterange" && startDate.HasValue && endDate.HasValue)
             {
                 htmlContent += $"<p style='text-align: center;'>Period: {startDate.Value:MM/dd/yyyy} to {endDate.Value:MM/dd/yyyy}</p>";
-            }
-            else
-            {
-                htmlContent += $"<p style='text-align: center;'>Period: Month of {DateTime.Now:MMMM yyyy}</p>";
             }
 
             htmlContent += $"<h2 style='text-align: center;'>Total Sales: {totalSales.ToString("C", cultureInfo)}</h2>";
@@ -339,7 +256,6 @@ namespace AdminSideEcoFridge.Controllers
                     {
                         pdfDoc.SetTagged();
                         var converterProperties = new ConverterProperties();
-
                         HtmlConverter.ConvertToPdf(htmlContent, pdfDoc, converterProperties);
                     }
 
@@ -352,187 +268,6 @@ namespace AdminSideEcoFridge.Controllers
                 return BadRequest("An error occurred while generating the report.");
             }
         }
-
-
-        //public IActionResult GenerateSalesReport(string period, int year)
-        //{
-        //    var userSubscribers = _userPlanMgr.GetAll();
-        //    IEnumerable<UserPlan> filteredSubscribers;
-
-        //    decimal yearSum = 0;
-        //    decimal monthSum = 0;
-
-        //    var cultureInfo = new CultureInfo("fil-PH"); // Set the culture to Filipino
-
-        //    if (period == "yearly")
-        //    {
-        //        filteredSubscribers = userSubscribers.Where(plan => plan.SubscriptionDate.Year == year);
-        //        foreach (var plan in filteredSubscribers)
-        //        {
-        //            decimal planPrice = (plan.StoragePlan != null) ? plan.StoragePlan.Price : 0.0m;
-        //            yearSum += planPrice;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        filteredSubscribers = userSubscribers.Where(plan =>
-        //            plan.SubscriptionDate.Year == year && plan.SubscriptionDate.Month == DateTime.Now.Month);
-        //        foreach (var plan in filteredSubscribers)
-        //        {
-        //            decimal planPrice = (plan.StoragePlan != null) ? plan.StoragePlan.Price : 0.0m;
-        //            monthSum += planPrice;
-        //        }
-        //    }
-
-        //    decimal totalSales = (period == "yearly") ? yearSum : monthSum;
-
-        //    var htmlContent = "<h1>Sales Report</h1>";
-        //    htmlContent += $"<p>Period: {period} - {year}</p>";
-        //    htmlContent += $"<h1>Total Sales: {totalSales.ToString("C", cultureInfo)}</h1>";
-
-        //    htmlContent += "<table border='1'><tr><th>Subscriber Name</th><th>Plan</th><th>Plan Price</th><th>Subscription Date</th></tr>";
-
-        //    foreach (var plan in filteredSubscribers)
-        //    {
-        //        string name = "Unknown Name";
-
-        //        if (plan.User != null)
-        //        {
-        //            name = GetSubscriberName(plan.User);
-        //        }
-
-        //        string planName = plan.StoragePlan?.StoragePlanName ?? "Unknown Plan";
-        //        decimal planPrice = plan.StoragePlan?.Price ?? 0.0m;
-        //        string subscriptionDate = plan.SubscriptionDate.ToShortDateString();
-
-        //        htmlContent += $"<tr><td>{name}</td><td>{planName}</td><td>{planPrice.ToString("C", cultureInfo)}</td><td>{subscriptionDate}</td></tr>"; // Filipino currency
-        //    }
-
-        //    htmlContent += "</table>";
-
-        //    if (string.IsNullOrEmpty(htmlContent))
-        //    {
-        //        htmlContent = "<h1>Sales Report is empty.</h1>";
-        //    }
-
-        //    try
-        //    {
-        //        using (var memoryStream = new MemoryStream())
-        //        {
-        //            var writer = new PdfWriter(memoryStream);
-        //            using (var pdfDoc = new iText.Kernel.Pdf.PdfDocument(writer))
-        //            {
-        //                pdfDoc.SetTagged();
-        //                var converterProperties = new ConverterProperties();
-
-        //                if (!string.IsNullOrEmpty(htmlContent))
-        //                {
-        //                    HtmlConverter.ConvertToPdf(htmlContent, pdfDoc, converterProperties);
-        //                }
-        //                else
-        //                {
-        //                    HtmlConverter.ConvertToPdf("<h1>No Data Available</h1>", pdfDoc, converterProperties);
-        //                }
-        //            }
-
-        //            return File(memoryStream.ToArray(), "application/pdf", "SalesReport.pdf");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"Error generating PDF: {ex.Message}");
-        //        return BadRequest("An error occurred while generating the report.");
-        //    }
-        //}
-
-        //public IActionResult GenerateSalesReport(string period, int year)
-        //{
-        //    var userSubscribers = _userPlanMgr.GetAll();
-        //    IEnumerable<UserPlan> filteredSubscribers;
-
-        //    decimal yearSum = 0;
-        //    decimal monthSum = 0;
-
-        //    if (period == "yearly")
-        //    {
-        //        filteredSubscribers = userSubscribers.Where(plan => plan.SubscriptionDate.Year == year);
-        //        foreach (var plan in filteredSubscribers)
-        //        {
-        //            decimal planPrice = (plan.StoragePlan != null) ? plan.StoragePlan.Price : 0.0m;
-        //            yearSum += planPrice;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        filteredSubscribers = userSubscribers.Where(plan =>
-        //            plan.SubscriptionDate.Year == year && plan.SubscriptionDate.Month == DateTime.Now.Month);
-        //        foreach (var plan in filteredSubscribers)
-        //        {
-        //            decimal planPrice = (plan.StoragePlan != null) ? plan.StoragePlan.Price : 0.0m;
-        //            monthSum += planPrice;
-        //        }
-        //    }
-
-        //    decimal totalSales = (period == "yearly") ? yearSum : monthSum;
-
-        //    var htmlContent = "<h1>Sales Report</h1>";
-        //    htmlContent += $"<p>Period: {period} - {year}</p>";
-        //    htmlContent += $"<h1>Total Sales: {totalSales:C}</h1>";
-
-        //    htmlContent += "<table border='1'><tr><th>Subscriber Name</th><th>Plan</th><th>Plan Price</th><th>Subscription Date</th></tr>";
-
-        //    foreach (var plan in filteredSubscribers)
-        //    {
-        //        string name = "Unknown Name"; 
-
-        //        if (plan.User != null)
-        //        {
-        //            name = GetSubscriberName(plan.User);  
-        //        }
-
-        //        string planName = plan.StoragePlan?.StoragePlanName ?? "Unknown Plan";
-        //        decimal planPrice = plan.StoragePlan?.Price ?? 0.0m;
-        //        string subscriptionDate = plan.SubscriptionDate.ToShortDateString();
-
-        //        htmlContent += $"<tr><td>{name}</td><td>{planName}</td><td>{planPrice:C}</td><td>{subscriptionDate}</td></tr>";
-        //    }
-
-        //    htmlContent += "</table>";
-
-        //    if (string.IsNullOrEmpty(htmlContent))
-        //    {
-        //        htmlContent = "<h1>Sales Report is empty.</h1>"; 
-        //    }
-
-        //    try
-        //    {
-        //        using (var memoryStream = new MemoryStream())
-        //        {
-        //            var writer = new PdfWriter(memoryStream);
-        //            using (var pdfDoc = new iText.Kernel.Pdf.PdfDocument(writer))
-        //            {
-        //                pdfDoc.SetTagged();
-        //                var converterProperties = new ConverterProperties();
-
-        //                if (!string.IsNullOrEmpty(htmlContent))
-        //                {
-        //                    HtmlConverter.ConvertToPdf(htmlContent, pdfDoc, converterProperties);
-        //                }
-        //                else
-        //                {                         
-        //                    HtmlConverter.ConvertToPdf("<h1>No Data Available</h1>", pdfDoc, converterProperties);
-        //                }
-        //            }
-
-        //            return File(memoryStream.ToArray(), "application/pdf", "SalesReport.pdf");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"Error generating PDF: {ex.Message}");
-        //        return BadRequest("An error occurred while generating the report.");
-        //    }
-        //}
 
         public IActionResult DonationTransaction(string keyword = "", string sortColumn = "TransactionDate", string sortDirection = "asc")
         {
