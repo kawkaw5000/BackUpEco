@@ -48,14 +48,14 @@
     <div class="charts" style="width: 70%; max-width: 600px; margin: auto; margin-top: 40px;">
         <div class="bar-title">
             <h2>Sales Chart</h2>
-        </div>        
+        </div>
         <label for="timePeriod">Filter by: </label>
         <select id="timePeriod">
             <option value="yearly">Yearly</option>
-            <option value="monthly">Monthly</option>
+            <option value="daterange">Date Range</option>
         </select>
 
-        <div id="yearSelector" style="display: none; margin-top: 10px;">      
+        <div id="yearSelector" style="display: none; margin-top: 10px;">
             <label for="year">Select Year: </label>
             <select id="year">
                 @for (int year = 2024; year <= 2030; year++)
@@ -65,29 +65,48 @@
             </select>
         </div>
 
+        <div id="dateRangeSelector" style="display: none; margin-top: 10px;">
+            <label for="startDate">Start Date: </label>
+            <input type="date" id="startDate">
+            <label for="endDate">End Date: </label>
+            <input type="date" id="endDate">
+        </div>
+
         <div class="generate-btn">
             <button id="generateReportButton" class="btn btn-primary" style="margin-top: 20px;">Generate Sales Report</button>
         </div>
-        
+
         <canvas id="myBarChart" style="margin-top: 20px;"></canvas>
     </div>
 </div>
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     document.getElementById('generateReportButton').addEventListener('click', function () {
         const timePeriod = document.getElementById('timePeriod').value;
         const selectedYear = document.getElementById('year').value;
-        const url = `/Transaction/GenerateSalesReport?period=${timePeriod}&year=${selectedYear}`;
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+
+        let url = `/Transaction/GenerateSalesReport?period=${timePeriod}`;
+
+        if (timePeriod === 'yearly') {
+            url += `&year=${selectedYear}`;
+        } else if (timePeriod === 'daterange' && startDate && endDate) {
+            url += `&startDate=${startDate}&endDate=${endDate}`;
+        }
 
         window.location.href = url;
     });
+
 </script>
 <script>
-
     const pieLabels = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.PieChartData.labels));
     const pieData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.PieChartData.data));
-    const pieColors = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.PieChartData.colors)); 
+    const pieColors = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.PieChartData.colors));
 
     const ctxPie = document.getElementById('myPieChart').getContext('2d');
     const myPieChart = new Chart(ctxPie, {
@@ -114,11 +133,11 @@
     const yearlyLabels = ['2024', '2025', '2026', '2027', '2028', '2029', '2030'];
 
     const monthlyDataByYear = {
-        @foreach (var year in Model.MonthlyCounts)
-        {
-            <text>'@year.Key': @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(year.Value)),</text>
-        }
-    };
+    @foreach (var year in Model.MonthlyCounts)
+    {
+        <text>'@year.Key': @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(year.Value)), </text>
+    }
+        };
 
     const monthlyLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -146,32 +165,74 @@
         }
     });
 
-    function updateChartData(period, year = null) {
-        if (period === 'yearly') {
-            myBarChart.data.labels = yearlyLabels;
-            myBarChart.data.datasets[0].data = yearlyData; 
-            document.getElementById('yearSelector').style.display = 'none';
-        } else {
-            myBarChart.data.labels = monthlyLabels;
-            myBarChart.data.datasets[0].data = monthlyDataByYear[year] || [];
-            document.getElementById('yearSelector').style.display = 'block';
+    function filterDateRangeData(startDate, endDate, subscriptionData) {
+        if (startDate && endDate) {
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+            const monthCounts = {};
+
+            for (let d = start; d <= end; d.setDate(d.getDate() + 1)) {
+                const formattedDate = d.toISOString().split('T')[0];
+                const monthName = d.toLocaleString('default', { month: 'long' });
+
+                if (!monthCounts[monthName]) {
+                    monthCounts[monthName] = 0;
+                }
+
+                monthCounts[monthName] += subscriptionData[formattedDate] || 0;
+            }
+
+            myBarChart.data.labels = Object.keys(monthCounts);
+            myBarChart.data.datasets[0].data = Object.values(monthCounts);
+            myBarChart.update();
         }
-        myBarChart.update();
     }
 
     document.getElementById('timePeriod').addEventListener('change', function () {
         const selectedPeriod = this.value;
+
+        const yearSelector = document.getElementById('yearSelector');
+        const dateRangeSelector = document.getElementById('dateRangeSelector');
+
         if (selectedPeriod === 'yearly') {
+            dateRangeSelector.style.display = 'none';
             updateChartData('yearly');
-        } else {
-            const defaultYear = document.getElementById('year').value;
-            updateChartData('monthly', defaultYear);
+        } else if (selectedPeriod === 'daterange') {
+            dateRangeSelector.style.display = 'block';
+            updateChartData('daterange');
         }
     });
 
-    document.getElementById('year').addEventListener('change', function () {
-        const selectedYear = this.value;
-        updateChartData('monthly', selectedYear);
+
+    document.getElementById('startDate').addEventListener('change', function () {
+        const startDate = this.value;
+        const endDate = document.getElementById('endDate').value;
+        if (startDate && endDate) {
+            const adjustedEndDate = new Date(endDate);
+            adjustedEndDate.setHours(23, 59, 59);
+            fetch(`/Transaction/FilterSubscriptions?startDate=${startDate}&endDate=${adjustedEndDate.toISOString()}`)
+                .then(response => response.json())
+                .then(subscriptionDates => {
+                    filterDateRangeData(startDate, endDate, subscriptionDates);
+                })
+                .catch(error => console.error('Error fetching subscription data:', error));
+        }
     });
+
+    document.getElementById('endDate').addEventListener('change', function () {
+        const startDate = document.getElementById('startDate').value;
+        const endDate = this.value;
+        if (startDate && endDate) {
+            const adjustedEndDate = new Date(endDate);
+            adjustedEndDate.setHours(23, 59, 59); // Adjust to include the entire end day
+            fetch(`/Transaction/FilterSubscriptions?startDate=${startDate}&endDate=${adjustedEndDate.toISOString()}`)
+                .then(response => response.json())
+                .then(subscriptionDates => {
+                    filterDateRangeData(startDate, endDate, subscriptionDates);
+                })
+                .catch(error => console.error('Error fetching subscription data:', error));
+        }
+    });
+
 </script>
 
