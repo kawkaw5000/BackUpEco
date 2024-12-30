@@ -64,7 +64,7 @@
               "RelativeDocumentMoniker": "AdminSideEcoFridge\\Controllers\\TransactionController.cs",
               "ToolTip": "C:\\Users\\HOME\\Documents\\GitHub\\BackUpEco\\AdminSideEcoFridge\\Controllers\\TransactionController.cs",
               "RelativeToolTip": "AdminSideEcoFridge\\Controllers\\TransactionController.cs",
-              "ViewState": "AQIAABIBAAAAAAAAAAAmwCEBAAAJAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-19T04:21:21.028Z",
               "EditorCaption": ""
@@ -91,7 +91,8 @@
               "RelativeToolTip": "AdminSideEcoFridge\\Views\\Plan\\StoragePlan.cshtml",
               "ViewState": "AQIAAKsAAAAAAAAAAAAgwLgAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-01T04:20:43.622Z"
+              "WhenOpened": "2024-12-01T04:20:43.622Z",
+              "EditorCaption": ""
             }
           ]
         }

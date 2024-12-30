@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Github\\BackUpEco\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj": {}
+    "C:\\Users\\HOME\\Documents\\GitHub\\BackUpEco\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj": {}
   },
   "projects": {
-    "C:\\Github\\BackUpEco\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj": {
+    "C:\\Users\\HOME\\Documents\\GitHub\\BackUpEco\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Github\\BackUpEco\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
+        "projectUniqueName": "C:\\Users\\HOME\\Documents\\GitHub\\BackUpEco\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
         "projectName": "AdminSideEcoFridge",
-        "projectPath": "C:\\Github\\BackUpEco\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
-        "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "C:\\Github\\BackUpEco\\AdminSideEcoFridge\\obj\\",
+        "projectPath": "C:\\Users\\HOME\\Documents\\GitHub\\BackUpEco\\AdminSideEcoFridge\\AdminSideEcoFridge.csproj",
+        "packagesPath": "C:\\Users\\HOME\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HOME\\Documents\\GitHub\\BackUpEco\\AdminSideEcoFridge\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\HOME\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
