@@ -7,19 +7,16 @@ namespace AdminSideEcoFridge.Models;
 public partial class User
 {
     public int UserId { get; set; }
+    [NotMapped]
+    public string CurrentPassword { get; set; }
+    [NotMapped]
+    public string ConfirmNewPassword { get; set; }
+    [NotMapped]
+    public string NewPassword { get; set; }
 
     public string Email { get; set; } = null!;
 
     public string Password { get; set; } = null!;
-
-    [NotMapped]
-    public string? CurrentPassword { get; set; }
-
-    [NotMapped]
-    public string? NewPassword { get; set; }
-
-    [NotMapped]
-    public string? ConfirmNewPassword { get; set; }
 
     public string? FirstName { get; set; }
 

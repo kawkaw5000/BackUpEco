@@ -53,15 +53,15 @@ public partial class VwDonationTransactionMasterUserView
 
     public string? Availability { get; set; }
 
-    public int RoleId { get; set; }
+    public int? RoleId { get; set; }
 
-    public string RoleName { get; set; } = null!;
+    public string? RoleName { get; set; }
 
     public int UserRoleId { get; set; }
 
     public int DonationCount { get; set; }
 
-    public string AccountType { get; set; } = null!;
+    public string? AccountType { get; set; }
 
     public int TimePast { get; set; }
 

@@ -26,6 +26,11 @@ public class UserSearcRepository
 
     public List<VwDonationTransactionMasterUserView> SearchDonation(string keyword)
     {
+        if (string.IsNullOrEmpty(keyword))
+        {
+            keyword = "";
+        }
+
         var parameter = new SqlParameter("@Keyword", keyword ?? (object)DBNull.Value);
 
         var donations = _db.VwDonationTransactionMasterUserViews
